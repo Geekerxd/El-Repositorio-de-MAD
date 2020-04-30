@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.IO;
+using System.IO; //input output
 
 namespace NameConsoleApp2
 {
+    /// <summary>
+    /// crea un documento de texto y le asigna un texto.
+    /// </summary>
     class Program
     {
         static void WriteFile(string Filename)
@@ -25,7 +28,7 @@ namespace NameConsoleApp2
         {
             string Filename = @"C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\mydoc.txt";
 
-            WriteFile(Filename);
+            //WriteFile(Filename);
 
             ReadFile(Filename);
 
