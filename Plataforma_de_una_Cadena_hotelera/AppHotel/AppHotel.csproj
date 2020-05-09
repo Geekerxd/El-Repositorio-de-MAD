@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarHotel.Designer.cs">
+      <DependentUpon>AgregarHotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CancelarReservacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelarReservacion.Designer.cs">
+      <DependentUpon>CancelarReservacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +71,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReportesSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesSistema.Designer.cs">
+      <DependentUpon>ReportesSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TipoHab.cs" />
     <Compile Include="UsuEmp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +90,12 @@
     <Compile Include="VAdmin.Designer.cs">
       <DependentUpon>VAdmin.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarHotel.resx">
+      <DependentUpon>AgregarHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CancelarReservacion.resx">
+      <DependentUpon>CancelarReservacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +103,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesSistema.resx">
+      <DependentUpon>ReportesSistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuEmp.resx">
       <DependentUpon>UsuEmp.cs</DependentUpon>

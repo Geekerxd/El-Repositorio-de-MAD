@@ -10,3 +10,6 @@ C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\Ap
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Form1.resources
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.VAdmin.resources
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.UsuEmp.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CancelarReservacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesSistema.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.AgregarHotel.resources

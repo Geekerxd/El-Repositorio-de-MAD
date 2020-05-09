@@ -12,6 +12,7 @@ namespace AppHotel
 {
     public partial class VAdmin : Form
     {
+
         static bool checar;
         public VAdmin()
         {
@@ -23,12 +24,15 @@ namespace AppHotel
 
         private void B_RepSistema_Click(object sender, EventArgs e)
         {
+            Form nuevform = new ReportesSistema();
+            nuevform.ShowDialog();
 
         }
 
         private void B_CancReserv_Click(object sender, EventArgs e)
         {
-
+            Form nuevform = new CancelarReservacion();
+            nuevform.ShowDialog();
         }
 
         private void B_Hote_Click(object sender, EventArgs e)
@@ -41,6 +45,8 @@ namespace AppHotel
 
         private void B_AgNuevHote_Click(object sender, EventArgs e)
         {
+            Form nuevform = new AgregarHotel();
+            nuevform.ShowDialog();
 
         }
 

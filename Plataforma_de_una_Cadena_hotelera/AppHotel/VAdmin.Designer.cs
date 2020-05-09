@@ -54,7 +54,7 @@
             this.label4.Location = new System.Drawing.Point(12, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(216, 20);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 9;
             this.label4.Text = "Ventana de Adimistrador";
             // 
             // B_RepSistema
@@ -62,7 +62,7 @@
             this.B_RepSistema.Location = new System.Drawing.Point(167, 84);
             this.B_RepSistema.Name = "B_RepSistema";
             this.B_RepSistema.Size = new System.Drawing.Size(410, 43);
-            this.B_RepSistema.TabIndex = 3;
+            this.B_RepSistema.TabIndex = 0;
             this.B_RepSistema.Text = "Reportes del Sistema";
             this.B_RepSistema.UseVisualStyleBackColor = true;
             this.B_RepSistema.Click += new System.EventHandler(this.B_RepSistema_Click);
@@ -72,7 +72,7 @@
             this.B_CancReserv.Location = new System.Drawing.Point(167, 133);
             this.B_CancReserv.Name = "B_CancReserv";
             this.B_CancReserv.Size = new System.Drawing.Size(410, 43);
-            this.B_CancReserv.TabIndex = 3;
+            this.B_CancReserv.TabIndex = 1;
             this.B_CancReserv.Text = "Cancelar Reservaciones";
             this.B_CancReserv.UseVisualStyleBackColor = true;
             this.B_CancReserv.Click += new System.EventHandler(this.B_CancReserv_Click);
@@ -82,7 +82,7 @@
             this.B_Hote.Location = new System.Drawing.Point(167, 182);
             this.B_Hote.Name = "B_Hote";
             this.B_Hote.Size = new System.Drawing.Size(177, 43);
-            this.B_Hote.TabIndex = 3;
+            this.B_Hote.TabIndex = 2;
             this.B_Hote.Text = "Hoteles";
             this.B_Hote.UseVisualStyleBackColor = true;
             this.B_Hote.Click += new System.EventHandler(this.B_Hote_Click);
@@ -102,7 +102,7 @@
             this.B_Modi.Location = new System.Drawing.Point(496, 182);
             this.B_Modi.Name = "B_Modi";
             this.B_Modi.Size = new System.Drawing.Size(81, 43);
-            this.B_Modi.TabIndex = 3;
+            this.B_Modi.TabIndex = 4;
             this.B_Modi.Text = "Modificar";
             this.B_Modi.UseVisualStyleBackColor = true;
             this.B_Modi.Click += new System.EventHandler(this.B_Modi_Click);
@@ -112,7 +112,7 @@
             this.B_regTipoHab.Location = new System.Drawing.Point(167, 231);
             this.B_regTipoHab.Name = "B_regTipoHab";
             this.B_regTipoHab.Size = new System.Drawing.Size(410, 43);
-            this.B_regTipoHab.TabIndex = 3;
+            this.B_regTipoHab.TabIndex = 5;
             this.B_regTipoHab.Text = "Registro de tipo de habitación";
             this.B_regTipoHab.UseVisualStyleBackColor = true;
             this.B_regTipoHab.Click += new System.EventHandler(this.B_regTipoHab_Click);
@@ -122,7 +122,7 @@
             this.B_RepVent.Location = new System.Drawing.Point(167, 280);
             this.B_RepVent.Name = "B_RepVent";
             this.B_RepVent.Size = new System.Drawing.Size(410, 43);
-            this.B_RepVent.TabIndex = 3;
+            this.B_RepVent.TabIndex = 6;
             this.B_RepVent.Text = "Reportes de ventas";
             this.B_RepVent.UseVisualStyleBackColor = true;
             this.B_RepVent.Click += new System.EventHandler(this.B_RepVent_Click);
@@ -132,7 +132,7 @@
             this.B_CreaUsuEmp.Location = new System.Drawing.Point(167, 329);
             this.B_CreaUsuEmp.Name = "B_CreaUsuEmp";
             this.B_CreaUsuEmp.Size = new System.Drawing.Size(410, 43);
-            this.B_CreaUsuEmp.TabIndex = 3;
+            this.B_CreaUsuEmp.TabIndex = 7;
             this.B_CreaUsuEmp.Text = "Crear Usuario empleado";
             this.B_CreaUsuEmp.UseVisualStyleBackColor = true;
             this.B_CreaUsuEmp.Click += new System.EventHandler(this.B_CreaUsuEmp_Click);
@@ -144,7 +144,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // VerStripDropDownButton1

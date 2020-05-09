@@ -50,7 +50,7 @@
             this.label4.Location = new System.Drawing.Point(23, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 20);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 5;
             this.label4.Text = "Usuario Empleado.";
             // 
             // toolStrip1
@@ -60,7 +60,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // Ver2StripSplitButton1
@@ -91,7 +91,7 @@
             this.B_HacReservación.Location = new System.Drawing.Point(84, 101);
             this.B_HacReservación.Name = "B_HacReservación";
             this.B_HacReservación.Size = new System.Drawing.Size(339, 43);
-            this.B_HacReservación.TabIndex = 4;
+            this.B_HacReservación.TabIndex = 0;
             this.B_HacReservación.Text = "Hacer Reservación";
             this.B_HacReservación.UseVisualStyleBackColor = true;
             // 
@@ -100,7 +100,7 @@
             this.button1.Location = new System.Drawing.Point(84, 150);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(339, 43);
-            this.button1.TabIndex = 4;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Alta a Cliente";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -109,7 +109,7 @@
             this.groupBox1.Location = new System.Drawing.Point(74, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(366, 121);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // B_CheckIn
@@ -117,7 +117,7 @@
             this.B_CheckIn.Location = new System.Drawing.Point(84, 223);
             this.B_CheckIn.Name = "B_CheckIn";
             this.B_CheckIn.Size = new System.Drawing.Size(339, 43);
-            this.B_CheckIn.TabIndex = 4;
+            this.B_CheckIn.TabIndex = 2;
             this.B_CheckIn.Text = "Check In";
             this.B_CheckIn.UseVisualStyleBackColor = true;
             // 
@@ -126,7 +126,7 @@
             this.B_CheckOut.Location = new System.Drawing.Point(84, 272);
             this.B_CheckOut.Name = "B_CheckOut";
             this.B_CheckOut.Size = new System.Drawing.Size(339, 43);
-            this.B_CheckOut.TabIndex = 4;
+            this.B_CheckOut.TabIndex = 3;
             this.B_CheckOut.Text = "Check Out";
             this.B_CheckOut.UseVisualStyleBackColor = true;
             // 
@@ -143,6 +143,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Name = "UsuEmp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsuEmp";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
