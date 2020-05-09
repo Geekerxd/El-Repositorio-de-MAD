@@ -19,7 +19,13 @@ namespace AppHotel
 
     public partial class AgregarHotel : Form
     {
-       TipoHabLista lista = new TipoHabLista();
+        TipoHabLista lista = new TipoHabLista();// apar tipo de habitacion
+        TipoHabLista L_SA = new TipoHabLista();// para servicions asicionales
+        string[] TipoHab = { "Individual", "Doble", "Quad", "Queen", "King", "Master Suite", "Junior Suite" };
+        string[] ciudades = { "NewYork", "Monterrey", "CDMX", "Guadalajara", "San Antonio" };
+        string[] ZonaTur = { "Playa", "Pueblo mágico", "Montaña", "Ciudad que nunca duerme", "Bosque Lagunas" };
+        string[] ServiA = { "Gimnasio", "Wifi", "Servicios de alimentos a cuarto", "Masajes", "Restaurantes" };
+
 
         public AgregarHotel()
         {
@@ -28,11 +34,7 @@ namespace AppHotel
         private void AgregarHotel_Load(object sender, EventArgs e)
         {
             timerOFchb.Start();
-            string[] TipoHab = { "Individual", "Doble", "Quad", "Queen", "King", "Master Suite", "Junior Suite" };
-            string[] ciudades = { "NewYork", "Monterrey", "CDMX", "Guadalajara", "San Antonio" };
-            string[] ZonaTur = { "Playa", "Pueblo mágico", "Montaña", "Ciudad que nunca duerme", "Bosque Lagunas" };
-
-
+            
             for (int i = 0; i < ciudades.Length; i++)
             {
                 comboBox2.Items.Add(ciudades[i]);
@@ -44,8 +46,8 @@ namespace AppHotel
                 TextBox txb = new TextBox();
 
                 chb.Text = TipoHab[i];
-                chb.Location = new Point(80, flowLayoutPanel1.Controls.Count * 20);
-                txb.Location = new Point(80, flowLayoutPanel1.Controls.Count * 20);
+                chb.Location = new Point(10, flowLayoutPanel1.Controls.Count * 20);
+                txb.Location = new Point(10, flowLayoutPanel1.Controls.Count * 20);
                 flowLayoutPanel1.Controls.Add(chb);
                 flowLayoutPanel1.Controls.Add(txb);
 
@@ -58,10 +60,17 @@ namespace AppHotel
             {
                 comboBox1.Items.Add(ZonaTur[i]);
             }
+            for (int i = 0; i < ServiA.Length; i++)
+            {
+                CheckBox chb = new CheckBox();
+
+                chb.Text = ServiA[i];
+                chb.Location = new Point(10, Flow2.Controls.Count * 20);
+                Flow2.Controls.Add(chb);
+                L_SA.alFinalLista(ServiA[i], chb);
+            }
 
 
-
-            //  lista.getEvery();
 
 
         }
@@ -107,6 +116,26 @@ namespace AppHotel
         private void timerOFchb_Tick(object sender, EventArgs e)
         {
             lista.getEvery();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            L_SA.getEveryText();
+        }
+
+        private void Flow2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_Click(object sender, EventArgs e)
+        {
+          
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }
