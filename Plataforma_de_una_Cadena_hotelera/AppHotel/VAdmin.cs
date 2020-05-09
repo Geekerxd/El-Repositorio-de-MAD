@@ -52,27 +52,37 @@ namespace AppHotel
 
         private void B_Modi_Click(object sender, EventArgs e)
         {
-
+            Form nuevform = new ConfiHote();
+            nuevform.ShowDialog();
         }
 
         private void B_regTipoHab_Click(object sender, EventArgs e)
         {
-
+            Form nuevform = new CreaTipoHab();
+            nuevform.ShowDialog();
         }
 
         private void B_RepVent_Click(object sender, EventArgs e)
         {
-
+            Form nuevform = new ReportesVentas();
+            nuevform.ShowDialog();
         }
 
         private void B_CreaUsuEmp_Click(object sender, EventArgs e)
         {
-
+            Form nuevform = new CreaUsuario();
+            nuevform.ShowDialog();
         }
 
         private void VAdmin_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void historialDelClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form nuevform = new HistoClient();
+            nuevform.ShowDialog();
         }
     }
 }

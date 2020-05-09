@@ -13,3 +13,9 @@ C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\Ap
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CancelarReservacion.resources
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesSistema.resources
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.AgregarHotel.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ConfiHote.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaTipoHab.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaUsuario.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesVentas.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HistoClient.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HacerReservacion.resources

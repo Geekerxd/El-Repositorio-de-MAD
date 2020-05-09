@@ -58,11 +58,41 @@
     <Compile Include="CancelarReservacion.Designer.cs">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfiHote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfiHote.Designer.cs">
+      <DependentUpon>ConfiHote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreaTipoHab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreaTipoHab.Designer.cs">
+      <DependentUpon>CreaTipoHab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreaUsuario.Designer.cs">
+      <DependentUpon>CreaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HacerReservacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HacerReservacion.Designer.cs">
+      <DependentUpon>HacerReservacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoClient.Designer.cs">
+      <DependentUpon>HistoClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +106,12 @@
     </Compile>
     <Compile Include="ReportesSistema.Designer.cs">
       <DependentUpon>ReportesSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesVentas.Designer.cs">
+      <DependentUpon>ReportesVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="TipoHab.cs" />
     <Compile Include="UsuEmp.cs">
@@ -96,8 +132,23 @@
     <EmbeddedResource Include="CancelarReservacion.resx">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfiHote.resx">
+      <DependentUpon>ConfiHote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreaTipoHab.resx">
+      <DependentUpon>CreaTipoHab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreaUsuario.resx">
+      <DependentUpon>CreaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HacerReservacion.resx">
+      <DependentUpon>HacerReservacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoClient.resx">
+      <DependentUpon>HistoClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -106,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportesSistema.resx">
       <DependentUpon>ReportesSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesVentas.resx">
+      <DependentUpon>ReportesVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuEmp.resx">
       <DependentUpon>UsuEmp.cs</DependentUpon>

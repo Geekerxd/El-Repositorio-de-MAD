@@ -177,6 +177,7 @@
             this.historialDelClienteToolStripMenuItem.Name = "historialDelClienteToolStripMenuItem";
             this.historialDelClienteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.historialDelClienteToolStripMenuItem.Text = "Historial del Cliente";
+            this.historialDelClienteToolStripMenuItem.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem_Click);
             // 
             // VAdmin
             // 

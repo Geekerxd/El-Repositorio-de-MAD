@@ -94,6 +94,7 @@
             this.B_HacReservación.TabIndex = 0;
             this.B_HacReservación.Text = "Hacer Reservación";
             this.B_HacReservación.UseVisualStyleBackColor = true;
+            this.B_HacReservación.Click += new System.EventHandler(this.B_HacReservación_Click);
             // 
             // button1
             // 

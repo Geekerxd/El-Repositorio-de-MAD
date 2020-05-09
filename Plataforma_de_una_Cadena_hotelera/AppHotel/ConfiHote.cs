@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace AppHotel
 {
-    public partial class UsuEmp : Form
+    public partial class ConfiHote : Form
     {
-        public UsuEmp()
+        public ConfiHote()
         {
             InitializeComponent();
-        }
-
-        private void B_HacReservación_Click(object sender, EventArgs e)
-        {
-            Form nuevform = new HacerReservacion();
-            nuevform.ShowDialog();
-
-
         }
     }
 }

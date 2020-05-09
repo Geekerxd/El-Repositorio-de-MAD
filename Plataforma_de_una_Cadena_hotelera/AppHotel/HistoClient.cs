@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace AppHotel
 {
-    public partial class UsuEmp : Form
+    public partial class HistoClient : Form
     {
-        public UsuEmp()
+        public HistoClient()
         {
             InitializeComponent();
-        }
-
-        private void B_HacReservación_Click(object sender, EventArgs e)
-        {
-            Form nuevform = new HacerReservacion();
-            nuevform.ShowDialog();
-
-
         }
     }
 }
