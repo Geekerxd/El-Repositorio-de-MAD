@@ -31,8 +31,19 @@ CREATE TABLE Usuario (
 );
 GO
 
---Creación de tabla Cliente
+--cambiar tipo de dato datetime to time
+ALTER TABLE Usuario Alter column Fecha_nacimiento date;
 
+
+ALTER TABLE [dbo].[Cliente]  WITH CHECK ADD FOREIGN KEY([Usuario_Atiende])
+REFERENCES [dbo].[Usuario] ([Cve_usuario])
+GO
+
+
+
+
+--Creación de tabla Cliente
+--alter table from Usuario alter column Fecha_nacimiento datetime(108)
 
 IF EXISTS
 (

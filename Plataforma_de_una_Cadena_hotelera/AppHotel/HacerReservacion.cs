@@ -40,16 +40,22 @@ namespace AppHotel
 
             String Nombre = textBox1.Text;
 
+            String Contra= textBox2.Text;
 
             var conexion = new EnlaceDB();
 
-            conexion.SET_Users(Nombre); 
+            //conexion.get_Alumnos(Nombre, Contra); 
  
             
             conexion = null;
             
 
 
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

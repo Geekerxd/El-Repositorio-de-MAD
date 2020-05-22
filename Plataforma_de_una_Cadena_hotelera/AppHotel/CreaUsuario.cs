@@ -24,17 +24,42 @@ namespace AppHotel
         private void button1_Click_1(object sender, EventArgs e)
         {
 
-
-            String Nombre = textBox2.Text;
-
-
+            var contrase = textBox8.Text;
+            var Nombre = textBox2.Text;
+            var Paterno = textBox3.Text;
+            var Materno = textBox4.Text;
+            int nNomina = int.Parse(textBox5.Text);
+            DateTime nacimi = dateTimePicker1.Value;
+            var Domi = textBox1.Text;
+            var TelCel = textBox7.Text;
             var conexion = new EnlaceDB();
-
-            conexion.SET_Users(Nombre);
-
-
+            conexion.Set_Users(contrase, Nombre, Paterno, Materno, nNomina, nacimi, Domi, TelCel);
             conexion = null;
 
+            MessageBox.Show("Se Guardo usuario "+ Nombre+".");
+
+
+
+
+        }
+
+            private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

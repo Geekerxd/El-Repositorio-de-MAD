@@ -144,22 +144,37 @@ namespace AppHotel
             
         }
 
-        public DataTable get_Alumnos(string user)
+        public DataTable Set_Users(string contrase, string Nombre, string Paterno, 
+            string Materno, int nNomina, DateTime nacimi, string domici,  string telCel)
         {
             var msg = "";
             DataTable tabla = new DataTable();
             try
             {
                 conectar();
-                string qry = "sp_Alumnos_pUP";
+                string qry = "sp_Insert_User";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;
 
-                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.VarChar, 2);
-                parametro1.Value = 'S';
-                var parametro2 = _comandosql.Parameters.Add("@user", SqlDbType.VarChar, 20);
-                parametro2.Value = user;
+                var parametro1 = _comandosql.Parameters.Add("@Contrasena", SqlDbType.Char, 8);
+                parametro1.Value = contrase;
+
+                var parametro2 = _comandosql.Parameters.Add("@nombreC", SqlDbType.VarChar, 80);
+                parametro2.Value = Nombre;
+                
+                var parametro3 = _comandosql.Parameters.Add("@paterno", SqlDbType.VarChar, 20);
+                parametro3.Value = Paterno;
+                var parametro4 = _comandosql.Parameters.Add("@materno", SqlDbType.VarChar, 20);
+                parametro4.Value = Materno;
+                var parametro5 = _comandosql.Parameters.Add("@No_nomina", SqlDbType.Int);
+                parametro5.Value = nNomina;
+                var parametro6 = _comandosql.Parameters.Add("@Fecha_nacimiento", SqlDbType.Date);
+                parametro6.Value = nacimi;
+                var parametro7 = _comandosql.Parameters.Add("@Domicilio", SqlDbType.VarChar, 100);
+                parametro7.Value = domici;
+                var parametro8 = _comandosql.Parameters.Add("@Telefono", SqlDbType.Char, 10);
+                parametro8.Value = telCel;
 
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(tabla);

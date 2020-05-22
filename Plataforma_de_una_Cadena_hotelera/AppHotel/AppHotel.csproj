@@ -85,6 +85,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="funciones.cs" />
     <Compile Include="HacerReservacion.cs">
       <SubType>Form</SubType>
     </Compile>
