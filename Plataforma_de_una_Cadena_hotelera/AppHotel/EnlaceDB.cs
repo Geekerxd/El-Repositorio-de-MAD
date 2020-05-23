@@ -18,6 +18,8 @@ namespace AppHotel
         static private DataSet _DS = new DataSet();
         static private SqlDataAdapter _adaptador = new SqlDataAdapter();
         static private SqlCommand _comandosql = new SqlCommand();
+        static private SqlDataReader dr;
+
 
         public DataTable obtenertabla
         {
@@ -79,6 +81,7 @@ namespace AppHotel
         {
             var msg = "";
             DataTable tabla = new DataTable();
+
             try
             {
                 conectar();
@@ -143,6 +146,138 @@ namespace AppHotel
             }
             
         }
+        public DataTable Registra_Pais(string nombre, string descrip)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+                conectar();
+                string qry = "sp_Insert_Pais";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@nombre", SqlDbType.VarChar, 50);
+                parametro1.Value = nombre;
+
+                var parametro2 = _comandosql.Parameters.Add("@descrip", SqlDbType.VarChar, 300);
+                parametro2.Value = descrip;
+
+                
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+        public DataTable Registra_Ciudad(string nombre, string descrip, string pais)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+                conectar();
+                string qry = "sp_Insert_City";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@nombre", SqlDbType.VarChar, 50);
+                parametro1.Value = nombre;
+
+                var parametro2 = _comandosql.Parameters.Add("@descrip", SqlDbType.VarChar, 300);
+                parametro2.Value = descrip;
+
+
+                var parametro3 = _comandosql.Parameters.Add("@p_nombre", SqlDbType.VarChar, 50);
+                parametro3.Value = pais;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+
+
+
+
+        public void set_Pais(ComboBox combo)
+        {//llenar combo
+            var msg = "";
+
+            try {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_BuscaPais";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    combo.Items.Add(dr["P_Nombre"].ToString());
+
+
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+
 
         public DataTable Set_Users(string contrase, string Nombre, string Paterno, 
             string Materno, int nNomina, DateTime nacimi, string domici,  string telCel)

@@ -60,6 +60,12 @@
     <Compile Include="CancelarReservacion.Designer.cs">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ciudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ciudad.Designer.cs">
+      <DependentUpon>Ciudad.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfiHote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="HistoClient.Designer.cs">
       <DependentUpon>HistoClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pais.Designer.cs">
+      <DependentUpon>Pais.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +148,9 @@
     <EmbeddedResource Include="CancelarReservacion.resx">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ciudad.resx">
+      <DependentUpon>Ciudad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfiHote.resx">
       <DependentUpon>ConfiHote.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HistoClient.resx">
       <DependentUpon>HistoClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pais.resx">
+      <DependentUpon>Pais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

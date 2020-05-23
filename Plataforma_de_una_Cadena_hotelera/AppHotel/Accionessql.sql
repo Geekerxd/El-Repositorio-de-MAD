@@ -46,7 +46,7 @@ select * from Usuario
 
 
 
-insert into Usuario values('pass','Santiago perez','78','19990501','super calle 15','12345678',NULL)
+insert into Pais values('Mexico','algooo')
 
 insert into Usuario values('dsa','dsa perez','79','19980501','super calle 15','12345678',NULL)
 select *,convert(varchar,  Fecha_nacimiento, 102) fecha from Usuario
@@ -85,3 +85,64 @@ END
 
 
 --exec sp_Insert_User 'aas','David A. B.','45','19950118','calleee','456791'
+
+
+
+CREATE PROCEDURE sp_Insert_Pais
+@nombre           varchar(50),
+@descrip      varchar(300)
+AS
+BEGIN
+
+ 
+
+    insert into Pais (P_Nombre, Descripcion)
+    values (@nombre, @descrip);
+
+ 
+
+END
+select * from Pais
+
+
+-----------REGISTRO CIUDAD-----------------
+
+ 
+
+create PROCEDURE sp_Insert_City
+@nombre           varchar(50),
+@descrip      varchar(300),
+@p_nombre        varchar(50)
+AS
+BEGIN
+
+ 
+
+    insert into Ciudad (C_Nombre, Descripcion, P_Nombre)
+    values (@nombre, @descrip, @p_nombre);
+
+ 
+
+END
+select * from Ciudad
+
+
+
+create view vw_BuscaPais
+as
+    select P_Nombre Nombre
+    from Pais
+
+
+
+
+alter PROCEDURE sp_BuscaPais
+AS
+BEGIN
+    select P_Nombre
+    from Pais
+END
+
+-----------REGISTRO PAIS-----------------
+
+ 

@@ -268,3 +268,11 @@ CREATE TABLE Servicios_en_Reservacion (
 );
 GO
 
+
+
+
+select * from Pais
+
+
+
+

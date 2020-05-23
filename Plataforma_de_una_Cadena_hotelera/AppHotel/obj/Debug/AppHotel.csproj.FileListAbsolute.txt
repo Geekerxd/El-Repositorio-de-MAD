@@ -19,3 +19,5 @@ C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\Ap
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesVentas.resources
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HistoClient.resources
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HacerReservacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Ciudad.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Pais.resources

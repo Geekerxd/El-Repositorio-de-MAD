@@ -32,7 +32,9 @@ namespace AppHotel
             DateTime nacimi = dateTimePicker1.Value;
             var Domi = textBox1.Text;
             var TelCel = textBox7.Text;
-            var conexion = new EnlaceDB();
+
+
+            EnlaceDB conexion = new EnlaceDB();
             conexion.Set_Users(contrase, Nombre, Paterno, Materno, nNomina, nacimi, Domi, TelCel);
             conexion = null;
 

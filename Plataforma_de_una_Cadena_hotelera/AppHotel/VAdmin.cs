@@ -84,5 +84,21 @@ namespace AppHotel
             Form nuevform = new HistoClient();
             nuevform.ShowDialog();
         }
+
+        private void paisToolStripMenuItem_Click(object sender, EventArgs e)
+        {//abre pais
+
+
+            Form nuevform = new Pais();
+            nuevform.ShowDialog();
+
+
+        }
+
+        private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
+        {//abre ciudad
+            Form nuevform = new Ciudad();
+            nuevform.ShowDialog();
+        }
     }
 }
