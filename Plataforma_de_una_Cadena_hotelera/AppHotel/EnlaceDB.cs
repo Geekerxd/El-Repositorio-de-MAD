@@ -19,7 +19,7 @@ namespace AppHotel
         static private SqlDataAdapter _adaptador = new SqlDataAdapter();
         static private SqlCommand _comandosql = new SqlCommand();
         static private SqlDataReader dr;
-
+        string[] usuarios;
 
         public DataTable obtenertabla
         {
@@ -274,6 +274,55 @@ namespace AppHotel
         }
 
 
+
+        public void set_StringUsers()
+        {//llenar combo
+            var msg = "";
+
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_StringUsu";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                dr = _comandosql.ExecuteReader();
+                int i = 0;
+                while (dr.Read())
+                {
+                    usuarios[i]= dr["Nombre_Comp"].ToString();
+                    //.Add(dr["P_Nombre"].ToString());
+
+                    i++;
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            
+
+        }
+
+        public string[] getStringUser() {
+            string[] a= usuarios;
+            return a;   
+        }
 
 
 

@@ -26,6 +26,11 @@ namespace AppHotel
         string[] ZonaTur = { "Playa", "Pueblo mágico", "Montaña", "Ciudad que nunca duerme", "Bosque Lagunas" };
         string[] ServiA = { "Gimnasio", "Wifi", "Servicios de alimentos a cuarto", "Masajes", "Restaurantes" };
 
+        //llenar un string de todos lo nombres de tipos de habitación
+
+       
+
+        
 
         public AgregarHotel()
         {
@@ -34,7 +39,13 @@ namespace AppHotel
         private void AgregarHotel_Load(object sender, EventArgs e)
         {
             timerOFchb.Start();
-            
+
+            //EnlaceDB conexion = new EnlaceDB();
+            //conexion.set_StringUsers();
+            //
+            //string[] usuarios = conexion.getStringUser();
+            //conexion = null;
+            //string<string>= tipo new string<string>;
             for (int i = 0; i < ciudades.Length; i++)
             {
                 comboBox2.Items.Add(ciudades[i]);
@@ -120,7 +131,9 @@ namespace AppHotel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            L_SA.getEveryText();
+            //L_SA.getEveryText();
+            lista.ShowTextEveryNumber();
+            //funcion que guarde 
         }
 
         private void Flow2_Paint(object sender, PaintEventArgs e)

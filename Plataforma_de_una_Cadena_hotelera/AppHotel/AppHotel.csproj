@@ -54,6 +54,12 @@
     <Compile Include="AgregarHotel.Designer.cs">
       <DependentUpon>AgregarHotel.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaClientecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaClientecs.Designer.cs">
+      <DependentUpon>AltaClientecs.cs</DependentUpon>
+    </Compile>
     <Compile Include="CancelarReservacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="AgregarHotel.resx">
       <DependentUpon>AgregarHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaClientecs.resx">
+      <DependentUpon>AltaClientecs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CancelarReservacion.resx">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>

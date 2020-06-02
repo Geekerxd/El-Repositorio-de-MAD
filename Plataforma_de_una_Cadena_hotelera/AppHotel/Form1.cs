@@ -33,6 +33,9 @@ namespace AppHotel
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            string usuario= textBox1.Text;
+            string contraseña= textBox2.Text;
+
 
             if (comboBox1.Text == "Administrador")
             {

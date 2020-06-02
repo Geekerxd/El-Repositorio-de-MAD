@@ -39,9 +39,17 @@ END
 
 drop procedure sp_Insert_User
 
-
+select * from Tipo_Habitacion
 
 select * from Usuario
+
+
+create procedure sp_StringUsu
+as
+begin
+select * from Usuario
+
+end
 --===================================
 
 
@@ -85,6 +93,9 @@ END
 
 
 --exec sp_Insert_User 'aas','David A. B.','45','19950118','calleee','456791'
+-----------REGISTRO PAIS-----------------
+
+ 
 
 
 
@@ -124,7 +135,10 @@ BEGIN
  
 
 END
+
+
 select * from Ciudad
+select * from Pais
 
 
 
@@ -143,6 +157,3 @@ BEGIN
     from Pais
 END
 
------------REGISTRO PAIS-----------------
-
- 

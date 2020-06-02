@@ -33,12 +33,15 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Ver2StripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.cancelarReservaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteDeOcupaciónPorHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.B_HacReservación = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.B_CheckIn = new System.Windows.Forms.Button();
             this.B_CheckOut = new System.Windows.Forms.Button();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.reportesDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeOcupaciónPorHotelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verHistorialDelClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +59,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Ver2StripSplitButton1});
+            this.Ver2StripSplitButton1,
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -67,7 +71,7 @@
             // 
             this.Ver2StripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelarReservaciónToolStripMenuItem,
-            this.reporteDeOcupaciónPorHotelToolStripMenuItem});
+            this.verHistorialDelClienteToolStripMenuItem});
             this.Ver2StripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("Ver2StripSplitButton1.Image")));
             this.Ver2StripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Ver2StripSplitButton1.Name = "Ver2StripSplitButton1";
@@ -77,14 +81,8 @@
             // cancelarReservaciónToolStripMenuItem
             // 
             this.cancelarReservaciónToolStripMenuItem.Name = "cancelarReservaciónToolStripMenuItem";
-            this.cancelarReservaciónToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.cancelarReservaciónToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.cancelarReservaciónToolStripMenuItem.Text = "Cancelar Reservación";
-            // 
-            // reporteDeOcupaciónPorHotelToolStripMenuItem
-            // 
-            this.reporteDeOcupaciónPorHotelToolStripMenuItem.Name = "reporteDeOcupaciónPorHotelToolStripMenuItem";
-            this.reporteDeOcupaciónPorHotelToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.reporteDeOcupaciónPorHotelToolStripMenuItem.Text = "Reporte de Ocupación por Hotel";
             // 
             // B_HacReservación
             // 
@@ -104,6 +102,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Alta a Cliente";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -130,6 +129,38 @@
             this.B_CheckOut.TabIndex = 3;
             this.B_CheckOut.Text = "Check Out";
             this.B_CheckOut.UseVisualStyleBackColor = true;
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportesDeVentasToolStripMenuItem,
+            this.reporteDeOcupaciónPorHotelToolStripMenuItem1});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(85, 22);
+            this.toolStripDropDownButton1.Text = "Ver reportes:";
+            // 
+            // reportesDeVentasToolStripMenuItem
+            // 
+            this.reportesDeVentasToolStripMenuItem.Name = "reportesDeVentasToolStripMenuItem";
+            this.reportesDeVentasToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.reportesDeVentasToolStripMenuItem.Text = "Reportes de ventas";
+            this.reportesDeVentasToolStripMenuItem.Click += new System.EventHandler(this.reportesDeVentasToolStripMenuItem_Click);
+            // 
+            // reporteDeOcupaciónPorHotelToolStripMenuItem1
+            // 
+            this.reporteDeOcupaciónPorHotelToolStripMenuItem1.Name = "reporteDeOcupaciónPorHotelToolStripMenuItem1";
+            this.reporteDeOcupaciónPorHotelToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.reporteDeOcupaciónPorHotelToolStripMenuItem1.Text = "Reporte de Ocupación por hotel";
+            this.reporteDeOcupaciónPorHotelToolStripMenuItem1.Click += new System.EventHandler(this.reporteDeOcupaciónPorHotelToolStripMenuItem1_Click);
+            // 
+            // verHistorialDelClienteToolStripMenuItem
+            // 
+            this.verHistorialDelClienteToolStripMenuItem.Name = "verHistorialDelClienteToolStripMenuItem";
+            this.verHistorialDelClienteToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.verHistorialDelClienteToolStripMenuItem.Text = "Ver historial del Cliente";
             // 
             // UsuEmp
             // 
@@ -159,11 +190,14 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripSplitButton Ver2StripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem cancelarReservaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reporteDeOcupaciónPorHotelToolStripMenuItem;
         private System.Windows.Forms.Button B_HacReservación;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button B_CheckIn;
         private System.Windows.Forms.Button B_CheckOut;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem reportesDeVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeOcupaciónPorHotelToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verHistorialDelClienteToolStripMenuItem;
     }
 }

@@ -1,0 +1,98 @@
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe.config
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.pdb
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csprojAssemblyReference.cache
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Properties.Resources.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.GenerateResource.cache
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.CoreCompileInputs.cache
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.exe
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.pdb
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Form1.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.VAdmin.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.UsuEmp.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CancelarReservacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesSistema.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.AgregarHotel.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ConfiHote.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaTipoHab.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaUsuario.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesVentas.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HistoClient.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HacerReservacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Ciudad.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Pais.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe.config
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.pdb
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csprojAssemblyReference.cache
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.AgregarHotel.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CancelarReservacion.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Ciudad.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ConfiHote.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaTipoHab.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaUsuario.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Form1.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HacerReservacion.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HistoClient.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Pais.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Properties.Resources.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesSistema.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesVentas.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.UsuEmp.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.VAdmin.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.GenerateResource.cache
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.CoreCompileInputs.cache
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.exe
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.pdb
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Servicio.resources
+C:\Users\DanielGM\Downloads\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Cliente.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe.config
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.pdb
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csprojAssemblyReference.cache
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.AgregarHotel.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CancelarReservacion.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Ciudad.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Cliente.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ConfiHote.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaTipoHab.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaUsuario.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Form1.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Servicio.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HacerReservacion.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HistoClient.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Pais.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Properties.Resources.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesSistema.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesVentas.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.UsuEmp.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.VAdmin.resources
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.GenerateResource.cache
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.CoreCompileInputs.cache
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.exe
+C:\Users\DanielGM\Documents\Modelos de administracion de datos\El-Repositorio-de-MAD-master (1)\El-Repositorio-de-MAD-master\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.pdb
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe.config
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.exe
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\bin\Debug\AppHotel.pdb
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csprojAssemblyReference.cache
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.AgregarHotel.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CancelarReservacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Ciudad.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Cliente.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ConfiHote.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaTipoHab.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CreaUsuario.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Form1.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Servicio.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HacerReservacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.HistoClient.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Pais.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.Properties.Resources.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesSistema.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReportesVentas.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.UsuEmp.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.VAdmin.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.GenerateResource.cache
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.CoreCompileInputs.cache
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.exe
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.pdb

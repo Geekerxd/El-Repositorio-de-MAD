@@ -102,6 +102,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Name = "Pais";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pais";
             this.ResumeLayout(false);
             this.PerformLayout();

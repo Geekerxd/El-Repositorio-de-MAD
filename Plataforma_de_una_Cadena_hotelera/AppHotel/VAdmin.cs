@@ -85,19 +85,18 @@ namespace AppHotel
             nuevform.ShowDialog();
         }
 
-        private void paisToolStripMenuItem_Click(object sender, EventArgs e)
-        {//abre pais
+        
 
-
-            Form nuevform = new Pais();
+        private void ciudadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+           Form nuevform = new Ciudad();
             nuevform.ShowDialog();
-
-
         }
 
-        private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
-        {//abre ciudad
-            Form nuevform = new Ciudad();
+        private void paisToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            Form nuevform = new Pais();
             nuevform.ShowDialog();
         }
     }

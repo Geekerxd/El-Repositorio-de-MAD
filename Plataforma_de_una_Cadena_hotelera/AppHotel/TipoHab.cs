@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace AppHotel
 {
+    
+
     class TipoHab
     {
         
@@ -15,6 +17,7 @@ namespace AppHotel
         public CheckBox chb;
         public TextBox txb;
         public int id;
+        public int cant;
         public TipoHab before, next;
 
         public TipoHab(string n,CheckBox chb, TextBox txb)
@@ -105,9 +108,65 @@ namespace AppHotel
 
             }
         }
+        public void ShowTextEveryNumber()
+        {
+            if (next != null)
+            {
+                if (chb.Checked == true)
+                {
+                    //aqui muestra todos los que estan con palomita
+                    int cantidad = Int32.Parse(txb.Text);
+                    MessageBox.Show("Tipo de habitacion: " + nombreTipo+ " Cantidad: "+ cantidad);
+                }
+               
+
+               
+
+                next.ShowTextEveryNumber();
+            }
+            else
+            {
+                if (chb.Checked == true)
+                {
+                    int cantidad = Int32.Parse(txb.Text);
+                    //aqui muestra todos los que estan con palomita
+                    MessageBox.Show("Tipo de habitacion: " + nombreTipo + " Cantidad: " + cantidad);
+                }
+                
+
+            }
+        }
+        public ShowTextEveryNumbersize()
+        {
+            if (next != null)
+            {
+                if (chb.Checked == true)
+                {
+                    //aqui muestra todos los que estan con palomita
+                    int cantidad = Int32.Parse(txb.Text);
+                    MessageBox.Show("Tipo de habitacion: " + nombreTipo + " Cantidad: " + cantidad);
+                }
+
+
+
+
+                next.ShowTextEveryNumber();
+            }
+            else
+            {
+                if (chb.Checked == true)
+                {
+                    int cantidad = Int32.Parse(txb.Text);
+                    //aqui muestra todos los que estan con palomita
+                    MessageBox.Show("Tipo de habitacion: " + nombreTipo + " Cantidad: " + cantidad);
+                }
+
+
+            }
+        }
+
 
     }
-
 
     class TipoHabLista
     {
@@ -130,18 +189,26 @@ namespace AppHotel
                 head.alFinal(n, chb);
         }
 
-        public void getEvery() {
+        public void getEvery() {//actualiza si tiene marcada la palomita
             if (head != null) {
                 head.ShowEvery();
             }
         }
-        public void getEveryText()
+        public void getEveryText()//regresa un mesaje del nombre y el numero si tiene marcada la palomita y
         {
             if (head != null)
             {
                 head.ShowTextEvery();
             }
         }
+        public void ShowTextEveryNumber() {
+
+            if (head != null)
+            {
+                head.ShowTextEveryNumber();
+            }
+        }
+
 
     }
 

@@ -24,5 +24,20 @@ namespace AppHotel
 
 
         }
+
+        private void reportesDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reporteDeOcupaciónPorHotelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //ventana re reportes de ocupacion por hotel
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //alta del cliente
+        }
     }
 }

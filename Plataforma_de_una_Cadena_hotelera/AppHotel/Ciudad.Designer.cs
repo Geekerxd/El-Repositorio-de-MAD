@@ -99,6 +99,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 28;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -123,6 +124,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Name = "Ciudad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ciudad";
             this.Load += new System.EventHandler(this.Ciudad_Load);
             this.ResumeLayout(false);
