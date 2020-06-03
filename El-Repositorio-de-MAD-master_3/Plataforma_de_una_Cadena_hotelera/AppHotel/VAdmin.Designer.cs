@@ -47,6 +47,8 @@
             this.paisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ciudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.reporteDeOcupacionPorHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,7 +147,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VerStripDropDownButton1,
-            this.toolStripSplitButton1});
+            this.toolStripSplitButton1,
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -168,19 +171,19 @@
             // verTiposDeHabitaciónToolStripMenuItem
             // 
             this.verTiposDeHabitaciónToolStripMenuItem.Name = "verTiposDeHabitaciónToolStripMenuItem";
-            this.verTiposDeHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.verTiposDeHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.verTiposDeHabitaciónToolStripMenuItem.Text = "Ver Tipos de Habitación";
             // 
             // verHotelesToolStripMenuItem
             // 
             this.verHotelesToolStripMenuItem.Name = "verHotelesToolStripMenuItem";
-            this.verHotelesToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.verHotelesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.verHotelesToolStripMenuItem.Text = "Ver Hoteles";
             // 
             // historialDelClienteToolStripMenuItem
             // 
             this.historialDelClienteToolStripMenuItem.Name = "historialDelClienteToolStripMenuItem";
-            this.historialDelClienteToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.historialDelClienteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.historialDelClienteToolStripMenuItem.Text = "Historial del Cliente";
             this.historialDelClienteToolStripMenuItem.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem_Click);
             // 
@@ -217,6 +220,24 @@
             this.servicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.servicioToolStripMenuItem.Text = "Servicio";
             this.servicioToolStripMenuItem.Click += new System.EventHandler(this.servicioToolStripMenuItem_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteDeOcupacionPorHotelToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(66, 22);
+            this.toolStripDropDownButton1.Text = "Reportes";
+            // 
+            // reporteDeOcupacionPorHotelToolStripMenuItem
+            // 
+            this.reporteDeOcupacionPorHotelToolStripMenuItem.Name = "reporteDeOcupacionPorHotelToolStripMenuItem";
+            this.reporteDeOcupacionPorHotelToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.reporteDeOcupacionPorHotelToolStripMenuItem.Text = "Reporte de ocupacion por hotel";
+            this.reporteDeOcupacionPorHotelToolStripMenuItem.Click += new System.EventHandler(this.reporteDeOcupacionPorHotelToolStripMenuItem_Click);
             // 
             // VAdmin
             // 
@@ -265,5 +286,7 @@
         private System.Windows.Forms.ToolStripMenuItem paisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ciudadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeOcupacionPorHotelToolStripMenuItem;
     }
 }

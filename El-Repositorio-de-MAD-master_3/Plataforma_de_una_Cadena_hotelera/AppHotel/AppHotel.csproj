@@ -60,6 +60,18 @@
     <Compile Include="CancelarReservacion.Designer.cs">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckIn.Designer.cs">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckOut.Designer.cs">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ciudad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     </Compile>
     <Compile Include="Cliente.Designer.cs">
       <DependentUpon>Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteOcupacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteOcupacion.Designer.cs">
+      <DependentUpon>ReporteOcupacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Servicio.cs">
       <SubType>Form</SubType>
@@ -160,6 +178,12 @@
     <EmbeddedResource Include="CancelarReservacion.resx">
       <DependentUpon>CancelarReservacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CheckIn.resx">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOut.resx">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ciudad.resx">
       <DependentUpon>Ciudad.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteOcupacion.resx">
+      <DependentUpon>ReporteOcupacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Servicio.resx">
       <DependentUpon>Servicio.cs</DependentUpon>

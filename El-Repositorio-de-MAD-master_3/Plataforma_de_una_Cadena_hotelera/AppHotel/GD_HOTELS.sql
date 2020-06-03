@@ -148,6 +148,7 @@ CREATE TABLE Reservacion (
 	No_Fact bigint default null
 );
 GO
+alter table Reservacion alter column No_Fact bigint 
 
 ALTER TABLE Reservacion Alter column Fecha_Entrada date;
 ALTER TABLE Reservacion Alter column Fecha_Salida date;
@@ -270,13 +271,24 @@ CREATE TABLE Servicios_en_Reservacion (
 	
 	Cve_Reservacion bigint FOREIGN KEY REFERENCES Reservacion(Cve_Reservacion),
 	id_servicio int FOREIGN KEY REFERENCES Servicio(id_servicio),
-);
+);--
 GO
 
 
 
 
 select * from ciudad
+
+
+create table factura(
+
+	numFac int primary key not null identity(1000,100),
+
+	Cve_Reservacion bigint FOREIGN KEY REFERENCES Reservacion(Cve_Reservacion),
+
+);
+
+
 
 
 

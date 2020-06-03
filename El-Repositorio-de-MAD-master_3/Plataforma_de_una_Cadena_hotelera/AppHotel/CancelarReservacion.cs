@@ -40,18 +40,28 @@ namespace AppHotel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "a") {
+            if (textBox2.Text == "a")
+            {
 
                 //funcion que le mande Clave y se borre la reservacion
                 EnlaceDB conexion2 = new EnlaceDB();
-                conexion2.Borra_reservation(clave);
+                conexion2.Borra_ServiReservation(clave);
 
+                conexion2.Borra_reservation(clave);
+                
 
                 conexion2 = null;
 
                 MessageBox.Show("La reservacion de: " + clave + " ha sido cancelada");
 
             }
+            else MessageBox.Show("Contraseña incorrecta");
+
+
+            listBox1.Items.Clear();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            clave = 0;
 
         }
 

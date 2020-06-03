@@ -1,0 +1,11 @@
+Número de factura: 1100
+Id del cliente: 		400
+Id de la habitacion: 		181
+Numero de personas: 		1
+Anticipo: 		100.0000
+Metodo de pago: 		Cash
+Fecha de entrada: 		05/06/2020 12:00:00 a. m.
+Fecha de salida: 		06/06/2020 12:00:00 a. m.
+Nombre del cliente:		Edson Java robot
+Tipo de habitacion:		Queen size
+Costo Total:		750

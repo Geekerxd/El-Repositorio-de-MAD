@@ -1,7 +1,0 @@
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\bin\Debug\NameConsoleApp2.exe.config
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\bin\Debug\NameConsoleApp2.exe
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\bin\Debug\NameConsoleApp2.pdb
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\obj\Debug\NameConsoleApp2.csprojAssemblyReference.cache
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\obj\Debug\NameConsoleApp2.csproj.CoreCompileInputs.cache
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\obj\Debug\NameConsoleApp2.exe
-C:\Users\Dell 66895\Desktop\Repositorio_MAD\SolutionConsoleApp2\NameConsoleApp2\obj\Debug\NameConsoleApp2.pdb

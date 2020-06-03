@@ -73,7 +73,8 @@ namespace AppHotel
             int Personas = int.Parse(textBox2.Text);
 
             EnlaceDB conexion12 = new EnlaceDB();
-            int RFC = conexion12.show_id_RFC_cliente(comboBox6.Text);
+            int ID = int.Parse(textBox4.Text);
+           
             conexion12 = null;
             EnlaceDB conexion13 = new EnlaceDB();
             int id_Hab = conexion13.show_id_TipoHab(comboBox2.Text,comboBox3.Text);
@@ -82,7 +83,7 @@ namespace AppHotel
             float TotalMoney=int.Parse(label5.Text);
 
             EnlaceDB conexion11 = new EnlaceDB();
-            conexion11.Set_Reservations(anticipo, medio_pago_res, fecha_e, fecha_s, Personas, RFC, id_Hab, TotalMoney);
+            conexion11.Set_Reservations(anticipo, medio_pago_res, fecha_e, fecha_s, Personas, ID, id_Hab, TotalMoney);
             int clReserv= conexion11.show_id_MAXReservation();
 
             foreach (var item in ServiciosEle.Items)
@@ -100,7 +101,7 @@ namespace AppHotel
             //int id_Hab = conexion15.show_id_TipoHab(comboBox2.Text, comboBox3.Text);
             //conexion15 = null;
 
-            MessageBox.Show("Tu clave de reservación es: "+ clReserv);
+            MessageBox.Show("Tu clave de reservación es: "+ clReserv+".\nUtilize esta clave para hacer \"Check In\"");
 
         }
 
@@ -133,11 +134,7 @@ namespace AppHotel
             EnlaceDB conexion = new EnlaceDB();
             conexion.set_CiudadUsu(comboBox1, usuNameInt);
             conexion = null;
-
-            EnlaceDB conexion4 = new EnlaceDB();
-            conexion4.set_Cliente(comboBox6);
-            conexion4 = null;
-
+            
             //EnlaceDB conexion3 = new EnlaceDB();
             //conexion3.set_Hotels(comboBox2);
             //conexion3 = null;
@@ -197,26 +194,26 @@ namespace AppHotel
 
             EnlaceDB conexion5 = new EnlaceDB();
             conexion5.Mostrar_EnText_hotel(listBox1, hote);
-            conexion5 = null;
+          
 
-            EnlaceDB conexion6 = new EnlaceDB();
+          
             int[] IDS = new int[100];
-            IDS = conexion6.MostrarTiposHab(hote);
-            conexion6 = null;
+            IDS = conexion5.MostrarTiposHab(hote);
+          
 
             for (int i=0;i< IDS.Length;i++) {
 
-                EnlaceDB conexion7 = new EnlaceDB();
-                conexion7.MostrarTiposHab2(comboBox3, IDS[i]);
-                conexion7 = null;
+
+                conexion5.MostrarTiposHab2(comboBox3, IDS[i]);
+               
 
                 if (IDS[i]==0) { break; }
             }
 
-            EnlaceDB conexion8 = new EnlaceDB();
+           
             int[] serv = new int[50];
-            serv = conexion8.MostrarServ(hote);
-            conexion8 = null;
+            serv = conexion5.MostrarServ(hote);
+           
 
 
 
@@ -225,9 +222,9 @@ namespace AppHotel
 
 
 
-                EnlaceDB conexion9 = new EnlaceDB();
-                conexion9.MostrarServicios(ServicionOp, serv[i]);
-                conexion9 = null;
+
+                conexion5.MostrarServicios(ServicionOp, serv[i]);
+               
 
 
 
@@ -236,7 +233,7 @@ namespace AppHotel
 
 
 
-
+            conexion5 = null;
 
         }
 
@@ -320,6 +317,36 @@ namespace AppHotel
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             activateDateChange = true;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            
+            if (textBox1.Text != "") {
+                EnlaceDB conexion6 = new EnlaceDB();
+                DataTable data = new DataTable();
+                data=conexion6.Consulta_Clientes(textBox1.Text);
+                dataGridView1.DataSource = data;
+                conexion6 = null;
+
+                dataGridView1.Columns[0].ReadOnly =true;
+                dataGridView1.Columns[1].ReadOnly = true;
+                dataGridView1.Columns[2].ReadOnly = true;
+                dataGridView1.Columns[3].ReadOnly = true;
+
+            }
+            else MessageBox.Show("No se ingreso ningun nombre");
+
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           // textBox4.Text = dataGridView1.CurrentCell.Value.ToString();
+
+                string ID= dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            if(e.ColumnIndex == 3)textBox4.Text = ID;
+
         }
     }
 }

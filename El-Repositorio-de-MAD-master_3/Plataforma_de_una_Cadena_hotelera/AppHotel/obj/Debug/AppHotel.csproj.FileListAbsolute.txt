@@ -96,3 +96,6 @@ C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plata
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.csproj.CoreCompileInputs.cache
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.exe
 C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.pdb
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.ReporteOcupacion.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CheckIn.resources
+C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\obj\Debug\AppHotel.CheckOut.resources

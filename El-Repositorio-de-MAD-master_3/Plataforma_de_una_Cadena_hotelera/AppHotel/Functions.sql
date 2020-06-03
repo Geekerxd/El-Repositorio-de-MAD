@@ -69,4 +69,17 @@ begin
 	where No_Hab = @numHab
 
 return @ID
-end;
+end--
+
+create function fn_checa_idHab(@idHab	bigint)
+returns int
+as
+begin
+	declare @ID int;
+	set @ID = 0;
+	select @ID = id_tipoHab 
+	from Habitacion
+	where ID_Habitacion = @idHab
+
+return @ID
+end--

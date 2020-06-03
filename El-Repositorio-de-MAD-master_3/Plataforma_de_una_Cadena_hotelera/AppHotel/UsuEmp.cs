@@ -13,7 +13,7 @@ namespace AppHotel
     public partial class UsuEmp : Form
     {
         static string usuName;
-
+        static int timer=0;
         public UsuEmp(string usuName1)
         {
             InitializeComponent();
@@ -32,6 +32,39 @@ namespace AppHotel
         {
             Form nuevform = new Cliente(usuName);
             nuevform.ShowDialog();
+        }
+
+        private void UsuEmp_Load(object sender, EventArgs e)
+        {
+            label2.Text = usuName;
+            timer1.Start();
+        }
+
+        private void B_CheckOut_Click(object sender, EventArgs e)
+        {
+            
+            Form nuevform = new CheckOut();
+            nuevform.ShowDialog();
+        }
+
+        private void B_CheckIn_Click(object sender, EventArgs e)
+        {
+            
+            Form nuevform = new CheckIn();
+            nuevform.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //TIMER
+           // if (timer % 100 == 0) {
+           //
+           //     EnlaceDB conexion2 = new EnlaceDB();
+           //     conexion2.ACTUALIZA_RESERV();
+           //     conexion2 = null;
+           // }
+           //
+           // timer += 1;
         }
     }
 }

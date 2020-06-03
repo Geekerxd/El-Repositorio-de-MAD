@@ -105,5 +105,12 @@ namespace AppHotel
             Form nuevform = new Servicio();
             nuevform.ShowDialog();
         }
+
+        private void reporteDeOcupacionPorHotelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form nuevform = new ReporteOcupacion();
+            nuevform.ShowDialog();
+
+        }
     }
 }

@@ -214,5 +214,21 @@ END
 select * from Servicios_en_Reservacion
 
 select * from Reservacion
+select * from Servicios_en_Reservacion
 select * from habitacion
+select * from tipo_habitacion
 select * from hotel
+select * from Cliente
+select * from factura
+
+
+insert into factura values(1400)
+
+create PROCEDURE sp_Nuevafactura
+    @cve_reserv        bigint
+    
+AS
+BEGIN
+    insert into factura (Cve_Reservacion)
+    values (@cve_reserv);
+END

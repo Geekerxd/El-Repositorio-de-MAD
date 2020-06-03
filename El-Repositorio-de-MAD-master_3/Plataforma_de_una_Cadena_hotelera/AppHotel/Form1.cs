@@ -16,7 +16,7 @@ namespace AppHotel
         static bool Accede;
         string NombreAdmin = "a";
         string ContraAdmin = "a";
-
+        static int Value = 0;
         #region principio
         public Form1()
         {
@@ -27,6 +27,7 @@ namespace AppHotel
         {
             comboBox1.Items.Add("Administrador");
             comboBox1.Items.Add("Usuario empleado");
+            timer1.Start();
         }
         /// <summary>
         /// Permite la entrada de Usuarios segun la contraseña y tipo de usuario
@@ -81,6 +82,16 @@ namespace AppHotel
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            Value += 1;
+            label5.Text = Value.ToString();
+
+            // aqui se pone se actualiza la reservacion
+
         }
     }
 }

@@ -319,7 +319,7 @@ END
 
 --================================= BORRAR RESERVACION ============================
 
-
+go
 create procedure BorraReservacion
 @IDR bigint
 AS
@@ -327,3 +327,210 @@ BEGIN
 DELETE FROM Reservacion where Cve_Reservacion=@IDR
 
 END
+create procedure BorraServiReservacion
+@IDR bigint
+AS
+BEGIN
+DELETE FROM Servicios_en_Reservacion where Cve_Reservacion=@IDR
+
+END
+
+--
+
+CREATE procedure SP_Consulta_cliente
+@nombreCliente varchar (80)
+as 
+BEGIN
+select Nombre,Paterno,Materno, id_cliente from Cliente where @nombreCliente=Nombre
+END
+
+
+--================= CKECK IN  =============
+
+create PROCEDURE sp_MostrarDatosReservacion
+@id        bigint
+AS
+BEGIN
+    select id_cliente idc, id_habitacion idh, Personas personas, Anticipo anticipo, Medio_Pago_Res MPR, Fecha_Entrada FE, Fecha_Salida FS
+    from Reservacion
+    where Cve_Reservacion = @id
+END
+
+
+create PROCEDURE sp_MostrarNombreCliente
+@id        int
+AS
+BEGIN
+    select Nombre name, Paterno p, Materno m
+    from Cliente
+    where id_cliente = @id
+END
+
+alter PROCEDURE sp_MostrarNombreHabitac
+@id        bigint
+AS
+BEGIN
+    select B.Tipo nom
+    from Habitacion A
+	left join Tipo_Habitacion B
+    on B.id_tipoHab = dbo.fn_checa_idHab(@id) 
+END
+
+
+alter PROCEDURE sp_CheckIn
+@id        bigint
+AS
+BEGIN
+    update Reservacion
+    set check_in = 1
+    WHERE Cve_Reservacion = @id
+END
+
+alter procedure sp_checkinpasado
+as
+begin
+	declare @tabla table(fecha	date)
+	insert into @tabla(fecha) select Fecha_Entrada from Reservacion
+	declare @count int = (select count(*) from @tabla)
+
+	while (@count > 0)
+	begin
+		declare @fechae	date = (select top(1) fecha from @tabla)
+
+		if(@fechae < getdate())
+		begin
+			delete
+			from Reservacion
+			where Fecha_Entrada = @fechae
+		end
+
+			set @count =( select count(*) from @tabla)
+	end
+   
+end
+
+
+
+alter procedure sp_checkinpasado
+as
+begin
+	declare @tabla table(fecha	date)
+	insert into @tabla(fecha) select Fecha_Entrada from Reservacion
+	declare @count int = (select count(*) from @tabla)				-- La cantidad de registros en reservación
+
+
+	while (@count > 0)
+	begin
+		declare @fecha	date = (select top(1) fecha from @tabla)
+
+		if(@fecha < getdate())
+		begin
+			delete
+			from Reservacion
+			where Fecha_Entrada = @fecha
+		end
+
+			--set @count =( select count(*) from @tabla)
+			set @count = @count-1
+	end
+   
+end
+
+alter procedure sp_descuento
+@cve    bigint,
+@desc    money
+
+as
+begin
+    declare @total    money
+    declare @anti    money
+	declare @Final    money
+    select @total = Costo_Total, @anti = Anticipo
+    from Reservacion
+    where Cve_Reservacion = @cve
+
+ 
+
+    set @Final = @total- @total*(@desc/100) - @anti
+	select @Final final
+end
+
+
+
+
+
+--=================  CHECK OUT  ===============
+
+create PROCEDURE sp_MaximoFACTURA
+AS
+BEGIN
+select Max(numFac) ID
+	from factura
+END
+
+
+alter procedure sp_descuento2
+@cve    bigint,
+@desc    money
+as
+begin
+    declare @total    money
+    declare @anti    money
+	declare @Final    money
+    select @total = Costo_Total, @anti = Anticipo
+    from Reservacion
+    where Cve_Reservacion = @cve
+
+ 
+
+    set @Final =@total-  @total*(@desc/100) - @anti
+
+ 
+
+    create table #tabla(id    int, costo    money);
+    insert into #tabla(id) select B.id_servicio 
+    from Reservacion A
+    left join Servicios_en_Reservacion B
+    on A.Cve_Reservacion = B.Cve_Reservacion
+
+ 
+
+    declare @count    int
+    select @count = count(id)
+    from #tabla
+
+ 
+
+    while (@count>0)
+    begin
+        insert into #tabla(costo) select D.Precio 
+        from Servicios_en_Reservacion C
+        left join Servicio D
+        on C.id_servicio = D.id_servicio
+
+ 
+
+        set @count = @count - 1 
+    end
+
+ 
+
+    select @count = count(costo)
+    from #tabla
+
+ 
+
+    declare @P    money
+    while (@count>0)
+    begin
+        select @P = costo
+        from #tabla
+
+ 
+
+        set @Final = @Final + @P
+    end
+
+	select @Final final
+end
+

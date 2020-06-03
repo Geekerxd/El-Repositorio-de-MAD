@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows.Forms;
-
+using System.IO;
 namespace AppHotel
 {
     public class EnlaceDB
@@ -21,7 +21,8 @@ namespace AppHotel
         static private SqlCommand _comandosql2 = new SqlCommand();
         static private SqlDataReader dr;
         static private int IDClienteTemp=0;
-
+        static private string  idc= "";
+        static private string  idH= "";
         public DataTable obtenertabla
         {
             get
@@ -44,6 +45,15 @@ namespace AppHotel
         private static void desconectar()
         {
             _conexion.Close();
+        }
+
+        public  string GetIDCliente()
+        {
+            return idc;
+        }
+        public  string GetIDHotel()
+        {
+            return idH;
         }
 
         public bool Autentificar(string us, string ps)
@@ -194,7 +204,42 @@ namespace AppHotel
             return tabla;
         }
 
-       
+        //LLena tablas
+        public DataTable Consulta_Clientes(string name)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                conectar();
+                string qry = "SP_Consulta_cliente";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@nombreCliente", SqlDbType.VarChar, 80);
+                parametro1.Value = name;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
 
 
         public DataTable Registra_Ciudad(string nombre, string descrip, int pais, int cve_usu)
@@ -1030,8 +1075,149 @@ namespace AppHotel
             }
             return ElCosto;
         }
+        public void MostrarReservacion(ListBox list, int CveRes)
+        {//llenar combo
+            var msg = "";
 
-        
+
+
+            try
+            {
+
+
+
+                conectar();
+
+
+
+                dr = null;
+                string qry = "sp_MostrarDatosReservacion";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.Int);
+                parametro1.Value = CveRes;
+
+
+
+                dr = _comandosql.ExecuteReader();
+
+
+
+
+
+                if (dr.Read())
+                {
+                    list.Items.Add("Id del cliente:\t" + dr["idc"].ToString());
+                    idc = dr["idc"].ToString();
+                    list.Items.Add("Id de la habitacion:\t" + dr["idh"].ToString());
+                    idH = dr["idh"].ToString();
+                    list.Items.Add("Numero de personas:\t" + dr["personas"].ToString());
+                    list.Items.Add("Anticipo:\t" + dr["anticipo"].ToString());
+                    list.Items.Add("Metodo de pago elegido:\t" + dr["MPR"].ToString());
+                    list.Items.Add("Fecha de entrada:\t" + dr["FE"].ToString());
+                    list.Items.Add("Fecha de salida:\t" + dr["FS"].ToString());
+                }
+
+
+
+
+                _conexion.Close();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        public void MostrarReservacion2(StreamWriter sw, int CveRes)
+        {//llenar combo
+            var msg = "";
+
+
+
+            try
+            {
+
+
+
+                conectar();
+
+
+
+                dr = null;
+                string qry = "sp_MostrarDatosReservacion";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.Int);
+                parametro1.Value = CveRes;
+
+
+
+                dr = _comandosql.ExecuteReader();
+
+
+
+
+
+                if (dr.Read())
+                {
+                    sw.WriteLine("Id del cliente: \t\t" + dr["idc"].ToString());
+                    sw.WriteLine("Id de la habitacion: \t\t" + dr["idh"].ToString());
+                    sw.WriteLine("Numero de personas: \t\t" + dr["personas"].ToString());
+                    sw.WriteLine("Anticipo: \t\t" + dr["anticipo"].ToString());
+                    sw.WriteLine("Metodo de pago: \t\t" + dr["MPR"].ToString());
+                    sw.WriteLine("Fecha de entrada: \t\t" + dr["FE"].ToString());
+                    sw.WriteLine("Fecha de salida: \t\t" + dr["FS"].ToString());
+
+                   
+                     idc = dr["idc"].ToString();
+                   
+                     idH = dr["idh"].ToString();
+                    
+                }
+
+
+
+
+                _conexion.Close();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+
+
+
         public void set_InfoHotel(ListBox List)
         {//llenar combo
             var msg = "";
@@ -1252,6 +1438,307 @@ namespace AppHotel
             }
 
             return tabla;
+        }
+
+        public string IDGetCliente(int IDCli)
+        {
+            var msg = "";
+            string NombreCliente="";
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_MostrarNombreCliente";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.Int);
+                parametro1.Value = IDCli;
+
+
+                dr = _comandosql.ExecuteReader();
+
+
+
+                if (dr.Read())
+                {
+                    // Tipos.Add(dr["nombre"].ToString());
+                    NombreCliente = dr["name"].ToString()+" "+ dr["p"].ToString() + " " + dr["m"].ToString();
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return NombreCliente;
+        }
+
+        public string IDGetHabitacion(int IDHabi)
+        {//llenar combo
+            var msg = "";
+            string Nombrehabi = "";
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_MostrarNombreHabitac";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.Int);
+                parametro1.Value = IDHabi;
+
+
+                dr = _comandosql.ExecuteReader();
+
+
+
+                if (dr.Read())
+                {
+                    // Tipos.Add(dr["nombre"].ToString());
+                    Nombrehabi = dr["nom"].ToString();
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return Nombrehabi;
+        }
+        public void CHECK_IN(int idReserv)
+        {//llenar combo
+            var msg = "";
+
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_CheckIn";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.Int);
+                parametro1.Value = idReserv;
+
+                dr = _comandosql.ExecuteReader();
+
+                //if (dr.Read())
+                //{
+                //    Tipos.Add(dr["nombre"].ToString());
+                //}
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+        public void ACTUALIZA_RESERV()
+        {//llenar combo
+            var msg = "";
+
+            try
+            {
+
+                conectar();
+
+               // dr = null;
+                string qry = "sp_checkinpasado";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+                
+               // dr = _comandosql.ExecuteReader();
+
+                //if (dr.Read())
+                //{
+                //    Tipos.Add(dr["nombre"].ToString());
+                //}
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+        public float Precio_Total(int clve,float desc)
+        {
+            var msg = "";
+            float TotalMoney = 0;
+            try
+            {
+
+                conectar();
+
+                 dr = null;
+                string qry = "sp_descuento";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+
+                var parametro1 = _comandosql.Parameters.Add("@cve", SqlDbType.BigInt);
+                parametro1.Value = clve;
+                var parametro2 = _comandosql.Parameters.Add("@desc", SqlDbType.Money);
+                parametro2.Value = desc;
+                
+                 dr = _comandosql.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    TotalMoney=float.Parse(dr["final"].ToString());
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return TotalMoney;
+        }
+        public void Ingresafactura(int clvReserv)
+        {//llenar combo
+            var msg = "";
+
+            try
+            {
+
+                conectar();
+
+                // dr = null;
+                string qry = "sp_Nuevafactura";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                var parametro1 = _comandosql.Parameters.Add("@cve_reserv", SqlDbType.BigInt);
+                parametro1.Value = clvReserv;
+
+                //  dr = _comandosql.ExecuteReader();
+                //
+                // if (dr.Read())
+                // {
+                //     Tipos.Add(dr["nombre"].ToString());
+                // }
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(_tabla);
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+        public int show_id_MAXFACTURA()
+        {//llenar combo
+            var msg = "";
+            int Id = 0;
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_MaximoFACTURA";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+               
+
+                dr = _comandosql.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    Id = int.Parse(dr["ID"].ToString());
+                }
+
+
+
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return Id;
         }
 
 
@@ -1687,6 +2174,39 @@ namespace AppHotel
                 var parametro1 = _comandosql.Parameters.Add("@IDR", SqlDbType.BigInt);
                 parametro1.Value = cve_reserv;
                 
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+        public DataTable Borra_ServiReservation(int cve_reserv)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+                conectar();
+                string qry = "BorraServiReservacion";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@IDR", SqlDbType.BigInt);
+                parametro1.Value = cve_reserv;
+
 
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(tabla);
