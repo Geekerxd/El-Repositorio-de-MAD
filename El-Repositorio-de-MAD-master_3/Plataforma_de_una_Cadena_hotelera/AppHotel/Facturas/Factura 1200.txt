@@ -1,0 +1,11 @@
+Número de factura: 	1200
+Id del cliente: 		1234
+Id de la habitacion: 	28
+Numero de personas: 	1
+Anticipo: 			400.0000
+Metodo de pago: 		Tarjeta de credito
+Fecha de entrada: 	09/06/2020 12:00:00 a. m.
+Fecha de salida: 		15/06/2020 12:00:00 a. m.
+Nombre del cliente:	Edson Partzi Morales
+Tipo de habitacion:	King size Habitacion
+Costo Total:		26600

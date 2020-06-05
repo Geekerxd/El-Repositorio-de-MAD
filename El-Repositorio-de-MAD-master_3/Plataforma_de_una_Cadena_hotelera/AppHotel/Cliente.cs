@@ -32,6 +32,12 @@ namespace AppHotel
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "" )
+            {
+
+                MessageBox.Show("Una casilla está vacía");
+                goto fin;
+            }
             int RFC = int.Parse(textBox1.Text);
             var Nombre = textBox2.Text;
             var Paterno = textBox3.Text;
@@ -78,9 +84,12 @@ namespace AppHotel
 
             EnlaceDB conexion = new EnlaceDB();
             conexion.Set_Client(RFC, Nombre, Paterno, Materno, Domicilio, e_mail, telefono, referencia, fecha_naci, usuNameInt);
-            conexion = null;
+           
 
             MessageBox.Show("Se guardó cliente: " + Nombre + " " + Paterno + " " + Materno+ ".");
+            fin:
+            conexion = null;
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

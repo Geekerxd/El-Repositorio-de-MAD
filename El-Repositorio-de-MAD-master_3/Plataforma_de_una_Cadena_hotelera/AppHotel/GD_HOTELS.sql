@@ -139,7 +139,7 @@ CREATE TABLE Reservacion (
 	Fecha_Salida datetime,
 	Personas tinyint not null,
 	
-	id_cliente int FOREIGN KEY REFERENCES Cliente(id_cliente),
+	RFC int FOREIGN KEY REFERENCES Cliente(RFC),
 	ID_Habitacion bigint FOREIGN KEY REFERENCES Habitacion(ID_Habitacion),
 
 	Costo_Total money default null,
@@ -273,8 +273,9 @@ CREATE TABLE Servicios_en_Reservacion (
 	id_servicio int FOREIGN KEY REFERENCES Servicio(id_servicio),
 );--
 GO
-
-
+drop table Servicios_en_Reservacion
+drop table factura
+drop table Reservacion
 
 
 select * from ciudad

@@ -170,6 +170,7 @@
             this.Name = "CheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CheckOut";
+            this.Load += new System.EventHandler(this.CheckOut_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

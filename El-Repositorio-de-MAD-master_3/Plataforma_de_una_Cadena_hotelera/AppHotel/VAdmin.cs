@@ -27,8 +27,10 @@ namespace AppHotel
 
         private void B_RepSistema_Click(object sender, EventArgs e)
         {
-            Form nuevform = new ReportesSistema();
+
+            Form nuevform = new ReporteOcupacion();
             nuevform.ShowDialog();
+
 
         }
 
@@ -84,8 +86,7 @@ namespace AppHotel
 
         private void historialDelClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form nuevform = new HistoClient();
-            nuevform.ShowDialog();
+          
         }
 
         private void paisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -108,9 +109,12 @@ namespace AppHotel
 
         private void reporteDeOcupacionPorHotelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form nuevform = new ReporteOcupacion();
-            nuevform.ShowDialog();
+        }
 
+        private void historialDelClienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form nuevform = new HistoClient();
+            nuevform.ShowDialog();
         }
     }
 }

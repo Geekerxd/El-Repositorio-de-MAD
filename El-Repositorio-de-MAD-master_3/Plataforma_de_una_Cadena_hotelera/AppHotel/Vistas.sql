@@ -37,3 +37,11 @@ as
 --	select Nombre nombre
 --	from Hotels
 --	where C_Nombre = @nom_ciudad
+
+create view vw_Busca_Cliente
+as
+
+select Nombre,Paterno,Materno, RFC 
+
+from Cliente 
+where @nombreCliente=Nombre

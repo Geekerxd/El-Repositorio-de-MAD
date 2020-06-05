@@ -312,8 +312,9 @@ alter procedure Busca_resreva
 AS
 BEGIN
 
-select Fecha_Entrada,Fecha_Salida, Personas,isnull(id_cliente,000)id_cliente,ID_Habitacion, Medio_Pago_Res,Anticipo,Costo_Total
-	from Reservacion where @IDR=Cve_Reservacion
+select Fecha_Entrada,Fecha_Salida, Personas,isnull(RFC,000)RFC,ID_Habitacion, Medio_Pago_Res,Anticipo,Costo_Total
+	from Reservacion 
+	where @IDR=Cve_Reservacion
 
 END
 
@@ -337,33 +338,59 @@ END
 
 --
 
-CREATE procedure SP_Consulta_cliente
+--alter procedure SP_Consulta_cliente
+--@nombreCliente varchar (80)
+--as 
+--BEGIN
+--declare @nom	varchar(80)
+--declare @pat	varchar(50)
+--	
+--declare @mat	varchar(50)
+--
+--declare @rfc	int
+--
+--
+--
+--create table #tabla2(Nombre_Cliente	varchar(80), Apellido_Paterno	varchar(50), Apellido_Materno	varchar(50), RFC	int)
+--select @nom = Nombre,@pat = Paterno,@mat =Materno, @rfc=RFC 
+--from Cliente 
+--where @nombreCliente=Nombre
+--
+--insert into #tabla2
+--values(@nom, @pat,@mat,@rfc)
+--
+--
+--select Nombre_Cliente, Apellido_Paterno, Apellido_Materno, RFC
+--from #tabla2
+--END
+alter procedure SP_Consulta_cliente
 @nombreCliente varchar (80)
-as 
+as
 BEGIN
-select Nombre,Paterno,Materno, id_cliente from Cliente where @nombreCliente=Nombre
+select Nombre Nombre_Cliente,Paterno Apellido_Paterno,Materno Apellido_Materno, RFC  [RFC del Cliente]
+from Cliente 
+where @nombreCliente=Nombre
 END
-
 
 --================= CKECK IN  =============
 
-create PROCEDURE sp_MostrarDatosReservacion
+alter PROCEDURE sp_MostrarDatosReservacion
 @id        bigint
 AS
 BEGIN
-    select id_cliente idc, id_habitacion idh, Personas personas, Anticipo anticipo, Medio_Pago_Res MPR, Fecha_Entrada FE, Fecha_Salida FS
+    select RFC idc, id_habitacion idh, Personas personas, Anticipo anticipo, Medio_Pago_Res MPR, CONVERT(date,Fecha_Entrada,2) FE, CONVERT(date,Fecha_Salida,2) FS, check_in CheckIN
     from Reservacion
     where Cve_Reservacion = @id
 END
 
 
-create PROCEDURE sp_MostrarNombreCliente
+alter PROCEDURE sp_MostrarNombreCliente
 @id        int
 AS
 BEGIN
     select Nombre name, Paterno p, Materno m
     from Cliente
-    where id_cliente = @id
+    where RFC = @id
 END
 
 alter PROCEDURE sp_MostrarNombreHabitac
@@ -534,3 +561,51 @@ begin
 	select @Final final
 end
 
+--=================
+alter procedure sp_BuscaClientRFC
+@nombre varchar (80)
+as
+begin
+    select RFC, Nombre, Paterno, Materno
+    from Cliente
+    where @nombre = Nombre
+end
+--=================
+alter procedure sp_HistorialClient
+@RFC    int
+as
+begin
+    declare @NH varchar(50)
+    select A.Cve_Reservacion [Clave de Reservacion], B.Nombre [Nombre del hotel], A.Fecha_Entrada [Fecha de entrada],
+         A.Fecha_Salida [Fecha de salida], A.Costo_Total [Costo total], A.Personas [Cantidad de personas]
+    from Reservacion A
+    left join Hotel B
+    on A.RFC = @RFC and B.ID_Hotel = dbo.fn_NombreHotel(A.ID_Habitacion)
+	where  A.check_in = 1 and A.check_out = 1
+end
+
+--=================
+
+
+alter procedure sp_reporte_ventas
+@pais    varchar(50),
+@mes    int
+as
+begin
+    declare @c_nom    varchar
+    declare @ingresos    money
+    select  Nombre [Nombre del Hotel], dbo.fn_ingresototal2(@mes) [Ingresos por hospedaje]
+    from Hotel 
+    where dbo.fn_buscaciudad(@pais) = id_ciudad
+   
+   
+    
+end
+
+
+exec sp_reporte_ventas 'EEUU',6
+
+
+ select dbo.fn_ingresototal(7) [Ingresos]
+    from Reservacion B
+    where month(getdate()) = 7

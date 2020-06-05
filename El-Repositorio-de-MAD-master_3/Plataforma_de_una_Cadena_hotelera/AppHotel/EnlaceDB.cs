@@ -55,6 +55,14 @@ namespace AppHotel
         {
             return idH;
         }
+        public string SetIDCliente(string id)
+        {
+            return idc;
+        }
+        public string SetIDHotel(string id)
+        {
+            return idH;
+        }
 
         public bool Autentificar(string us, string ps)
         {
@@ -896,10 +904,57 @@ namespace AppHotel
             }
         return IDS;
         }
+
+        public void LLenaEnHistorial(ComboBox combo,string name)
+        {//llenar combo
+            var msg = "";
+
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_BuscaClientRFC";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@nombre", SqlDbType.VarChar, 80);
+                parametro1.Value = name;
+
+
+
+
+                dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    combo.Items.Add(dr["RFC"].ToString() + " " + dr["Nombre"].ToString() + " " + dr["Paterno"].ToString() + " " + dr["Materno"].ToString());
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+
+
         #endregion
 
-      
 
+        //CASO ESPECIAL ARREGLO
         public int[] MostrarServ(string hotel)
         {//llenar combo
             var msg = "";
@@ -1075,11 +1130,11 @@ namespace AppHotel
             }
             return ElCosto;
         }
-        public void MostrarReservacion(ListBox list, int CveRes)
+        public bool MostrarReservacion(ListBox list, int CveRes)
         {//llenar combo
             var msg = "";
 
-
+            bool encontrado = false;
 
             try
             {
@@ -1112,15 +1167,23 @@ namespace AppHotel
 
                 if (dr.Read())
                 {
-                    list.Items.Add("Id del cliente:\t" + dr["idc"].ToString());
+                    encontrado = true;
+                    list.Items.Add("RFC del cliente:\t\t" + dr["idc"].ToString());
                     idc = dr["idc"].ToString();
-                    list.Items.Add("Id de la habitacion:\t" + dr["idh"].ToString());
+                   // list.Items.Add("Id de la habitacion:\t\t" + dr["idh"].ToString());
                     idH = dr["idh"].ToString();
                     list.Items.Add("Numero de personas:\t" + dr["personas"].ToString());
-                    list.Items.Add("Anticipo:\t" + dr["anticipo"].ToString());
+                    list.Items.Add("Anticipo:\t\t\t" + dr["anticipo"].ToString());
                     list.Items.Add("Metodo de pago elegido:\t" + dr["MPR"].ToString());
-                    list.Items.Add("Fecha de entrada:\t" + dr["FE"].ToString());
-                    list.Items.Add("Fecha de salida:\t" + dr["FS"].ToString());
+                    list.Items.Add("Fecha de entrada:\t\t" + dr["FE"].ToString());
+                    list.Items.Add("Fecha de salida:\t\t" + dr["FS"].ToString());
+                    string ss = dr["CheckIN"].ToString();
+                    if (dr["CheckIN"].ToString() == "True") list.Items.Add("Ckeck In:\t\tSí." );
+                    else list.Items.Add("Ckeck In:\t\tNo.");
+
+
+                   
+
                 }
 
 
@@ -1136,11 +1199,13 @@ namespace AppHotel
                 msg = "Excepción de base de datos: \n";
                 msg += e.Message;
                 MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                encontrado = false;
             }
             finally
             {
                 desconectar();
             }
+            return encontrado;
         }
 
         public void MostrarReservacion2(StreamWriter sw, int CveRes)
@@ -1181,11 +1246,11 @@ namespace AppHotel
                 if (dr.Read())
                 {
                     sw.WriteLine("Id del cliente: \t\t" + dr["idc"].ToString());
-                    sw.WriteLine("Id de la habitacion: \t\t" + dr["idh"].ToString());
-                    sw.WriteLine("Numero de personas: \t\t" + dr["personas"].ToString());
-                    sw.WriteLine("Anticipo: \t\t" + dr["anticipo"].ToString());
+                    sw.WriteLine("Id de la habitacion: \t" + dr["idh"].ToString());
+                    sw.WriteLine("Numero de personas: \t" + dr["personas"].ToString());
+                    sw.WriteLine("Anticipo: \t\t\t" + dr["anticipo"].ToString());
                     sw.WriteLine("Metodo de pago: \t\t" + dr["MPR"].ToString());
-                    sw.WriteLine("Fecha de entrada: \t\t" + dr["FE"].ToString());
+                    sw.WriteLine("Fecha de entrada: \t" + dr["FE"].ToString());
                     sw.WriteLine("Fecha de salida: \t\t" + dr["FS"].ToString());
 
                    
@@ -1533,6 +1598,10 @@ namespace AppHotel
             }
             return Nombrehabi;
         }
+        /// <summary>
+        /// CHECK IN
+        /// </summary> 
+        /// <param name="idReserv">CON CLAVE DE RESERVACION</param>
         public void CHECK_IN(int idReserv)
         {//llenar combo
             var msg = "";
@@ -1741,7 +1810,44 @@ namespace AppHotel
             return Id;
         }
 
+        public void CheckOut(int clvReserv)
+        {//llenar combo
+            var msg = "";
 
+            try
+            {
+
+                conectar();
+
+                // dr = null;
+                string qry = "sp_deleteReserv";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                var parametro1 = _comandosql.Parameters.Add("@clave", SqlDbType.BigInt);
+                parametro1.Value = clvReserv;
+                
+                _adaptador.SelectCommand = _comandosql;
+
+
+                _adaptador.Fill(_tabla);
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
 
         #region RETURNS_INTEGERS
 
@@ -2302,7 +2408,7 @@ namespace AppHotel
                     txt.Items.Add("Fecha de Entrada: " +           dr["Fecha_Entrada"].ToString());
                     txt.Items.Add("Fecha de Salida: " +           dr["Fecha_Salida"].ToString());
                     txt.Items.Add("No. Personas " +        dr["Personas"].ToString());
-                    txt.Items.Add("Id Cliente: " +        dr["id_cliente"].ToString());
+                    txt.Items.Add("RFC del cliente: " +        dr["RFC"].ToString());
                     txt.Items.Add("No. Habi: " +         dr["ID_Habitacion"].ToString());
                     txt.Items.Add("Medio de pago reservacion: " +  dr["Medio_Pago_Res"].ToString());
                     txt.Items.Add("Anticipo: " +dr["Anticipo"].ToString());
@@ -2460,5 +2566,87 @@ namespace AppHotel
 
             return tabla;
         }
+
+
+
+        public DataTable Set_HistorialTabla(int RFC)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+
+                conectar();
+                string qry = "sp_HistorialClient";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@RFC", SqlDbType.Int);
+                parametro1.Value = RFC;
+                
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+
+
+        public DataTable Set_ReportVentasTabla(string pais, int mes)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+
+                conectar();
+                string qry = "sp_reporte_ventas";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@pais", SqlDbType.VarChar, 50);
+                parametro1.Value = pais;
+
+
+                var parametro2 = _comandosql.Parameters.Add("@mes", SqlDbType.Int);
+                parametro2.Value = mes;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+
     }
 }

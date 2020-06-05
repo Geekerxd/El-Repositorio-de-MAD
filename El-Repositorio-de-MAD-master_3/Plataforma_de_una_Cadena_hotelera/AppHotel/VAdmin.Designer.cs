@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VAdmin));
             this.label4 = new System.Windows.Forms.Label();
-            this.B_RepSistema = new System.Windows.Forms.Button();
             this.B_CancReserv = new System.Windows.Forms.Button();
             this.B_Hote = new System.Windows.Forms.Button();
             this.B_AgNuevHote = new System.Windows.Forms.Button();
@@ -42,13 +41,13 @@
             this.VerStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.verTiposDeHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verHotelesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historialDelClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.paisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ciudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.reporteDeOcupacionPorHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.B_RepSistema = new System.Windows.Forms.Button();
+            this.historialDelClienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,16 +61,6 @@
             this.label4.Size = new System.Drawing.Size(216, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Ventana de Adimistrador";
-            // 
-            // B_RepSistema
-            // 
-            this.B_RepSistema.Location = new System.Drawing.Point(167, 84);
-            this.B_RepSistema.Name = "B_RepSistema";
-            this.B_RepSistema.Size = new System.Drawing.Size(410, 43);
-            this.B_RepSistema.TabIndex = 0;
-            this.B_RepSistema.Text = "Reportes del Sistema";
-            this.B_RepSistema.UseVisualStyleBackColor = true;
-            this.B_RepSistema.Click += new System.EventHandler(this.B_RepSistema_Click);
             // 
             // B_CancReserv
             // 
@@ -159,8 +148,7 @@
             // 
             this.VerStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verTiposDeHabitaciónToolStripMenuItem,
-            this.verHotelesToolStripMenuItem,
-            this.historialDelClienteToolStripMenuItem});
+            this.verHotelesToolStripMenuItem});
             this.VerStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("VerStripDropDownButton1.Image")));
             this.VerStripDropDownButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.VerStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -179,13 +167,6 @@
             this.verHotelesToolStripMenuItem.Name = "verHotelesToolStripMenuItem";
             this.verHotelesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.verHotelesToolStripMenuItem.Text = "Ver Hoteles";
-            // 
-            // historialDelClienteToolStripMenuItem
-            // 
-            this.historialDelClienteToolStripMenuItem.Name = "historialDelClienteToolStripMenuItem";
-            this.historialDelClienteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.historialDelClienteToolStripMenuItem.Text = "Historial del Cliente";
-            this.historialDelClienteToolStripMenuItem.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem_Click);
             // 
             // toolStripSplitButton1
             // 
@@ -225,19 +206,29 @@
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reporteDeOcupacionPorHotelToolStripMenuItem});
+            this.historialDelClienteToolStripMenuItem1});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(66, 22);
-            this.toolStripDropDownButton1.Text = "Reportes";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(106, 22);
+            this.toolStripDropDownButton1.Text = "Reportes Cliente";
             // 
-            // reporteDeOcupacionPorHotelToolStripMenuItem
+            // B_RepSistema
             // 
-            this.reporteDeOcupacionPorHotelToolStripMenuItem.Name = "reporteDeOcupacionPorHotelToolStripMenuItem";
-            this.reporteDeOcupacionPorHotelToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.reporteDeOcupacionPorHotelToolStripMenuItem.Text = "Reporte de ocupacion por hotel";
-            this.reporteDeOcupacionPorHotelToolStripMenuItem.Click += new System.EventHandler(this.reporteDeOcupacionPorHotelToolStripMenuItem_Click);
+            this.B_RepSistema.Location = new System.Drawing.Point(167, 84);
+            this.B_RepSistema.Name = "B_RepSistema";
+            this.B_RepSistema.Size = new System.Drawing.Size(410, 43);
+            this.B_RepSistema.TabIndex = 0;
+            this.B_RepSistema.Text = "Reporte de ocupación por Hotel";
+            this.B_RepSistema.UseVisualStyleBackColor = true;
+            this.B_RepSistema.Click += new System.EventHandler(this.B_RepSistema_Click);
+            // 
+            // historialDelClienteToolStripMenuItem1
+            // 
+            this.historialDelClienteToolStripMenuItem1.Name = "historialDelClienteToolStripMenuItem1";
+            this.historialDelClienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.historialDelClienteToolStripMenuItem1.Text = "Historial del Cliente";
+            this.historialDelClienteToolStripMenuItem1.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem1_Click);
             // 
             // VAdmin
             // 
@@ -269,7 +260,6 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button B_RepSistema;
         private System.Windows.Forms.Button B_CancReserv;
         private System.Windows.Forms.Button B_Hote;
         private System.Windows.Forms.Button B_AgNuevHote;
@@ -281,12 +271,12 @@
         private System.Windows.Forms.ToolStripDropDownButton VerStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem verTiposDeHabitaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verHotelesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem historialDelClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem paisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ciudadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem reporteDeOcupacionPorHotelToolStripMenuItem;
+        private System.Windows.Forms.Button B_RepSistema;
+        private System.Windows.Forms.ToolStripMenuItem historialDelClienteToolStripMenuItem1;
     }
 }

@@ -23,14 +23,23 @@ namespace AppHotel
             listBox1.Items.Clear();
             EnlaceDB conexion = new EnlaceDB();
 
-            conexion.MostrarReservacion(listBox1, int.Parse(textBox1.Text));
-            _IDC = int.Parse(conexion.GetIDCliente());
-            int IDH = int.Parse(conexion.GetIDHotel());
+            if (conexion.MostrarReservacion(listBox1, int.Parse(textBox1.Text)))
+            {
+                _IDC = int.Parse(conexion.GetIDCliente());
+                int IDH = int.Parse(conexion.GetIDHotel());
 
-            listBox1.Items.Add("Nombre del cliente: " + conexion.IDGetCliente(_IDC));
-            listBox1.Items.Add("Tipo de habitacion: " + conexion.IDGetHabitacion(IDH));
+                listBox1.Items.Add("Nombre del cliente:\t\t" + conexion.IDGetCliente(_IDC));
+                listBox1.Items.Add("Tipo de habitacion:\t\t" + conexion.IDGetHabitacion(IDH));
+
+               
+                conexion.SetIDCliente("");
+                conexion.SetIDHotel("");
+               
+            }
+            else MessageBox.Show("No se escontro esta clave de reservacion");
 
             conexion = null;
+           
         }
 
         private void button3_Click(object sender, EventArgs e)

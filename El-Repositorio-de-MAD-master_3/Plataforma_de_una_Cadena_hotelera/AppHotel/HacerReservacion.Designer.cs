@@ -366,9 +366,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(343, 62);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(108, 13);
+            this.label19.Size = new System.Drawing.Size(118, 13);
             this.label19.TabIndex = 7;
-            this.label19.Text = "Inserte ID del Cliente:";
+            this.label19.Text = "Inserte RFC del Cliente:";
             // 
             // dataGridView1
             // 
@@ -400,9 +400,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(45, 123);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(116, 13);
+            this.label20.Size = new System.Drawing.Size(126, 13);
             this.label20.TabIndex = 22;
-            this.label20.Text = "Consulte ID del cliente:";
+            this.label20.Text = "Consulte RFC del cliente:";
             // 
             // textBox4
             // 

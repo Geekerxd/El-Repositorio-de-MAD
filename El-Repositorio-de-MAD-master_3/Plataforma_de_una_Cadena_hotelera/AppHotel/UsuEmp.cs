@@ -57,14 +57,16 @@ namespace AppHotel
         private void timer1_Tick(object sender, EventArgs e)
         {
             //TIMER
-           // if (timer % 100 == 0) {
-           //
-           //     EnlaceDB conexion2 = new EnlaceDB();
-           //     conexion2.ACTUALIZA_RESERV();
-           //     conexion2 = null;
-           // }
-           //
-           // timer += 1;
+            if (timer % 100 == 0)
+            {
+
+                EnlaceDB conexion2 = new EnlaceDB();
+                conexion2.ACTUALIZA_RESERV();
+                conexion2 = null;
+            }
+
+            timer += 1;
+
         }
     }
 }

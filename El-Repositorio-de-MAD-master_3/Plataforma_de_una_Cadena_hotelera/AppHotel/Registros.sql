@@ -191,7 +191,7 @@ alter PROCEDURE sp_Insert_Resevation
 AS
 BEGIN
     insert into Reservacion(Anticipo,Medio_Pago_Res,Fecha_Entrada,Fecha_Salida,Personas,
-	ID_Habitacion,Costo_Total,id_cliente)
+	ID_Habitacion,Costo_Total,RFC)
     values (@anticipo, @medio_pago_res,@fecha_E, @fecha_S, @Personas, @id_Habitacion,@total,@ID_client);
 
 	
@@ -213,15 +213,19 @@ END
 
 select * from Servicios_en_Reservacion
 
-select * from Reservacion
+
 select * from Servicios_en_Reservacion
+
+select * from Reservacion
 select * from habitacion
+
+select * from hotel
 select * from tipo_habitacion
 select * from hotel
 select * from Cliente
 select * from factura
-
-
+select * from pais
+select * from ciudad
 insert into factura values(1400)
 
 create PROCEDURE sp_Nuevafactura
