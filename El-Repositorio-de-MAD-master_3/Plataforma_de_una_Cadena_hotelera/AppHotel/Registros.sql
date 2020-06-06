@@ -208,30 +208,7 @@ BEGIN
     insert into Servicios_en_Reservacion
     values (@cve_reserv, @id_serv);
 END
-
- 
-
-select * from Servicios_en_Reservacion
-
-
-select * from Servicios_en_Reservacion
-
-
-select * from habitacion
-
-
-select * from tipo_habitacion
-select * from hotel
-select * from Cliente
-select * from factura
-select * from pais
-select * from ciudad
-select * from hotel
-select * from Habitacion
-select * from Reservacion
-select * from Usuario
-insert into factura values(1400)
-
+----------------------=============================
 create PROCEDURE sp_Nuevafactura
     @cve_reserv        bigint
     
@@ -240,3 +217,23 @@ BEGIN
     insert into factura (Cve_Reservacion)
     values (@cve_reserv);
 END
+
+--==========================================================
+
+select * from Usuario
+select * from Cliente
+select * from hotel
+select * from Reservacion
+select * from habitacion
+select * from Servicios_en_Reservacion
+select * from pais
+select * from ciudad
+select * from tipo_habitacion
+select * from factura
+
+
+
+
+
+
+

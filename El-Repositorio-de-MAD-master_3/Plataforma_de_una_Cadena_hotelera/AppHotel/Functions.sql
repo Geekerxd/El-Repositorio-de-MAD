@@ -352,3 +352,191 @@ end
 
 
  --===================================================================================
+  --============================================4 funciones================================
+   --===================================================================================
+
+-- alter function fn_porcentajeH(@idh    int)
+--returns float
+--as
+--begin
+--    declare @porcentaje    float
+--    declare @cant    float
+--    declare @cant2    float
+--    set @cant = dbo.fn_cantidadHab(@idh)
+--    --set @cant2 = dbo.fn_cantidadHabOcupadas(B.Cve_Reservacion)
+
+ 
+
+--    select  @porcentaje = dbo.fn_calcula_porcentaje(@cant, dbo.fn_cantidadHabOcupadas(B.Cve_Reservacion))--B.Cve_Reservacion
+--    from Habitacion A
+--    left join Reservacion B
+--    on A.ID_Habitacion = B.ID_Habitacion
+--    where A.ID_Hotel = @idh
+
+ 
+
+--    return @porcentaje
+--end
+
+ select dbo.fn_cantidadHabOcupadas(1150)
+
+alter function fn_cantidadHab(@idh    int)
+returns float
+as
+begin
+    declare @cant    float
+    select @cant = count(No_Hab)
+    from Habitacion
+    where ID_Hotel = @idh
+
+    return @cant
+end
+
+ 
+
+alter function fn_cantidadHabOcupadas(@idr    bigint)
+returns float
+as
+begin
+    declare @cant    float
+    select @cant = count(A.No_Hab)
+    from Habitacion A
+    full outer join Reservacion B
+    on A.ID_Habitacion = B.ID_Habitacion
+    where B.Cve_Reservacion = @idr
+
+    return @cant
+end
+
+ 
+
+alter function fn_calcula_porcentaje(@cant    float, @cant2    float)
+returns float
+as
+begin
+    declare @porcentaje as float
+	
+    set @porcentaje = @cant2 * 100/@cant
+	--select @porcentaje
+
+    return round(@porcentaje,2)
+end
+
+select dbo.fn_calcula_porcentaje(42,1)
+
+--======================================================================================================
+alter function fn_cantidadHab2(@idh    int)
+returns float
+as
+begin
+    declare @cant    float
+    select @cant = count(A.id_tipoHab)
+    from Habitacion A
+    left join Tipo_Habitacion B
+    on A.id_tipoHab = B.id_tipoHab
+    where A.ID_Hotel = @idh
+    group by B.id_tipoHab
+
+ 
+
+    return @cant
+end
+select dbo.fn_cantidadHab2(10)
+
+ 
+    select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion],count(A.id_tipoHab) --dbo.fn_calcula_porcentaje2(count(A.id_tipoHab))--, dbo.fn_buscacanttipo(@fecha))
+    from Habitacion A
+    left join Tipo_Habitacion B
+    on A.id_tipoHab = B.id_tipoHab
+	full outer join Reservacion C
+	on C.ID_Habitacion = A.ID_Habitacion
+    where A.ID_Hotel = 10 and '20200604' between C.Fecha_Entrada and C.Fecha_Salida
+    group by B.id_tipoHab
+
+
+alter function fn_buscacanttipo(@fecha	date)
+returns float
+as
+begin
+	declare @cant	float
+	select @cant = count(A.id_tipoHab)
+	from Habitacion A
+	left join Reservacion B
+	on A.ID_Habitacion = B.ID_Habitacion
+	where @fecha between B.Fecha_Entrada and B.Fecha_Salida
+	group by A.id_tipoHab
+
+
+	return @cant
+end
+
+select dbo.fn_buscacanttipo('20200604')
+
+
+	create function fn_calcula_porcentaje2(@cant    float, @cant2    float)
+returns float
+as
+begin
+    declare @porcentaje as float
+	
+    set @porcentaje = @cant2 * 100/@cant
+	--select @porcentaje
+
+    return round(@porcentaje,2)
+end
+
+select dbo.fn_calcula_porcentaje2(15,1)
+
+
+create function fn_RepreOcupacionesTipo (@id_hotel	int,@fecha	date)
+returns float
+as
+begin
+declare	@cant	float
+ select @cant = count(A.id_tipoHab) --dbo.fn_calcula_porcentaje2(count(A.id_tipoHab))--, dbo.fn_buscacanttipo(@fecha))
+    from Habitacion A
+    left join Tipo_Habitacion B
+    on A.id_tipoHab = B.id_tipoHab
+	full outer join Reservacion C
+	on C.ID_Habitacion = A.ID_Habitacion
+    where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
+    group by B.id_tipoHab
+
+	return @cant
+end
+
+select dbo.fn_RepreOcupacionesTipo(10,'20200604')
+
+create function fn_RepreOcupacionesTipo2 (@id_hotel	int)
+returns float
+as
+begin
+declare	@cant	float
+ select @cant = count(A.id_tipoHab) --dbo.fn_calcula_porcentaje2(count(A.id_tipoHab))--, dbo.fn_buscacanttipo(@fecha))
+    from Habitacion A
+    left join Tipo_Habitacion B
+    on A.id_tipoHab = B.id_tipoHab
+	full outer join Reservacion C
+	on C.ID_Habitacion = A.ID_Habitacion
+    where A.ID_Hotel = @id_hotel
+    group by B.id_tipoHab
+
+	return @cant
+end
+
+select dbo.fn_RepreOcupacionesTipo2(10)
+
+ --===================================================================================
+ create function fn_traeidTipoHabName(@idhab    int)
+returns varchar (50)
+as
+begin
+declare @nombre    varchar(50)
+
+    select @nombre = tipo
+    from Tipo_Habitacion
+    where id_tipoHab = @idhab
+
+    return @nombre
+end
+ --===================================================================================

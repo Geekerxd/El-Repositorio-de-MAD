@@ -64,7 +64,7 @@ namespace AppHotel
         {
             if (Avtivatelabel) {
 
-                label2.Text = "Se llenó comboBox";
+                label2.Text = "(Se llenó el comboBox)";
                 conta++;
 
                 if (conta == 15)

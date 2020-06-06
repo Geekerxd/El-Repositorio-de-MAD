@@ -931,14 +931,15 @@ namespace AppHotel
 
                 while (dr.Read())
                 {
+                    caso = true;
                     combo.Items.Add(dr["RFC"].ToString() + " " + dr["Nombre"].ToString() + " " + dr["Paterno"].ToString() + " " + dr["Materno"].ToString());
                 }
-                if (dr.Read())  caso = true;  else caso = false;
-                _conexion.Close();
+               
 
             }
             catch (SqlException e)
             {
+                caso = false;
                 msg = "Excepción de base de datos: \n";
                 msg += e.Message;
                 MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -2652,5 +2653,87 @@ namespace AppHotel
         }
 
 
+
+        public DataTable Set_ReportOcupacionTabla(string pais, DateTime date)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+
+                conectar();
+                string qry = "sp_ReporteOcupaciones";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@pais", SqlDbType.VarChar, 50);
+                parametro1.Value = pais;
+
+
+                var parametro2 = _comandosql.Parameters.Add("@fecha", SqlDbType.Date);
+                parametro2.Value = date;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        public DataTable Set_ReportOcupacionTabla2(int idh,DateTime date)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            try
+            {
+
+                conectar();
+                string qry = "ps_RepreOcupacionesTipo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id_hotel", SqlDbType.Int);
+                parametro1.Value = idh;
+
+                var parametro2 = _comandosql.Parameters.Add("@fecha", SqlDbType.Date);
+                parametro2.Value = date;
+
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        
     }
 }
