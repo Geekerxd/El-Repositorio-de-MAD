@@ -905,10 +905,10 @@ namespace AppHotel
         return IDS;
         }
 
-        public void LLenaEnHistorial(ComboBox combo,string name)
+        public bool LLenaEnHistorial(ComboBox combo,string name)
         {//llenar combo
             var msg = "";
-
+            bool caso=false;
             try
             {
 
@@ -933,7 +933,7 @@ namespace AppHotel
                 {
                     combo.Items.Add(dr["RFC"].ToString() + " " + dr["Nombre"].ToString() + " " + dr["Paterno"].ToString() + " " + dr["Materno"].ToString());
                 }
-
+                if (dr.Read())  caso = true;  else caso = false;
                 _conexion.Close();
 
             }
@@ -947,6 +947,7 @@ namespace AppHotel
             {
                 desconectar();
             }
+            return caso;
         }
 
 
@@ -1177,12 +1178,15 @@ namespace AppHotel
                     list.Items.Add("Metodo de pago elegido:\t" + dr["MPR"].ToString());
                     list.Items.Add("Fecha de entrada:\t\t" + dr["FE"].ToString());
                     list.Items.Add("Fecha de salida:\t\t" + dr["FS"].ToString());
-                    string ss = dr["CheckIN"].ToString();
+                  
                     if (dr["CheckIN"].ToString() == "True") list.Items.Add("Ckeck In:\t\tSí." );
                     else list.Items.Add("Ckeck In:\t\tNo.");
 
+                    if (dr["CheckOUT"].ToString() == "True") list.Items.Add("Ckeck Out:\t\tSí.");
+                    else list.Items.Add("Ckeck Out:\t\tNo.");
 
-                   
+
+
 
                 }
 
@@ -2615,7 +2619,7 @@ namespace AppHotel
             {
 
                 conectar();
-                string qry = "sp_reporte_ventas";
+                string qry = "sp_RegistroVentas";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;

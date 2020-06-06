@@ -216,16 +216,20 @@ select * from Servicios_en_Reservacion
 
 select * from Servicios_en_Reservacion
 
-select * from Reservacion
+
 select * from habitacion
 
-select * from hotel
+
 select * from tipo_habitacion
 select * from hotel
 select * from Cliente
 select * from factura
 select * from pais
 select * from ciudad
+select * from hotel
+select * from Habitacion
+select * from Reservacion
+select * from Usuario
 insert into factura values(1400)
 
 create PROCEDURE sp_Nuevafactura

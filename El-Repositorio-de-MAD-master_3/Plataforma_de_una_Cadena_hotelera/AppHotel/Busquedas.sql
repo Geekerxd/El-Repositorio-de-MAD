@@ -378,7 +378,7 @@ alter PROCEDURE sp_MostrarDatosReservacion
 @id        bigint
 AS
 BEGIN
-    select RFC idc, id_habitacion idh, Personas personas, Anticipo anticipo, Medio_Pago_Res MPR, CONVERT(date,Fecha_Entrada,2) FE, CONVERT(date,Fecha_Salida,2) FS, check_in CheckIN
+    select RFC idc, id_habitacion idh, Personas personas, Anticipo anticipo, Medio_Pago_Res MPR, CONVERT(date,Fecha_Entrada,2) FE, CONVERT(date,Fecha_Salida,2) FS, check_in CheckIN,check_out CheckOUT
     from Reservacion
     where Cve_Reservacion = @id
 END
@@ -577,13 +577,13 @@ as
 begin
     declare @NH varchar(50)
     select A.Cve_Reservacion [Clave de Reservacion], B.Nombre [Nombre del hotel], A.Fecha_Entrada [Fecha de entrada],
-         A.Fecha_Salida [Fecha de salida], A.Costo_Total [Costo total], A.Personas [Cantidad de personas]
+         A.Fecha_Salida [Fecha de salida], A.Costo_Total [Costo total], A.Personas [Cantidad de personas],dbo.fn_historialservicios(A.Cve_Reservacion) [Servicios]
     from Reservacion A
     left join Hotel B
     on A.RFC = @RFC and B.ID_Hotel = dbo.fn_NombreHotel(A.ID_Habitacion)
-	where  A.check_in = 1 and A.check_out = 1
+	where  A.RFC = @RFC and B.ID_Hotel = dbo.fn_NombreHotel(A.ID_Habitacion)and A.check_in = 1 and A.check_out = 1
 end
-
+exec sp_HistorialClient 1234
 --=================
 
 
@@ -594,18 +594,219 @@ as
 begin
     declare @c_nom    varchar
     declare @ingresos    money
-    select  Nombre [Nombre del Hotel], dbo.fn_ingresototal2(@mes) [Ingresos por hospedaje]
+    select  Nombre [Nombre del Hotel], dbo.fn_ingresototal2(@mes) [Ingresos por hospedaje], dbo.fn_ingresototal3(@mes) [Ingresos de servicios]
     from Hotel 
     where dbo.fn_buscaciudad(@pais) = id_ciudad
-   
-   
-    
+
 end
 
 
+exec sp_reporte_ventas2 'EEUU',7
+
+
+ select dbo.fn_ingresototal(6) [Ingresos]
+    from Reservacion B
+    where month(getdate()) = 6
+
+--=======================================
+
+alter procedure sp_reporte_ventas2
+@pais    varchar(50),
+@mes    int
+as
+begin
+    declare @c_nom    varchar
+    declare @ingresos    money
+	set @ingresos = 0
+
+    select  dbo.FN_RegresaHotelName(A.ID_Hotel) [Nombre del Hotel], SUM(C.Costo_Total) [Ingresos de hospedaje] --@ingresos + C.Costo_Total  --, dbo.fn_ingresototal3(@mes) [Ingresos de servicios], A.Nombre [Nombre del Hotel],
+    from Hotel A
+	full join Habitacion B
+	on A.ID_Hotel = B.ID_Hotel
+	full outer join Reservacion C
+	on C.ID_Habitacion = B.ID_Habitacion
+    where dbo.fn_buscaciudad(@pais) = A.id_ciudad and month(C.Fecha_Salida) = @mes
+	group by A.ID_Hotel
+end
+
+
+select dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del Hotel],SUM(Costo_Total)  [Ingresos por hospedaje]
+from Reservacion A
+inner join Habitacion B
+on B.ID_Habitacion=A.ID_Habitacion
+where month(A.Fecha_Salida) = 6
+group by B.ID_Hotel
+
+
+
+
+alter procedure sp_reporte_ventas
+@pais    varchar(50),
+@mes    int
+as
+begin
+    declare @c_nom    varchar
+    declare @ingresos    money
+    select  B.C_Nombre [Ciudad], A.Nombre [Nombre del Hotel], dbo.fn_ingresototal2(@mes,A.ID_Hotel) [Ingresos por hospedaje], dbo.fn_ingresototal3(@mes) [Ingresos de servicios]
+    from Hotel A
+	left join Ciudad B
+	on  A.id_ciudad = B.id_ciudad
+    where dbo.fn_buscaciudad(@pais) = A.id_ciudad
+
+end
+
 exec sp_reporte_ventas 'EEUU',6
 
+--alter view vw_reporteventas
+--as
 
- select dbo.fn_ingresototal(7) [Ingresos]
-    from Reservacion B
-    where month(getdate()) = 7
+create procedure algo
+as
+begin
+	drop table #tabla1
+	create table  #tabla1 (id_ int,nombreHot varchar( 50), costoT money)
+	declare @cant int
+	declare @cont int
+	select @cant = count(Cve_Reservacion) 
+	from Reservacion
+
+
+
+	set @cont = 0
+	while @cont < @cant
+	begin
+		declare @A_id	int
+		declare @B_nom	varchar(50)
+		declare @C_cost	money
+
+		select @A_id=B.ID_Hotel , @B_nom=dbo.FN_RegresaHotelName(B.ID_Hotel),@C_cost=SUM(Costo_Total)  
+		--into #tabla1
+		from Reservacion A
+		inner join Habitacion B
+		on B.ID_Habitacion=A.ID_Habitacion
+		full outer join Hotel C
+		on C.ID_Hotel = B.ID_Hotel	--if C.ID_Hotel != ''
+		where month(A.Fecha_Salida) = 6 and A.Cve_Reservacion = @cont + 1000
+		group by B.ID_Hotel
+		
+		insert into #tabla1 values(@A_id, @B_nom, @C_cost)
+		set @cont = @cont+50
+	end
+	select id_, nombreHot, costoT 
+	from #tabla1
+end
+
+---funcion base
+--=================================================================================================================
+--=================================================================================================================
+alter procedure sp_RegistroVentas @pais varchar (50),@mes int
+as
+begin
+
+--drop table #tabla2
+select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],SUM(Costo_Total) [ingresos de hospedaje] ,sum( E.Precio) [ingresos de servicios]
+--into #tabla2
+from Reservacion A
+inner join Habitacion B
+on B.ID_Habitacion=A.ID_Habitacion
+FULL OUTER JOIN Hotel C
+on C.ID_Hotel = B.ID_Hotel
+Full outer join Servicios_en_Reservacion D
+on D.Cve_Reservacion = A.Cve_Reservacion
+left join Servicio E
+on D.id_servicio = E.id_servicio
+where month(A.Fecha_Salida) = @mes and dbo.fn_traeidciudadpais(B.ID_Hotel) = dbo.fn_idPais(@pais)
+group by B.ID_Hotel
+--select * from #tabla2
+
+
+
+
+end
+
+
+select dbo.fn_traeidciudadName(10)
+exec sp_RegistroVentas 'mexico',6
+alter procedure sp_RegistroVentas2 @pais varchar (50),@mes int
+as
+begin
+
+
+select D.ID_Hotel [Id del hotel] ,dbo.FN_RegresaHotelName(D.ID_Hotel) [Nombre del hotel],sum( B.Precio) [ingresos de servicios]
+into #tabla1
+from Servicios_en_Reservacion A
+left join Servicio B
+on A.id_servicio = B.id_servicio
+full outer join Reservacion C
+on A.Cve_Reservacion = C.Cve_Reservacion
+full outer join Habitacion D
+on D.ID_Habitacion = C.ID_Habitacion
+where month(C.Fecha_Salida) = @mes
+group by D.ID_Hotel
+--select * from #tabla1
+exec sp_RegistroVentas3 @pais, @mes
+end
+
+alter procedure sp_RegistroVentas3 @pais varchar (50),@mes int
+as
+begin
+
+select A.[Id del hotel], A.[Nombre del hotel], A.[ingresos de hospedaje], B.[ingresos de servicios]
+into #tabla3
+from #tabla2 A
+full outer join #tabla1 B
+on A.[Id del hotel] = B.[Id del hotel]
+where dbo.fn_idPais(@pais)=dbo.fn_traeidciudadpais(A.[Id del hotel])
+
+--exec sp_RegistroVentas4 @pais, @mes
+end
+
+
+create procedure sp_RegistroVentas4 @pais varchar (50),@mes int
+as
+begin
+
+exec sp_RegistroVentas @pais, @mes
+
+
+
+select [Id del hotel], [Nombre del hotel], [ingresos de hospedaje], [ingresos de servicios]
+from #tabla3 
+
+
+end
+
+exec sp_RegistroVentas4 'EEUU',6
+drop table #tabla1
+drop table #tabla2
+drop table #tabla3
+--where dbo.fn_buscaciudad('EEUU')=dbo.fn_traeidciudad([Id del hotel])
+-----------------------------------------prueba
+
+select [Id del hotel], [Nombre del hotel], [ingresos de hospedaje], [ingresos de servicios]
+from #tabla3 
+where 60=dbo.fn_traeidciudad(60)
+
+-----------------------------------------
+select * from Servicios_en_Reservacion
+select * from Servicio
+
+select *from Reservacion
+select *from Habitacion
+select *from Hotel
+
+---------------------------------------
+
+--===================================================================================
+--regresa el nombre del hotel con el id
+ select  dbo.FN_RegresaHotelName(A.ID_Hotel) [Nombre del Hotel], SUM(C.Costo_Total) [Ingresos de hospedaje] --@ingresos + C.Costo_Total  --, dbo.fn_ingresototal3(@mes) [Ingresos de servicios], A.Nombre [Nombre del Hotel],
+    from Hotel A
+	full join Habitacion B
+	on A.ID_Hotel = B.ID_Hotel
+	full outer join Reservacion C
+	on C.ID_Habitacion = B.ID_Habitacion
+    where dbo.fn_buscaciudad('EEUU') = A.id_ciudad and month(C.Fecha_Salida) = 6
+	group by A.ID_Hotel
+
+	select [Id del Hotel],[Nombre del Hotel] from vw_reporteventas
+--===================================================================================

@@ -12,6 +12,8 @@ namespace AppHotel
 {
     public partial class HistoClient : Form
     {
+        static bool Avtivatelabel = false;
+        static int conta = 0;
         public HistoClient()
         {
             InitializeComponent();
@@ -22,15 +24,18 @@ namespace AppHotel
             comboBox1.Items.Clear();
             EnlaceDB conexion = new EnlaceDB();
             string name = textBox1.Text;
-
+            bool caso = false;
             //lena en el combo si RFC y su nombre completo
-            conexion.LLenaEnHistorial(comboBox1, name);
-
+           caso= conexion.LLenaEnHistorial(comboBox1, name);
+            if(caso)Avtivatelabel = true;
             conexion = null;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
             EnlaceDB conexion2 = new EnlaceDB();
             DataTable data = new DataTable();
             int RFC_C=0;
@@ -53,6 +58,28 @@ namespace AppHotel
 
             dataGridView1.DataSource = data;
             conexion2 = null;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Avtivatelabel) {
+
+                label2.Text = "Se llenó comboBox";
+                conta++;
+
+                if (conta == 15)
+                {
+                    label2.Text = "";
+                    Avtivatelabel = false;
+                    conta = 0;
+                }
+            }
+                       
+        }
+
+        private void HistoClient_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
         }
     }
 }

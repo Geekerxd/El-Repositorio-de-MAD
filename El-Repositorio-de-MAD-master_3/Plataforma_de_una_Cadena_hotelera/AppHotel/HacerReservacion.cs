@@ -40,6 +40,10 @@ namespace AppHotel
         private void button2_Click(object sender, EventArgs e)
         {   //  BOTÓN DE RESERVACIÓN
 
+            if(textBox4.Text=="" || comboBox1.Text == "" || comboBox2.Text == "" || comboBox3.Text == "" || comboBox4.Text == ""
+                || comboBox5.Text == "" || textBox2.Text == "" || textBox3.Text == "") { MessageBox.Show("Alguna casilla está vacía."); goto fin; }
+
+
             #region NumDeHabitacion
             int NumHab = 0;
             char[] delimiterChars = { ',', '.', ':', '\t' };
@@ -93,8 +97,7 @@ namespace AppHotel
                 conexion11.Registro_serv_in_reserv(clReserv,  idS);
             }
                 //conexion11.Registro_serv_in_reserv(int cve_reserv, int id_serv);
-
-            conexion11 = null;
+                
             //show_id_MAXReservation
 
             //EnlaceDB conexion15 = new EnlaceDB();
@@ -102,7 +105,8 @@ namespace AppHotel
             //conexion15 = null;
 
             MessageBox.Show("Tu clave de reservación es: "+ clReserv+".\nUtilize esta clave para hacer \"Check In\"");
-
+        fin:
+            conexion11 = null;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -252,18 +256,28 @@ namespace AppHotel
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (ServicionOp.SelectedItem != null) {
 
-            string temp1 = ServicionOp.SelectedItem.ToString();
-            ServiciosEle.Items.Add(temp1);
-            ServicionOp.Items.Remove(temp1);
+                string temp1 = ServicionOp.SelectedItem.ToString();
+                ServiciosEle.Items.Add(temp1);
+                ServicionOp.Items.Remove(temp1);
+
+
+            }
+            else MessageBox.Show("No se seleccionó nada");
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string temp2 = ServiciosEle.SelectedItem.ToString();
-            ServicionOp.Items.Add(temp2);
-            ServiciosEle.Items.Remove(temp2);
+            if (ServiciosEle.SelectedItem != null)
+            {
+                string temp2 = ServiciosEle.SelectedItem.ToString();
+                ServicionOp.Items.Add(temp2);
+                ServiciosEle.Items.Remove(temp2);
+            }
+            else MessageBox.Show("No se seleccionó nada");
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
