@@ -274,6 +274,7 @@
             this.ServiciosEle.Name = "ServiciosEle";
             this.ServiciosEle.Size = new System.Drawing.Size(157, 95);
             this.ServiciosEle.TabIndex = 14;
+            this.ServiciosEle.SelectedIndexChanged += new System.EventHandler(this.ServiciosEle_SelectedIndexChanged);
             // 
             // label12
             // 

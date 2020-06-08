@@ -39,15 +39,14 @@
             this.B_CreaUsuEmp = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.VerStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.verTiposDeHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verHotelesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.paisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ciudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.servicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.B_RepSistema = new System.Windows.Forms.Button();
             this.historialDelClienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.B_RepSistema = new System.Windows.Forms.Button();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.paisToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ciudadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.servicioAdicionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,8 +135,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VerStripDropDownButton1,
-            this.toolStripSplitButton1,
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -147,60 +146,13 @@
             // VerStripDropDownButton1
             // 
             this.VerStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verTiposDeHabitaciónToolStripMenuItem,
-            this.verHotelesToolStripMenuItem});
+            this.toolStripMenuItem2});
             this.VerStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("VerStripDropDownButton1.Image")));
             this.VerStripDropDownButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.VerStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.VerStripDropDownButton1.Name = "VerStripDropDownButton1";
             this.VerStripDropDownButton1.Size = new System.Drawing.Size(103, 22);
             this.VerStripDropDownButton1.Text = "Ver opciones";
-            // 
-            // verTiposDeHabitaciónToolStripMenuItem
-            // 
-            this.verTiposDeHabitaciónToolStripMenuItem.Name = "verTiposDeHabitaciónToolStripMenuItem";
-            this.verTiposDeHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.verTiposDeHabitaciónToolStripMenuItem.Text = "Ver Tipos de Habitación";
-            // 
-            // verHotelesToolStripMenuItem
-            // 
-            this.verHotelesToolStripMenuItem.Name = "verHotelesToolStripMenuItem";
-            this.verHotelesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.verHotelesToolStripMenuItem.Text = "Ver Hoteles";
-            // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.paisToolStripMenuItem,
-            this.ciudadToolStripMenuItem,
-            this.servicioToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(69, 22);
-            this.toolStripSplitButton1.Text = "Registrar";
-            // 
-            // paisToolStripMenuItem
-            // 
-            this.paisToolStripMenuItem.Name = "paisToolStripMenuItem";
-            this.paisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.paisToolStripMenuItem.Text = "Pais";
-            this.paisToolStripMenuItem.Click += new System.EventHandler(this.paisToolStripMenuItem_Click);
-            // 
-            // ciudadToolStripMenuItem
-            // 
-            this.ciudadToolStripMenuItem.Name = "ciudadToolStripMenuItem";
-            this.ciudadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ciudadToolStripMenuItem.Text = "Ciudad";
-            this.ciudadToolStripMenuItem.Click += new System.EventHandler(this.ciudadToolStripMenuItem_Click);
-            // 
-            // servicioToolStripMenuItem
-            // 
-            this.servicioToolStripMenuItem.Name = "servicioToolStripMenuItem";
-            this.servicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.servicioToolStripMenuItem.Text = "Servicio";
-            this.servicioToolStripMenuItem.Click += new System.EventHandler(this.servicioToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton1
             // 
@@ -213,6 +165,13 @@
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(106, 22);
             this.toolStripDropDownButton1.Text = "Reportes Cliente";
             // 
+            // historialDelClienteToolStripMenuItem1
+            // 
+            this.historialDelClienteToolStripMenuItem1.Name = "historialDelClienteToolStripMenuItem1";
+            this.historialDelClienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.historialDelClienteToolStripMenuItem1.Text = "Historial del Cliente";
+            this.historialDelClienteToolStripMenuItem1.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem1_Click);
+            // 
             // B_RepSistema
             // 
             this.B_RepSistema.Location = new System.Drawing.Point(167, 84);
@@ -223,12 +182,45 @@
             this.B_RepSistema.UseVisualStyleBackColor = true;
             this.B_RepSistema.Click += new System.EventHandler(this.B_RepSistema_Click);
             // 
-            // historialDelClienteToolStripMenuItem1
+            // toolStripDropDownButton2
             // 
-            this.historialDelClienteToolStripMenuItem1.Name = "historialDelClienteToolStripMenuItem1";
-            this.historialDelClienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.historialDelClienteToolStripMenuItem1.Text = "Historial del Cliente";
-            this.historialDelClienteToolStripMenuItem1.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem1_Click);
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paisToolStripMenuItem1,
+            this.ciudadToolStripMenuItem1,
+            this.servicioAdicionalToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(66, 22);
+            this.toolStripDropDownButton2.Text = "Registrar";
+            // 
+            // paisToolStripMenuItem1
+            // 
+            this.paisToolStripMenuItem1.Name = "paisToolStripMenuItem1";
+            this.paisToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.paisToolStripMenuItem1.Text = "Pais";
+            this.paisToolStripMenuItem1.Click += new System.EventHandler(this.paisToolStripMenuItem1_Click);
+            // 
+            // ciudadToolStripMenuItem1
+            // 
+            this.ciudadToolStripMenuItem1.Name = "ciudadToolStripMenuItem1";
+            this.ciudadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ciudadToolStripMenuItem1.Text = "Ciudad";
+            this.ciudadToolStripMenuItem1.Click += new System.EventHandler(this.ciudadToolStripMenuItem1_Click);
+            // 
+            // servicioAdicionalToolStripMenuItem
+            // 
+            this.servicioAdicionalToolStripMenuItem.Name = "servicioAdicionalToolStripMenuItem";
+            this.servicioAdicionalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.servicioAdicionalToolStripMenuItem.Text = "Servicio Adicional";
+            this.servicioAdicionalToolStripMenuItem.Click += new System.EventHandler(this.servicioAdicionalToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "...";
             // 
             // VAdmin
             // 
@@ -269,14 +261,13 @@
         private System.Windows.Forms.Button B_CreaUsuEmp;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton VerStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem verTiposDeHabitaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verHotelesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripMenuItem paisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ciudadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem servicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.Button B_RepSistema;
         private System.Windows.Forms.ToolStripMenuItem historialDelClienteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem paisToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ciudadToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem servicioAdicionalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }

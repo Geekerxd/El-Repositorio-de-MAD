@@ -1,0 +1,11 @@
+Número de factura: 	1800
+Id del cliente: 		1561
+Id de la habitacion: 	557
+Numero de personas: 	1
+Anticipo: 			1000.0000
+Metodo de pago: 		Tarjeta de credito
+Fecha de entrada: 	08/06/2020 12:00:00 a. m.
+Fecha de salida: 		16/06/2020 12:00:00 a. m.
+Nombre del cliente:	Edson Java robot
+Tipo de habitacion:	King size Habitacion
+Costo Total:		42088

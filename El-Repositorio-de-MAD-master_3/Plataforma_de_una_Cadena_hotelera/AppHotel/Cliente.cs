@@ -38,6 +38,10 @@ namespace AppHotel
                 MessageBox.Show("Una casilla está vacía");
                 goto fin;
             }
+            EnlaceDB conexion2 = new EnlaceDB();
+            try { 
+
+
             int RFC = int.Parse(textBox1.Text);
             var Nombre = textBox2.Text;
             var Paterno = textBox3.Text;
@@ -78,17 +82,46 @@ namespace AppHotel
             DateTime fecha_naci = dateTimePicker1.Value;
 
             int usuNameInt = 0;
-            EnlaceDB conexion2 = new EnlaceDB();
+           
             usuNameInt = conexion2.show_UsuarioID(usuNameInt, usuName);
-            conexion2 = null;
 
-            EnlaceDB conexion = new EnlaceDB();
-            conexion.Set_Client(RFC, Nombre, Paterno, Materno, Domicilio, e_mail, telefono, referencia, fecha_naci, usuNameInt);
+
+            conexion2.Set_Client(RFC, Nombre, Paterno, Materno, Domicilio, e_mail, telefono, referencia, fecha_naci, usuNameInt);
            
 
             MessageBox.Show("Se guardó cliente: " + Nombre + " " + Paterno + " " + Materno+ ".");
-            fin:
-            conexion = null;
+                textBox1.Text = "";
+                textBox2.Text="";
+                textBox3.Text="";
+                textBox4.Text="";
+                textBox5.Text="";
+                textBox6.Text="";
+                textBox7.Text="";
+                textBox8.Text="";
+                if (radioButton1.Checked == true)
+                    radioButton1.Checked = false;
+                else if (radioButton2.Checked == true)
+                    radioButton2.Checked = false;
+                else if (radioButton3.Checked == true)
+                    radioButton3.Checked = false;
+                else if (radioButton4.Checked == true)
+                    radioButton4.Checked = false;
+                else if (radioButton5.Checked == true)
+                    radioButton5.Checked = false;
+                dateTimePicker1.Value = DateTime.Today;
+
+            }
+            catch
+            {
+                var msg = "";
+                msg = "Error de tipo de dato.\nAsegurese de usar los datos correctos.\n";
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+
+
+        fin:
+            conexion2 = null;
+
 
         }
 

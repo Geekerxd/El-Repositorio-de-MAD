@@ -45,13 +45,26 @@ namespace AppHotel
         private void button3_Click(object sender, EventArgs e)
         {   // BOTON DE CHECK IN
 
+            if (textBox1.Text == "") { MessageBox.Show("Alguna casilla está vacía."); goto fin; }
             EnlaceDB conexion2 = new EnlaceDB();
-            conexion2.CHECK_IN(int.Parse(textBox1.Text));
+            try
+            {
+                conexion2.CHECK_IN(int.Parse(textBox1.Text));
 
-            
 
-            MessageBox.Show("se hizo check in de: "+ conexion2.IDGetCliente(_IDC)+" \n\nCon clave: "+ textBox1.Text);
 
+                MessageBox.Show("se hizo check in de: " + conexion2.IDGetCliente(_IDC) + " \n\nCon clave: " + textBox1.Text);
+                textBox1.Text = "";
+                listBox1.Items.Clear();
+            }
+            catch
+            {
+                var msg = "";
+                msg = "Error de tipo de dato.\nAsegurese de usar los datos correctos.\n";
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+
+        fin:
             conexion2 = null;
         }
     }

@@ -16,7 +16,7 @@ namespace AppHotel
         static bool Accede;
         string NombreAdmin = "a";
         string ContraAdmin = "a";
-        static int Value = 0;
+       // static int Value = 0;
         #region principio
         public Form1()
         {
@@ -87,8 +87,8 @@ namespace AppHotel
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            Value += 1;
-            label5.Text = Value.ToString();
+            //Value += 1;
+            //label5.Text = Value.ToString();
 
             // aqui se pone se actualiza la reservacion
 

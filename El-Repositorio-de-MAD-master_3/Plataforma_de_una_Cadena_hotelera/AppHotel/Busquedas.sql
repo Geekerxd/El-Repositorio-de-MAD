@@ -202,6 +202,15 @@ BEGIN
 	where S_Nombre = @nombreTipo
 END
 go
+
+create PROCEDURE sp_Busca_costoTipoServ
+@nombreTipo		varchar(80)
+AS
+BEGIN
+	select Precio precio
+	from Servicio
+	where S_Nombre = @nombreTipo
+END
 --CREATE PROCEDURE sp_BuscaInfoH		--	BORRAR
 --@nombre_H		varchar(50)
 --AS
@@ -473,19 +482,21 @@ begin
     declare @total    money
     declare @anti    money
 	declare @Final    money
-    select @total = Costo_Total, @anti = Anticipo
+    select Costo_Total-(Costo_Total-Anticipo)*(@desc/100) [final]
     from Reservacion
     where Cve_Reservacion = @cve
 
  
 
-    set @Final = @total- @total*(@desc/100) - @anti
-	select @Final final
+    --set @Final = @total- (@total- @anti)*(@desc/100) 
+	--select @Final final
 end
 
+exec sp_descuento 1800, 0
 
-
-
+ select Costo_Total
+    from Reservacion
+    where Cve_Reservacion = 1800
 
 --=================  CHECK OUT  ===============
 
@@ -888,4 +899,16 @@ full outer join Reservacion C
 on C.ID_Habitacion = A.ID_Habitacion
 where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
 group by B.id_tipoHab, A.ID_Hotel
+
+--====================================================================
+alter procedure traeserviciosfactura
+@cve	bigint
+as
+begin
+	select B.S_Nombre nombre, B.precio precio
+	from Servicios_en_Reservacion A
+	inner join Servicio B
+	on A.id_servicio = B.id_servicio
+	where @cve = cve_reservacion
+end
 

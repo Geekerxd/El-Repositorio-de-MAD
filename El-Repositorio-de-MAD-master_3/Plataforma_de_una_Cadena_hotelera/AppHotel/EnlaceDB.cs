@@ -2127,6 +2127,49 @@ namespace AppHotel
             return id_Serv;
         }
 
+        public float show_costoServicio( string nombre)
+        {//llenar combo
+            var msg = "";
+            float money=0;
+            try
+            {
+
+                conectar();
+
+                dr = null;
+                string qry = "sp_Busca_costoTipoServ";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@nombreTipo", SqlDbType.VarChar, 80);
+                parametro1.Value = nombre;
+
+                dr = _comandosql.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    money = float.Parse(dr["precio"].ToString());
+                }
+
+                _conexion.Close();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return money;
+        }
+
         public int show_id_RFC_cliente(string nombre)
         {//llenar combo
             var msg = "";
@@ -2736,6 +2779,67 @@ namespace AppHotel
             return tabla;
         }
 
-        
+
+        public void MostrarServiciosCheckOut(ListBox list, int cve )
+        {//llenar combo
+            var msg = "";
+
+
+
+            try
+            {
+
+
+
+                conectar();
+
+
+
+                dr = null;
+                string qry = "traeserviciosfactura";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _conexion.Open();
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+
+                var parametro1 = _comandosql.Parameters.Add("@cve", SqlDbType.BigInt);
+                parametro1.Value = cve;
+
+
+
+                dr = _comandosql.ExecuteReader();
+
+
+
+
+
+                while (dr.Read())
+                {
+                    list.Items.Add( dr["nombre"].ToString() + "\t\t"+ dr["precio"].ToString());
+                   
+                }
+
+
+
+
+                _conexion.Close();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
     }
 }

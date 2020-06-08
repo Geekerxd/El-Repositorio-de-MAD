@@ -89,23 +89,7 @@ namespace AppHotel
           
         }
 
-        private void paisToolStripMenuItem_Click(object sender, EventArgs e)
-        {//abre pais
-            Form nuevform = new Pais();
-            nuevform.ShowDialog();
-        }
-
-        private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
-        {//abre ciudad
-            Form nuevform = new Ciudad();
-            nuevform.ShowDialog();
-        }
-
-        private void servicioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form nuevform = new Servicio();
-            nuevform.ShowDialog();
-        }
+        
 
         private void reporteDeOcupacionPorHotelToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -114,6 +98,26 @@ namespace AppHotel
         private void historialDelClienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form nuevform = new HistoClient();
+            nuevform.ShowDialog();
+        }
+
+        private void paisToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form nuevform = new Pais();
+            nuevform.ShowDialog();
+
+
+        }
+
+        private void ciudadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form nuevform = new Ciudad();
+            nuevform.ShowDialog();
+        }
+
+        private void servicioAdicionalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form nuevform = new Servicio();
             nuevform.ShowDialog();
         }
     }

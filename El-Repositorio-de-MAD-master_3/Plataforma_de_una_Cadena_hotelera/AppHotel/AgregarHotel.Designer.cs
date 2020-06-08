@@ -187,7 +187,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox2.Location = new System.Drawing.Point(220, 158);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -252,7 +252,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox3.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox3.Location = new System.Drawing.Point(702, 238);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(222, 20);
@@ -260,7 +260,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox4.Location = new System.Drawing.Point(220, 242);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(88, 20);

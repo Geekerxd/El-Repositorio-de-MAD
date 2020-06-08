@@ -224,6 +224,9 @@ select * from Usuario
 select * from Cliente
 select * from hotel
 select * from habitacion
+select * from Servicios_en_Hotel
+select * from Servicio
+
 select * from Reservacion
 
 select * from Servicios_en_Reservacion
@@ -234,7 +237,7 @@ select * from pais
 
 select * from tipo_habitacion
 select * from factura
-select * from Servicio
+
 
 select * from hotel
 select * from habitacion

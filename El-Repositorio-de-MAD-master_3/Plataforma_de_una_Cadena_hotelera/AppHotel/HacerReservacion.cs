@@ -42,78 +42,114 @@ namespace AppHotel
 
             if(textBox4.Text=="" || comboBox1.Text == "" || comboBox2.Text == "" || comboBox3.Text == "" || comboBox4.Text == ""
                 || comboBox5.Text == "" || textBox2.Text == "" || textBox3.Text == "") { MessageBox.Show("Alguna casilla está vacía."); goto fin; }
-
-
-            #region NumDeHabitacion
-            int NumHab = 0;
-            char[] delimiterChars = { ',', '.', ':', '\t' };
-
-            string[] words = comboBox5.Text.Split(delimiterChars);
-            int C = 1;
-            foreach (var c in words)
-            {
-                if (C==3) {
-                    NumHab = int.Parse($"{c}");
-                }
-                C++;
-            }
-            #endregion
-
-            //MessageBox.Show("el numero de habitación es: "+ NumHab);  //Numero de habitacón
-            int  tamanoL = ServiciosEle.Items.Count;                       //tamaño de una lista
-
-
-
-            //foreach (var item in ServiciosEle.Items)//cada item de la lista
-            //{
-            //    MessageBox.Show("Item: " + item.ToString());
-            //}
-
-
-            var anticipo = textBox3.Text;
-            var medio_pago_res = comboBox4.Text;
-            DateTime fecha_e = dateTimePicker1.Value;
-            DateTime fecha_s = dateTimePicker2.Value;
-            int Personas = int.Parse(textBox2.Text);
-
             EnlaceDB conexion12 = new EnlaceDB();
-            int ID = int.Parse(textBox4.Text);
-           
-            
-            
-            int id_Hab = conexion12.show_id_TipoHab(comboBox2.Text,comboBox3.Text, NumHab);
-            
-            
-            float TotalMoney=int.Parse(label5.Text);
+            try
+            {
+                #region NumDeHabitacion
+                int NumHab = 0;
+                char[] delimiterChars = { ',', '.', ':', '\t' };
+
+                string[] words = comboBox5.Text.Split(delimiterChars);
+                int C = 1;
+                foreach (var c in words)
+                {
+                    if (C == 3)
+                    {
+                        NumHab = int.Parse($"{c}");
+                    }
+                    C++;
+                }
+                #endregion
+
+                //MessageBox.Show("el numero de habitación es: "+ NumHab);  //Numero de habitacón
+                int tamanoL = ServiciosEle.Items.Count;                       //tamaño de una lista
 
 
-            conexion12.Set_Reservations(anticipo, medio_pago_res, fecha_e, fecha_s, Personas, ID, id_Hab, TotalMoney);
-            int clReserv= conexion12.show_id_MAXReservation();
 
-            foreach (var item in ServiciosEle.Items)
-             {
-                int idS = conexion12.show_idServicio(0, item.ToString());
+                //foreach (var item in ServiciosEle.Items)//cada item de la lista
+                //{
+                //    MessageBox.Show("Item: " + item.ToString());
+                //}
 
-                conexion12.Registro_serv_in_reserv(clReserv,  idS);
-            }
+
+                var anticipo = textBox3.Text;
+                var medio_pago_res = comboBox4.Text;
+                DateTime fecha_e = dateTimePicker1.Value;
+                DateTime fecha_s = dateTimePicker2.Value;
+                int Personas = int.Parse(textBox2.Text);
+
+
+                int ID = int.Parse(textBox4.Text);
+
+
+
+                int id_Hab = conexion12.show_id_TipoHab(comboBox2.Text, comboBox3.Text, NumHab);
+
+
+                float TotalMoney = int.Parse(label5.Text);
+
+                foreach (var item in ServiciosEle.Items)
+                {
+                    // float costo = conexion12.show_idServicio( item.ToString());
+
+                    TotalMoney = TotalMoney + conexion12.show_costoServicio(item.ToString());
+                }
+                conexion12.Set_Reservations(anticipo, medio_pago_res, fecha_e, fecha_s, Personas, ID, id_Hab, TotalMoney);
+                int clReserv = conexion12.show_id_MAXReservation();
+
+                foreach (var item in ServiciosEle.Items)
+                {
+                    int idS = conexion12.show_idServicio(0, item.ToString());
+
+                    conexion12.Registro_serv_in_reserv(clReserv, idS);
+                }
                 //conexion11.Registro_serv_in_reserv(int cve_reserv, int id_serv);
-                
-            //show_id_MAXReservation
 
-            //EnlaceDB conexion15 = new EnlaceDB();
-            //int id_Hab = conexion15.show_id_TipoHab(comboBox2.Text, comboBox3.Text);
-            //conexion15 = null;
+                //show_id_MAXReservation
 
-            MessageBox.Show("Tu clave de reservación es: "+ clReserv+".\nUtilize esta clave para hacer \"Check In\"");
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-            dateTimePicker1.Value = DateTime.Today;
-            dateTimePicker2.Value = DateTime.Today;
+                //EnlaceDB conexion15 = new EnlaceDB();
+                //int id_Hab = conexion15.show_id_TipoHab(comboBox2.Text, comboBox3.Text);
+                //conexion15 = null;
+
+                MessageBox.Show("Tu clave de reservación es: " + clReserv + ".\nUtilize esta clave para hacer \"Check In\"");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+
+                dateTimePicker1.Value = DateTime.Today;
+                dateTimePicker2.Value = DateTime.Today;
+
+
+                listBox1.Items.Clear();
+                ServicionOp.Items.Clear();
+                ServiciosEle.Items.Clear();
+
+
+                comboBox2.Items.Clear();
+                comboBox2.Text = "";
+                comboBox3.Items.Clear();
+                comboBox3.Text = "";
+                comboBox5.Items.Clear();
+                comboBox5.Text = "";
+
+
+
+                comboBox1.Text = "";
+                comboBox4.Text = "";
+
+
+            }
+            catch
+            {
+                var msg = "";
+                msg = "Error de tipo de dato.\nAsegurese de usar los datos correctos.\n";
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+
 
         fin:
             conexion12 = null;
@@ -371,6 +407,11 @@ namespace AppHotel
 
                 string ID= dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             if(e.ColumnIndex == 3)textBox4.Text = ID;
+
+        }
+
+        private void ServiciosEle_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

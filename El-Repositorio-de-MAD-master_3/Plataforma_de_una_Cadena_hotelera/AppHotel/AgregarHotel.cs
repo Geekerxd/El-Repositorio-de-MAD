@@ -148,9 +148,12 @@ namespace AppHotel
         private void button1_Click(object sender, EventArgs e)
         {
             EnlaceDB conexion5 = new EnlaceDB();
-            //funcion que cheque si ya existe el hotel
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == ""
+            || comboBox2.Text == "Selecciona Ciudad" || comboBox1.Text == "Selecciona la Zona turistica" ) { MessageBox.Show("Alguna casilla está vacía."); goto END; }
             
-            if (conexion5.show_Hotel(0, textBox1.Text) != 0) {
+            try
+            {
+                if (conexion5.show_Hotel(0, textBox1.Text) != 0) {
                 MessageBox.Show("Hotel \""+ textBox1.Text + "\" Ya existe"); goto END; }
 
             int totalHab = lista.ShowTextEveryNumber();
@@ -174,30 +177,33 @@ namespace AppHotel
             int ciudad = 0;
            
             ciudad = conexion5.show_idCiudad(ciudad, ciudad1);
-           
-            // var usu_atiendeTemp = comboBox3.Text;
+                // var usu_atiendeTemp = comboBox3.Text;
 
-            //int usu_atiende = 0;
-            //EnlaceDB conexion4 = new EnlaceDB();
-            //usu_atiende = conexion4.show_UsuarioID(usu_atiende, usu_atiendeTemp);
-            //conexion4 = null;
+                //int usu_atiende = 0;
+                //EnlaceDB conexion4 = new EnlaceDB();
+                //usu_atiende = conexion4.show_UsuarioID(usu_atiende, usu_atiendeTemp);
+                //conexion4 = null;
 
-            //int usu_atiende = Int32.Parse(comboBox3.Text);
+                //int usu_atiende = Int32.Parse(comboBox3.Text);
 
-           
-            conexion5.Set_Hotel(caract, no_pisos, nombreH, cant_hab, zona_tur, domicilio, ciudad, adminName);
-           
 
-            int id_hotel = 0;
+                int canthabcheck = lista.ShowTextEveryNumber2();
+                lista.limpieza();
+                if (canthabcheck == 0) { MessageBox.Show("No se ha seleccionado nungun tipo de habitación"); goto END; }
+                int cantServicheck = L_SA.ShowTextEveryNumber6();//especial para los checkbox
+                lista.limpieza2();
+                if (cantServicheck == 0) { MessageBox.Show("No se ha seleccionado ningun  tipo de Servicio adicional"); goto END; }
+                int id_hotel = 0;
            
-            id_hotel= conexion5.show_Hotel(id_hotel, nombreH);
-           
+                conexion5.Set_Hotel(caract, no_pisos, nombreH, cant_hab, zona_tur, domicilio, ciudad, adminName);
+                id_hotel = conexion5.show_Hotel(id_hotel, nombreH);
 
-            //var random = new Random();
-            int no_hab = 0;
+
+                //var random = new Random();
+                int no_hab = 0;
 
             //funcion que regresa la cantidad de tipos de hab con palomita
-            int canthabcheck= lista.ShowTextEveryNumber2();
+            
             for (int i = 0; i < canthabcheck; i++)// cant tipos de hab
             {
                 //funcion que trae el numero de habitaciones de este tipo
@@ -228,8 +234,7 @@ namespace AppHotel
 
             lista.limpieza();
 
-            int cantServicheck = L_SA.ShowTextEveryNumber6();//especial para los checkbox
-
+           
             for (int i=0;i<cantServicheck;i++) {
 
                 var TipoServi = L_SA.ShowTextEveryNumber4(i);
@@ -245,10 +250,11 @@ namespace AppHotel
                 
             }
 
-            lista.limpieza2();
+                lista.limpieza2();
+                
 
 
-            MessageBox.Show("Se guardó hotel: " + nombreH +".");
+                MessageBox.Show("Se guardó hotel: " + nombreH +".");
 
 
 
@@ -256,11 +262,17 @@ namespace AppHotel
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
-            comboBox1.Text = "";
-            comboBox2.Text = "";
+            comboBox1.Text = "Selecciona la Zona turistica";
+            comboBox2.Text = "Selecciona Ciudad";
             lista.ressetTipoHab();
             L_SA.ressetServi();
-
+            }
+            catch
+            {
+                var msg = "";
+                msg = "Error de tipo de dato.\nAsegurese de usar los datos correctos.\n";
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
 
 
 

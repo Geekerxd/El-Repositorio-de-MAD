@@ -18,7 +18,7 @@ namespace AppHotel
         public int id;
         public TipoHab before, next;
         static int total=0;
-        static int cantTipHab;
+        static int cantTipHab=0;
         static int cantServi;
         static int contador=0;
         static int contador1 = 0;

@@ -34,14 +34,29 @@ namespace AppHotel
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var Nombre = textBox1.Text;
+
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" ) { MessageBox.Show("Alguna casilla está vacía."); goto fin; }
+            EnlaceDB conexion = new EnlaceDB();
+            try
+            {
+
+                var Nombre = textBox1.Text;
             var Precio = textBox2.Text;
             var Caract = textBox3.Text;
-            EnlaceDB conexion = new EnlaceDB();
+           
             conexion.Registra_Servicio(Nombre, Precio, Caract);
-            conexion = null;
+          
 
             MessageBox.Show("Se guardó servicio: " + Nombre + ".");
+            }
+            catch
+            {
+                var msg = "";
+                msg = "Error de tipo de dato.\nAsegurese de usar los datos correctos.\n";
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            fin:
+              conexion = null;
         }
     }
 }

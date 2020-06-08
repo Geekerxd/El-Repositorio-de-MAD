@@ -23,6 +23,8 @@ namespace AppHotel
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+            listBox2.Items.Clear();
+
             EnlaceDB conexion = new EnlaceDB();
             bool validacion=true;
 
@@ -39,7 +41,7 @@ namespace AppHotel
                 if (textBox2.Text != "")
                     listBox1.Items.Add("Costo Total:\t" + conexion.Precio_Total(int.Parse(textBox1.Text), float.Parse(textBox2.Text)).ToString());
 
-
+                conexion.MostrarServiciosCheckOut(listBox2 ,int.Parse(textBox1.Text));
                 conexion.SetIDCliente("");
                 conexion.SetIDHotel("");
             }
@@ -102,7 +104,12 @@ namespace AppHotel
 
 
 
-                MessageBox.Show("Se creo factura con el número "+ NuFactura + @" como documento de texto \nEn: AppHotel\Facturas");
+                MessageBox.Show("Se creo factura con el número "+ NuFactura + " como documento de texto \n"+@"En: AppHotel\Facturas");
+                textBox1.Text = "";
+                textBox2.Text="";
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+
                 #region leer_txt
                 // Write file contents on console.    
                 /* using (StreamReader sr = File.OpenText(fileName))

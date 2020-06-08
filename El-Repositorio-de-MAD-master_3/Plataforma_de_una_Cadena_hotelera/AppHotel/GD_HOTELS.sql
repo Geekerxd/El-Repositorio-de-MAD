@@ -248,7 +248,7 @@ IF EXISTS
     DROP TABLE dbo.Servicios_en_Hotel;
 GO
 
-CREATE TABLE Servicios_en_Hotel (
+CREATE TABLE  (
 	ID_Hotel int FOREIGN KEY REFERENCES Hotel(ID_Hotel),
 	id_servicio int FOREIGN KEY REFERENCES Servicio(id_servicio),
 	HorarioE datetime, 
