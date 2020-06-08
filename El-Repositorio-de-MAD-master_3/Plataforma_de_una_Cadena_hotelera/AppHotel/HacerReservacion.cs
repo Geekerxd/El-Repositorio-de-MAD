@@ -79,22 +79,22 @@ namespace AppHotel
             EnlaceDB conexion12 = new EnlaceDB();
             int ID = int.Parse(textBox4.Text);
            
-            conexion12 = null;
-            EnlaceDB conexion13 = new EnlaceDB();
-            int id_Hab = conexion13.show_id_TipoHab(comboBox2.Text,comboBox3.Text);
-            conexion13 = null;
+            
+            
+            int id_Hab = conexion12.show_id_TipoHab(comboBox2.Text,comboBox3.Text, NumHab);
+            
             
             float TotalMoney=int.Parse(label5.Text);
 
-            EnlaceDB conexion11 = new EnlaceDB();
-            conexion11.Set_Reservations(anticipo, medio_pago_res, fecha_e, fecha_s, Personas, ID, id_Hab, TotalMoney);
-            int clReserv= conexion11.show_id_MAXReservation();
+
+            conexion12.Set_Reservations(anticipo, medio_pago_res, fecha_e, fecha_s, Personas, ID, id_Hab, TotalMoney);
+            int clReserv= conexion12.show_id_MAXReservation();
 
             foreach (var item in ServiciosEle.Items)
              {
-                int idS = conexion11.show_idServicio(0, item.ToString());
+                int idS = conexion12.show_idServicio(0, item.ToString());
 
-                conexion11.Registro_serv_in_reserv(clReserv,  idS);
+                conexion12.Registro_serv_in_reserv(clReserv,  idS);
             }
                 //conexion11.Registro_serv_in_reserv(int cve_reserv, int id_serv);
                 
@@ -105,8 +105,19 @@ namespace AppHotel
             //conexion15 = null;
 
             MessageBox.Show("Tu clave de reservación es: "+ clReserv+".\nUtilize esta clave para hacer \"Check In\"");
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.Today;
+
         fin:
-            conexion11 = null;
+            conexion12 = null;
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

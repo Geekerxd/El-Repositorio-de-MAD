@@ -288,14 +288,15 @@ BEGIN
     where Nombre = @nombreC
 END
 go
-create PROCEDURE sp_Busca_idHabitation
+alter PROCEDURE sp_Busca_idHabitation
 @hotel        varchar(50),
-@tipo        varchar(50)
+@tipo        varchar(50),
+@num	bigint
 AS
 BEGIN
     select ID_Habitacion ID
     from Habitacion
-    where id_tipoHab = dbo.fn_checa_idTipoHab3(@tipo) and ID_Hotel = dbo.fn_checa_idHotel(@hotel)
+    where id_tipoHab = dbo.fn_checa_idTipoHab3(@tipo) and ID_Hotel = dbo.fn_checa_idHotel(@hotel) and No_Hab = @num
 END
 go
 create PROCEDURE sp_Maximo
@@ -760,21 +761,19 @@ select *from Hotel
 alter procedure sp_ReporteOcupaciones @pais varchar (50),@fecha date
 as
 begin 
-
-select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],
-  dbo.fn_calcula_porcentaje(dbo.fn_cantidadHab(B.ID_Hotel), dbo.fn_cantidadHabOcupadas(A.Cve_Reservacion)) [porcentaje de ocupacion total] --dbo.fn_porcentajeH(B.ID_Hotel)  [Ocupacion total]              --SUM(Costo_Total) [ingresos de hospedaje] ,sum( E.Precio) [ingresos de servicios]
+select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],round(SUM(dbo.fn_cantidadHabOcupadas(A.Cve_Reservacion) * 100/dbo.fn_cantidadHab(B.ID_Hotel)),2)[porcentaje de ocupacion total]
 from Reservacion A
 inner join Habitacion B
 on B.ID_Habitacion=A.ID_Habitacion
 FULL OUTER JOIN Hotel C
-on C.ID_Hotel = B.ID_Hotel
+on C.ID_Hotel =B.ID_Hotel
 Full outer join Tipo_Habitacion D
 on D.id_tipoHab = B.id_tipoHab
 where @fecha between A.Fecha_Entrada and A.Fecha_Salida and dbo.fn_traeidciudadpais(B.ID_Hotel) = dbo.fn_idPais(@pais)
-group by B.ID_Hotel,A.Cve_Reservacion
+group by B.ID_Hotel
 
  end
- exec sp_ReporteOcupaciones 'mexico', '20200604'
+ exec sp_ReporteOcupaciones 'EEUU', '20200608'
 -- alter procedure sp_ReporteOcupaciones @pais varchar (50),@fecha date
 --as
 --begin
@@ -821,15 +820,72 @@ alter procedure ps_RepreOcupacionesTipo
 @fecha	date
 as
 begin
- select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion], dbo.fn_calcula_porcentaje2(dbo.fn_RepreOcupacionesTipo2(@id_hotel),dbo.fn_RepreOcupacionesTipo(@id_hotel, @fecha) ) [Porcentaje de ocupacion] --dbo.fn_calcula_porcentaje2(count(A.id_tipoHab))--, dbo.fn_buscacanttipo(@fecha))
-    from Habitacion A
-    left join Tipo_Habitacion B
-    on A.id_tipoHab = B.id_tipoHab
+    select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion], 
+	round( dbo.fn_RepreOcupacionesTipo(A.ID_Hotel, @fecha, B.id_tipoHab)* 100/dbo.fn_RepreOcupacionesTipo2(@id_hotel, B.id_tipoHab),2) [ocupacion por tipo hab],
+	SUM(dbo.fn_repreOcupacionesPersonas(@id_hotel, B.id_tipoHab, C.Cve_Reservacion))  [Personas alojadas]--dbo.repreOcupacionesPersonas(C.Cve_Reservacion)	
+	from Habitacion A
+	inner join Tipo_Habitacion B
+	on A.id_tipoHab = B.id_tipoHab
 	full outer join Reservacion C
 	on C.ID_Habitacion = A.ID_Habitacion
-    where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
-    group by B.id_tipoHab
+	where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
+	group by B.id_tipoHab, A.ID_Hotel--,C.Personas
+	
 
 end
 
-exec dbo.ps_RepreOcupacionesTipo 20, '20200606'
+
+exec dbo.ps_RepreOcupacionesTipo 260, '20200608'
+
+--===============================================================================
+--===============================================================================
+--===============================================================================
+--===============================================================================
+
+select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],round(SUM(dbo.fn_cantidadHabOcupadas(A.Cve_Reservacion) * 100/dbo.fn_cantidadHab(B.ID_Hotel)),2)[porcentaje de ocupacion total]
+from Reservacion A
+inner join Habitacion B
+on B.ID_Habitacion=A.ID_Habitacion
+FULL OUTER JOIN Hotel C
+on C.ID_Hotel =B.ID_Hotel
+Full outer join Tipo_Habitacion D
+on D.id_tipoHab = B.id_tipoHab
+where '20200608' between A.Fecha_Entrada and A.Fecha_Salida and dbo.fn_traeidciudadpais(B.ID_Hotel) = dbo.fn_idPais('EEUU')
+group by B.ID_Hotel
+
+--===============================================================================
+--===============================================================================
+--===============================================================================
+--===============================================================================
+declare @id_hotel int
+set @id_hotel=260
+declare @fecha date
+set @fecha='20200608'
+
+select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion], 
+round( dbo.fn_RepreOcupacionesTipo(@id_hotel, @fecha)* 100/dbo.fn_RepreOcupacionesTipo2(@id_hotel),2) [ocupacion por tipo hab]
+from Habitacion A
+left join Tipo_Habitacion B
+on A.id_tipoHab = B.id_tipoHab
+full outer join Reservacion C
+on C.ID_Habitacion = A.ID_Habitacion
+where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
+group by B.id_tipoHab
+
+
+----=====================================
+declare @id_hotel int
+set @id_hotel=260
+declare @fecha date
+set @fecha='20200608'
+
+select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion], 
+round( dbo.fn_RepreOcupacionesTipo(A.ID_Hotel, @fecha, B.id_tipoHab)* 100/dbo.fn_RepreOcupacionesTipo2(@id_hotel, B.id_tipoHab),2) [ocupacion por tipo hab]
+from Habitacion A
+inner join Tipo_Habitacion B
+on A.id_tipoHab = B.id_tipoHab
+full outer join Reservacion C
+on C.ID_Habitacion = A.ID_Habitacion
+where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
+group by B.id_tipoHab, A.ID_Hotel
+

@@ -17,10 +17,11 @@ namespace AppHotel
         public TextBox txb;
         public int id;
         public TipoHab before, next;
-        static int total;
+        static int total=0;
         static int cantTipHab;
         static int cantServi;
-        static int contador;
+        static int contador=0;
+        static int contador1 = 0;
         static int Num;
         static string nameh;
         static string nameS;
@@ -195,14 +196,14 @@ namespace AppHotel
                     if (txb.Text != "")
                     {
                         int num = Int32.Parse(txb.Text);
-                        if (contador == BuscCanth)
+                        if (contador1 == BuscCanth)
                         {
 
                             Num = num;
                             nameh=chb.Text;
                             goto alFinal;
                         }
-                            contador += 1;
+                            contador1 += 1;
                     }
                 }
 
@@ -216,27 +217,25 @@ namespace AppHotel
                     if (txb.Text != "")
                     {
                         int num = Int32.Parse(txb.Text);
-                        if (contador == BuscCanth)
+                        if (contador1 == BuscCanth)
                         {
 
                             Num = num;
                             nameh = chb.Text;
                             goto alFinal;
                         }
-                        contador += 1;
+                        contador1 += 1;
 
                     }
 
 
                 }
-
-
-                //como me salgo xD
-                //jaja arriba te debe venir la opcion creoya vi
+                
+              
             }
 
         alFinal:
-            contador = contador;
+            contador1 = 0;
         }
 
         public void ShowTextEveryNumber4()
@@ -297,7 +296,7 @@ namespace AppHotel
             }
 
         FinS:
-            contador = contador;
+            contador = 0;
         }
 
         public int GetTotal (){
@@ -330,6 +329,7 @@ namespace AppHotel
         public void allto0()
         {
             contador = 0;
+            contador1 = 0;
             nameh = "";
             Num = 0;
             cantTipHab = 0;
@@ -338,12 +338,71 @@ namespace AppHotel
         public void allto02()
         {
             contador = 0;
+            contador1 = 0;
             nameS = "";
             Num = 0;
             cantTipHab = 0;
             total = 0;
             cantServi = 0;
         }
+
+
+        public void ResetTipoHab()
+        {
+            if (next != null)
+            {
+                if (chb.Checked == true)
+                {
+                    txb.Text = "";
+                    chb.Checked = false;
+                }
+
+
+                next.ResetTipoHab();
+            }
+            else
+            {
+                if (chb.Checked == true)
+                {
+                    txb.Text = "";
+                    chb.Checked = false;
+                }
+
+
+            }
+        }
+
+        public void ResetServi()
+        {
+            if (next != null)
+            {
+                if (chb.Checked == true)
+                {
+                   
+                    chb.Checked = false;
+                }
+
+
+                next.ResetServi();
+            }
+            else
+            {
+                if (chb.Checked == true)
+                {
+                   
+                    chb.Checked = false;
+                }
+
+
+            }
+        }
+
+
+
+
+
+
+
     }
 
 
@@ -408,9 +467,9 @@ namespace AppHotel
             }
             return head.GetNumHab();
         }
-        public string ShowTextEveryNumber4(int busc)
+        public string ShowTextEveryNumber4(int busc)//servicios
         {
-            head.Setcontador0();//contador
+            head.Setcontador0();
             if (head != null)
             {
                 head.ShowTextEveryNumber5(busc);
@@ -426,6 +485,24 @@ namespace AppHotel
                 head.ShowTextEveryNumber4();
             }
             return head.GetCantServ();
+        }
+        public void ressetTipoHab()
+        {
+
+            if (head != null)
+            {
+                head.ResetTipoHab();
+            }
+            
+        }
+        public void ressetServi()
+        {
+
+            if (head != null)
+            {
+                head.ResetServi();
+            }
+
         }
 
         public void limpieza() {

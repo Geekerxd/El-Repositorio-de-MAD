@@ -152,7 +152,7 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 39);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(277, 73);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(277, 120);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint_1);
             // 
@@ -206,7 +206,7 @@
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(53, 289);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 122);
+            this.groupBox1.Size = new System.Drawing.Size(315, 180);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
@@ -227,7 +227,7 @@
             this.Flow2.AutoScroll = true;
             this.Flow2.Location = new System.Drawing.Point(9, 32);
             this.Flow2.Name = "Flow2";
-            this.Flow2.Size = new System.Drawing.Size(265, 93);
+            this.Flow2.Size = new System.Drawing.Size(357, 93);
             this.Flow2.TabIndex = 17;
             this.Flow2.Paint += new System.Windows.Forms.PaintEventHandler(this.Flow2_Paint);
             // 
@@ -237,7 +237,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(536, 70);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(289, 134);
+            this.groupBox2.Size = new System.Drawing.Size(383, 134);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             // 

@@ -223,14 +223,26 @@ END
 select * from Usuario
 select * from Cliente
 select * from hotel
-select * from Reservacion
 select * from habitacion
+select * from Reservacion
+
 select * from Servicios_en_Reservacion
-select * from pais
+
+select * from hotel
 select * from ciudad
+select * from pais
+
 select * from tipo_habitacion
 select * from factura
+select * from Servicio
 
+select * from hotel
+select * from habitacion
+
+
+-- set S_Nombre='Srv Cuarto' 
+--delete  Servicio
+--where id_servicio=40
 
 
 

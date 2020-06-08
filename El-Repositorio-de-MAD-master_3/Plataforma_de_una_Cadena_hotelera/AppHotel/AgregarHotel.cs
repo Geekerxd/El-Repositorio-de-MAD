@@ -147,8 +147,12 @@ namespace AppHotel
 
         private void button1_Click(object sender, EventArgs e)
         {
+            EnlaceDB conexion5 = new EnlaceDB();
+            //funcion que cheque si ya existe el hotel
             
-            
+            if (conexion5.show_Hotel(0, textBox1.Text) != 0) {
+                MessageBox.Show("Hotel \""+ textBox1.Text + "\" Ya existe"); goto END; }
+
             int totalHab = lista.ShowTextEveryNumber();
 
             var caract = textBox3.Text;
@@ -168,9 +172,9 @@ namespace AppHotel
             string ciudad1 = comboBox2.Text;
 
             int ciudad = 0;
-            EnlaceDB conexion5 = new EnlaceDB();
+           
             ciudad = conexion5.show_idCiudad(ciudad, ciudad1);
-            conexion5 = null;
+           
             // var usu_atiendeTemp = comboBox3.Text;
 
             //int usu_atiende = 0;
@@ -180,14 +184,14 @@ namespace AppHotel
 
             //int usu_atiende = Int32.Parse(comboBox3.Text);
 
-            EnlaceDB conexion = new EnlaceDB();
-            conexion.Set_Hotel(caract, no_pisos, nombreH, cant_hab, zona_tur, domicilio, ciudad, adminName);
-            conexion = null;
+           
+            conexion5.Set_Hotel(caract, no_pisos, nombreH, cant_hab, zona_tur, domicilio, ciudad, adminName);
+           
 
             int id_hotel = 0;
-            EnlaceDB conexion2 = new EnlaceDB();
-            id_hotel= conexion2.show_Hotel(id_hotel, nombreH);
-            conexion2 = null;
+           
+            id_hotel= conexion5.show_Hotel(id_hotel, nombreH);
+           
 
             //var random = new Random();
             int no_hab = 0;
@@ -210,15 +214,15 @@ namespace AppHotel
                     no_hab = no_hab +1;
 
                     int tipo1 = 0;
-                    EnlaceDB conexion6 = new EnlaceDB();
-                    tipo1 = conexion6.show_TipoHabID(tipo1, Tipotemp);
-                    conexion6 = null;
+                   
+                    tipo1 = conexion5.show_TipoHabID(tipo1, Tipotemp);
+                    
 
                     var tipo = tipo1;
                     //
-                    EnlaceDB conexion3 = new EnlaceDB();
-                    conexion3.Set_Habitaciones(no_hab, id_hotel, tipo);
-                    conexion3 = null;
+                   
+                    conexion5.Set_Habitaciones(no_hab, id_hotel, tipo);
+                    
                 }
             }
 
@@ -232,13 +236,13 @@ namespace AppHotel
                 //var TipoServi = L_SA.ShowTextEveryNumber4(i);
 
                 int tipo1 = 0;
-                EnlaceDB conexion7 = new EnlaceDB();
-                tipo1 = conexion7.show_idServicio(tipo1, TipoServi);
-                conexion7 = null;
+               
+                tipo1 = conexion5.show_idServicio(tipo1, TipoServi);
+                
 
-                EnlaceDB conexion6 = new EnlaceDB();
-                conexion6.Set_Servicios_en_Hotel(id_hotel, tipo1);
-                conexion6 = null;
+               
+                conexion5.Set_Servicios_en_Hotel(id_hotel, tipo1);
+                
             }
 
             lista.limpieza2();
@@ -246,6 +250,23 @@ namespace AppHotel
 
             MessageBox.Show("Se guardó hotel: " + nombreH +".");
 
+
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+            lista.ressetTipoHab();
+            L_SA.ressetServi();
+
+
+
+
+
+        END:
+            conexion5 = null;
         }
 
         private void Flow2_Paint(object sender, PaintEventArgs e)

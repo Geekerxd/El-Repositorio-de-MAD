@@ -2172,7 +2172,7 @@ namespace AppHotel
 
             return Id;
         }
-        public int show_id_TipoHab(string hotelNmae, string tipoName)
+        public int show_id_TipoHab(string hotelNmae, string tipoName,int num)
         {//llenar combo
             var msg = "";
             int Id = 0;
@@ -2182,6 +2182,7 @@ namespace AppHotel
                 conectar();
 
                 dr = null;
+                
                 string qry = "sp_Busca_idHabitation";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _conexion.Open();
@@ -2192,7 +2193,8 @@ namespace AppHotel
                 parametro1.Value = hotelNmae;
                 var parametro2 = _comandosql.Parameters.Add("@tipo ", SqlDbType.VarChar, 50);
                 parametro2.Value = tipoName;
-
+                var parametro3 = _comandosql.Parameters.Add("@num ", SqlDbType.BigInt);
+                parametro3.Value = num;
 
                 dr = _comandosql.ExecuteReader();
 
