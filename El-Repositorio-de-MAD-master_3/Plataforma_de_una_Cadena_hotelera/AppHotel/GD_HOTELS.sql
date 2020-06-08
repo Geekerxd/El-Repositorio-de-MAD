@@ -1,8 +1,8 @@
 
-CREATE DATABASE GD_HOTELS3
+CREATE DATABASE GD_HOTEL_MAX5
 GO
 
-USE GD_HOTELS3
+USE GD_HOTEL_MAX5
 GO
 
 --Creación de tablas
@@ -26,15 +26,13 @@ CREATE TABLE Usuario (
 	Paterno varchar(80) not null,
 	Materno varchar(80) not null,
 	No_nomina int,
-	Fecha_nacimiento datetime,
+	Fecha_nacimiento date,
 	Domicilio varchar(100),
 	Telefono char(10),
 	foto image default null,
 );
 GO
 
---cambiar tipo de dato datetime to time
-ALTER TABLE Usuario Alter column Fecha_nacimiento date;
 
 --Creación de tabla Cliente
 
@@ -58,13 +56,94 @@ CREATE TABLE Cliente (
 	e_mail varchar(50),
 	Telefono char(10) not null,
 	Referencia varchar(50),
-	Fecha_nacimiento datetime,
+	Fecha_nacimiento date,
 	
 	Cve_usuario int FOREIGN KEY REFERENCES Usuario(Cve_usuario),
 );
 GO
 
-ALTER TABLE Cliente Alter column Fecha_nacimiento date;
+IF EXISTS
+(
+    SELECT *
+    FROM sys.objects
+    WHERE object_id = OBJECT_ID(N'dbo.Pais')
+)
+    DROP TABLE dbo.Pais;
+GO
+
+CREATE TABLE Pais (
+	
+	id_pais	int primary key not null identity(5,5),
+	P_Nombre  varchar(50) not null,
+	Descripcion varchar(300)
+);
+GO
+
+--Creación de tabla Ciudad
+
+IF EXISTS
+(
+    SELECT *
+    FROM sys.objects
+    WHERE object_id = OBJECT_ID(N'dbo.Ciudad')
+)
+    DROP TABLE dbo.Ciudad;
+GO
+
+CREATE TABLE Ciudad (
+	
+	id_ciudad	int primary key not null identity(20,20),
+	C_Nombre  varchar(50) not null,
+	Descripcion varchar(300),
+	
+	Cve_usuario int FOREIGN KEY REFERENCES Usuario(Cve_usuario),
+	id_pais int FOREIGN KEY REFERENCES Pais(id_pais)
+);
+GO
+
+--Creación de tabla Tipo_Habitacion
+
+IF EXISTS
+(
+    SELECT *
+    FROM sys.objects
+    WHERE object_id = OBJECT_ID(N'dbo.Tipo_Habitacion')
+)
+    DROP TABLE dbo.Tipo_Habitacion;
+GO
+
+
+CREATE TABLE Tipo_Habitacion (
+	
+	id_tipoHab	int primary key not null identity(1,1),
+	Tipo varchar(50) not null,
+	Caracteristicas varchar(300),
+	No_Camas tinyint,
+	Tipo_Cama varchar(30),
+	Cant_Personas tinyint not null,
+	Precio_noche money not null
+);
+GO
+
+--Creación de tabla Servicio
+
+IF EXISTS
+(
+    SELECT *
+    FROM sys.objects
+    WHERE object_id = OBJECT_ID(N'dbo.Servicio')
+)
+    DROP TABLE dbo.Servicio;
+GO
+
+CREATE TABLE Servicio (
+	
+	id_servicio	int primary key not null identity(5,5),
+	S_Nombre varchar(50) not null,
+	Precio money not null,
+	Caracteristicas varchar(300)
+);
+GO
 
 --Creación de tabla Hotel
 
@@ -107,7 +186,7 @@ GO
 CREATE TABLE Habitacion (
 	
 	ID_Habitacion bigint primary key identity(1,1) not null,
-	Nivel tinyint,
+	Nivel varchar(50),
 	Caracteristicas varchar(300),
 	No_Hab int,
 	
@@ -115,8 +194,8 @@ CREATE TABLE Habitacion (
 	id_tipoHab int FOREIGN KEY REFERENCES Tipo_Habitacion(id_tipoHab)
 );
 GO
-select * from Habitacion
-ALTER TABLE Habitacion Alter column Nivel varchar(50);
+
+
 --Creación de tabla Reservacion
 
 IF EXISTS
@@ -135,8 +214,8 @@ CREATE TABLE Reservacion (
 	check_out bit default null,
 	Anticipo money not null,
 	Medio_Pago_Res varchar(50),
-	Fecha_Entrada datetime not null,
-	Fecha_Salida datetime,
+	Fecha_Entrada date not null,
+	Fecha_Salida date,
 	Personas tinyint not null,
 	
 	RFC int FOREIGN KEY REFERENCES Cliente(RFC),
@@ -148,95 +227,8 @@ CREATE TABLE Reservacion (
 	No_Fact bigint default null
 );
 GO
-alter table Reservacion alter column No_Fact bigint 
 
-ALTER TABLE Reservacion Alter column Fecha_Entrada date;
-ALTER TABLE Reservacion Alter column Fecha_Salida date;
 
---Creación de tabla Servicio
-
-IF EXISTS
-(
-    SELECT *
-    FROM sys.objects
-    WHERE object_id = OBJECT_ID(N'dbo.Servicio')
-)
-    DROP TABLE dbo.Servicio;
-GO
-
-CREATE TABLE Servicio (
-	
-	id_servicio	int primary key not null identity(5,5),
-	S_Nombre varchar(50) not null,
-	Precio money not null,
-	Caracteristicas varchar(300)
-);
-GO
-
---Creación de tabla Ciudad
-
-IF EXISTS
-(
-    SELECT *
-    FROM sys.objects
-    WHERE object_id = OBJECT_ID(N'dbo.Ciudad')
-)
-    DROP TABLE dbo.Ciudad;
-GO
-
-CREATE TABLE Ciudad (
-	
-	id_ciudad	int primary key not null identity(20,20),
-	C_Nombre  varchar(50) not null,
-	Descripcion varchar(300),
-	
-	Cve_usuario int FOREIGN KEY REFERENCES Usuario(Cve_usuario),
-	id_pais int FOREIGN KEY REFERENCES Pais(id_pais)
-);
-GO
-
---Creación de tabla Pais
-
-IF EXISTS
-(
-    SELECT *
-    FROM sys.objects
-    WHERE object_id = OBJECT_ID(N'dbo.Pais')
-)
-    DROP TABLE dbo.Pais;
-GO
-
-CREATE TABLE Pais (
-	
-	id_pais	int primary key not null identity(5,5),
-	P_Nombre  varchar(50) not null,
-	Descripcion varchar(300)
-);
-GO
-select * from Pais
---Creación de tabla Tipo_Habitacion
-
-IF EXISTS
-(
-    SELECT *
-    FROM sys.objects
-    WHERE object_id = OBJECT_ID(N'dbo.Tipo_Habitacion')
-)
-    DROP TABLE dbo.Tipo_Habitacion;
-GO
-
-CREATE TABLE Tipo_Habitacion (
-	
-	id_tipoHab	int primary key not null identity(1,1),
-	Tipo varchar(50) not null,
-	Caracteristicas varchar(300),
-	No_Camas tinyint,
-	Tipo_Cama varchar(30),
-	Cant_Personas tinyint not null,
-	Precio_noche money not null
-);
-GO
-select * from Tipo_Habitacion
 --Creación de tabla Servicios_en_Hotel
 
 IF EXISTS
@@ -248,7 +240,7 @@ IF EXISTS
     DROP TABLE dbo.Servicios_en_Hotel;
 GO
 
-CREATE TABLE  (
+CREATE TABLE  Servicios_en_Hotel(
 	ID_Hotel int FOREIGN KEY REFERENCES Hotel(ID_Hotel),
 	id_servicio int FOREIGN KEY REFERENCES Servicio(id_servicio),
 	HorarioE datetime, 
@@ -273,13 +265,6 @@ CREATE TABLE Servicios_en_Reservacion (
 	id_servicio int FOREIGN KEY REFERENCES Servicio(id_servicio),
 );--
 GO
-drop table Servicios_en_Reservacion
-drop table factura
-drop table Reservacion
-
-
-select * from ciudad
-
 
 create table factura(
 

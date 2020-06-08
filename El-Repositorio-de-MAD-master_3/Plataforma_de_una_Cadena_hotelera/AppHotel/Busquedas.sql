@@ -1,4 +1,4 @@
-USE GD_HOTELS3
+USE GD_HOTEL_MAX5
 go
 CREATE PROCEDURE sp_Busca_Pais
 AS
@@ -101,7 +101,7 @@ BEGIN
 	--where id_tipoHab =@num
 
 END
-
+go
 create PROCEDURE sp_MuestraTipoHab2
 @id		int
 AS
@@ -116,22 +116,7 @@ BEGIN
 
 END
 
---create PROCEDURE sp_MuestraHab  -BORRAR
---@nombre_hotel		varchar(50)
---AS
---BEGIN
---	
---	--fn_checa_idCiudad
---	--declare @idTemp;
---
---	--select ;
---
---	select Nombre nombre
---	from Hotel
---	where id_ciudad = dbo.fn_checa_idCiudad(@nombre_ciudad)
---
---	--select Nombre from Hotel
---END
+go
 
 create PROCEDURE sp_Busca_Usuario
 AS
@@ -156,7 +141,7 @@ BEGIN
 	where Nombre = @nombreH
 END
 go
---checar y tambien adentro de EnlaceDB
+
 create PROCEDURE sp_Busca_idUsu
 @nombreU		varchar(80)
 AS
@@ -211,20 +196,7 @@ BEGIN
 	from Servicio
 	where S_Nombre = @nombreTipo
 END
---CREATE PROCEDURE sp_BuscaInfoH		--	BORRAR
---@nombre_H		varchar(50)
---AS
---BEGIN
---	select Nombre nombre, No_pisos pisos, Cant_habitaciones num_hab, Zona_Turistica zona, 
---	Caracteristicas caract, Domicilio domi, Fecha_inicio fecha_ini
---	from Hotel
---	where C_Nombre = @nombre_ciudad
-
---	--select Nombre from Hotel
-
-
---END
-
+go
 create  procedure sp_BuscaUsu
 @usuName	varchar(80),
 @usuContra	char(8)
@@ -242,10 +214,10 @@ BEGIN
 	from Hotel
 	where Nombre = @nombre
 END
-
+go
 --==========================
 
-alter PROCEDURE sp_MuestraServ
+create PROCEDURE sp_MuestraServ
 @id_hotel        varchar (50)
 AS
 BEGIN
@@ -257,6 +229,7 @@ BEGIN
  
 
 END
+go
 create PROCEDURE sp_MuestraServicios
 @id        int
 AS
@@ -269,8 +242,8 @@ BEGIN
  
 
 END
-
-alter Procedure sp_TraeCosto
+go
+create Procedure sp_TraeCosto
 @tipo_hab        varchar(50)
 
 as
@@ -287,6 +260,7 @@ begin
  
 
 end
+go
 --=======================================================
 create PROCEDURE sp_Busca_idCliente
 @nombreC        varchar(80)
@@ -297,7 +271,7 @@ BEGIN
     where Nombre = @nombreC
 END
 go
-alter PROCEDURE sp_Busca_idHabitation
+create PROCEDURE sp_Busca_idHabitation
 @hotel        varchar(50),
 @tipo        varchar(50),
 @num	bigint
@@ -315,9 +289,9 @@ select Max(Cve_Reservacion) ID
 	from Reservacion
 END
 
-
+go
 --========
-alter procedure Busca_resreva
+create procedure Busca_resreva
 @IDR bigint
 AS
 BEGIN
@@ -338,6 +312,7 @@ BEGIN
 DELETE FROM Reservacion where Cve_Reservacion=@IDR
 
 END
+go
 create procedure BorraServiReservacion
 @IDR bigint
 AS
@@ -345,35 +320,8 @@ BEGIN
 DELETE FROM Servicios_en_Reservacion where Cve_Reservacion=@IDR
 
 END
-
---
-
---alter procedure SP_Consulta_cliente
---@nombreCliente varchar (80)
---as 
---BEGIN
---declare @nom	varchar(80)
---declare @pat	varchar(50)
---	
---declare @mat	varchar(50)
---
---declare @rfc	int
---
---
---
---create table #tabla2(Nombre_Cliente	varchar(80), Apellido_Paterno	varchar(50), Apellido_Materno	varchar(50), RFC	int)
---select @nom = Nombre,@pat = Paterno,@mat =Materno, @rfc=RFC 
---from Cliente 
---where @nombreCliente=Nombre
---
---insert into #tabla2
---values(@nom, @pat,@mat,@rfc)
---
---
---select Nombre_Cliente, Apellido_Paterno, Apellido_Materno, RFC
---from #tabla2
---END
-alter procedure SP_Consulta_cliente
+go
+create procedure SP_Consulta_cliente
 @nombreCliente varchar (80)
 as
 BEGIN
@@ -381,10 +329,10 @@ select Nombre Nombre_Cliente,Paterno Apellido_Paterno,Materno Apellido_Materno, 
 from Cliente 
 where @nombreCliente=Nombre
 END
-
+go
 --================= CKECK IN  =============
 
-alter PROCEDURE sp_MostrarDatosReservacion
+create PROCEDURE sp_MostrarDatosReservacion
 @id        bigint
 AS
 BEGIN
@@ -393,8 +341,8 @@ BEGIN
     where Cve_Reservacion = @id
 END
 
-
-alter PROCEDURE sp_MostrarNombreCliente
+go
+create PROCEDURE sp_MostrarNombreCliente
 @id        int
 AS
 BEGIN
@@ -402,8 +350,8 @@ BEGIN
     from Cliente
     where RFC = @id
 END
-
-alter PROCEDURE sp_MostrarNombreHabitac
+go
+create PROCEDURE sp_MostrarNombreHabitac
 @id        bigint
 AS
 BEGIN
@@ -413,8 +361,8 @@ BEGIN
     on B.id_tipoHab = dbo.fn_checa_idHab(@id) 
 END
 
-
-alter PROCEDURE sp_CheckIn
+go
+create PROCEDURE sp_CheckIn
 @id        bigint
 AS
 BEGIN
@@ -422,8 +370,8 @@ BEGIN
     set check_in = 1
     WHERE Cve_Reservacion = @id
 END
-
-alter procedure sp_checkinpasado
+go
+create procedure sp_checkinpasado
 as
 begin
 	declare @tabla table(fecha	date)
@@ -446,34 +394,34 @@ begin
    
 end
 
+go
 
+--create procedure sp_checkinpasado
+--as
+--begin
+--	declare @tabla table(fecha	date)
+--	insert into @tabla(fecha) select Fecha_Entrada from Reservacion
+--	declare @count int = (select count(*) from @tabla)				-- La cantidad de registros en reservación
+--
+--
+--	while (@count > 0)
+--	begin
+--		declare @fecha	date = (select top(1) fecha from @tabla)
+--
+--		if(@fecha < getdate())
+--		begin
+--			delete
+--			from Reservacion
+--			where Fecha_Entrada = @fecha
+--		end
+--
+--			--set @count =( select count(*) from @tabla)
+--			set @count = @count-1
+--	end
+--   
+--end
 
-alter procedure sp_checkinpasado
-as
-begin
-	declare @tabla table(fecha	date)
-	insert into @tabla(fecha) select Fecha_Entrada from Reservacion
-	declare @count int = (select count(*) from @tabla)				-- La cantidad de registros en reservación
-
-
-	while (@count > 0)
-	begin
-		declare @fecha	date = (select top(1) fecha from @tabla)
-
-		if(@fecha < getdate())
-		begin
-			delete
-			from Reservacion
-			where Fecha_Entrada = @fecha
-		end
-
-			--set @count =( select count(*) from @tabla)
-			set @count = @count-1
-	end
-   
-end
-
-alter procedure sp_descuento
+create procedure sp_descuento
 @cve    bigint,
 @desc    money
 
@@ -491,12 +439,11 @@ begin
     --set @Final = @total- (@total- @anti)*(@desc/100) 
 	--select @Final final
 end
+go
 
-exec sp_descuento 1800, 0
-
- select Costo_Total
-    from Reservacion
-    where Cve_Reservacion = 1800
+-- select Costo_Total
+--    from Reservacion
+--    where Cve_Reservacion = 1800
 
 --=================  CHECK OUT  ===============
 
@@ -507,8 +454,8 @@ select Max(numFac) ID
 	from factura
 END
 
-
-alter procedure sp_descuento2
+go
+create procedure sp_descuento2
 @cve    bigint,
 @desc    money
 as
@@ -572,9 +519,9 @@ begin
 
 	select @Final final
 end
-
+go
 --=================
-alter procedure sp_BuscaClientRFC
+create procedure sp_BuscaClientRFC
 @nombre varchar (80)
 as
 begin
@@ -583,7 +530,8 @@ begin
     where @nombre = Nombre
 end
 --=================
-alter procedure sp_HistorialClient
+go
+create procedure sp_HistorialClient
 @RFC    int
 as
 begin
@@ -595,34 +543,34 @@ begin
     on A.RFC = @RFC and B.ID_Hotel = dbo.fn_NombreHotel(A.ID_Habitacion)
 	where  A.RFC = @RFC and B.ID_Hotel = dbo.fn_NombreHotel(A.ID_Habitacion)and A.check_in = 1 and A.check_out = 1
 end
-exec sp_HistorialClient 1234
+--exec sp_HistorialClient 1234
 --=================
+go
+
+--create procedure sp_reporte_ventas
+--@pais    varchar(50),
+--@mes    int
+--as
+--begin
+--    declare @c_nom    varchar
+--    declare @ingresos    money
+--    select  Nombre [Nombre del Hotel], dbo.fn_ingresototal2(@mes) [Ingresos por hospedaje], dbo.fn_ingresototal3(@mes) [Ingresos de servicios]
+--    from Hotel 
+--    where dbo.fn_buscaciudad(@pais) = id_ciudad
+--
+--end
+--go
+
+--exec sp_reporte_ventas2 'EEUU',7
 
 
-alter procedure sp_reporte_ventas
-@pais    varchar(50),
-@mes    int
-as
-begin
-    declare @c_nom    varchar
-    declare @ingresos    money
-    select  Nombre [Nombre del Hotel], dbo.fn_ingresototal2(@mes) [Ingresos por hospedaje], dbo.fn_ingresototal3(@mes) [Ingresos de servicios]
-    from Hotel 
-    where dbo.fn_buscaciudad(@pais) = id_ciudad
-
-end
-
-
-exec sp_reporte_ventas2 'EEUU',7
-
-
- select dbo.fn_ingresototal(6) [Ingresos]
-    from Reservacion B
-    where month(getdate()) = 6
+ --select dbo.fn_ingresototal(6) [Ingresos]
+ --   from Reservacion B
+ --   where month(getdate()) = 6
 
 --=======================================
 
-alter procedure sp_reporte_ventas2
+create procedure sp_reporte_ventas2
 @pais    varchar(50),
 @mes    int
 as
@@ -641,18 +589,18 @@ begin
 	group by A.ID_Hotel
 end
 
-
-select dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del Hotel],SUM(Costo_Total)  [Ingresos por hospedaje]
-from Reservacion A
-inner join Habitacion B
-on B.ID_Habitacion=A.ID_Habitacion
-where month(A.Fecha_Salida) = 6
-group by B.ID_Hotel
-
-
+--go
+--select dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del Hotel],SUM(Costo_Total)  [Ingresos por hospedaje]
+--from Reservacion A
+--inner join Habitacion B
+--on B.ID_Habitacion=A.ID_Habitacion
+--where month(A.Fecha_Salida) = 6
+--group by B.ID_Hotel
 
 
-alter procedure sp_reporte_ventas
+go
+
+create procedure sp_reporte_ventas
 @pais    varchar(50),
 @mes    int
 as
@@ -666,10 +614,10 @@ begin
     where dbo.fn_buscaciudad(@pais) = A.id_ciudad
 
 end
+go
+--exec sp_reporte_ventas 'EEUU',6
 
-exec sp_reporte_ventas 'EEUU',6
-
---alter view vw_reporteventas
+--create view vw_reporteventas
 --as
 
 create procedure algo
@@ -707,11 +655,11 @@ begin
 	select id_, nombreHot, costoT 
 	from #tabla1
 end
-
+go
 ---funcion base
 --=================================================================================================================
 --=================================================================================================================
-alter procedure sp_RegistroVentas @pais varchar (50),@mes int
+create procedure sp_RegistroVentas @pais varchar (50),@mes int
 as
 begin
 
@@ -730,46 +678,28 @@ group by B.ID_Hotel
 
 end
 
+go
+--select dbo.fn_traeidciudadName(10)
+--exec sp_RegistroVentas 'mexico',6
 
-select dbo.fn_traeidciudadName(10)
-exec sp_RegistroVentas 'mexico',6
 
---drop table #tabla1
---drop table #tabla2
---drop table #tabla3
---where dbo.fn_buscaciudad('EEUU')=dbo.fn_traeidciudad([Id del hotel])
------------------------------------------prueba
-
-select [Id del hotel], [Nombre del hotel], [ingresos de hospedaje], [ingresos de servicios]
-from #tabla3 
-where 60=dbo.fn_traeidciudad(60)
-
------------------------------------------
-select * from Servicios_en_Reservacion
-select * from Servicio
-
-select *from Reservacion
-select *from Habitacion
-select *from Hotel
-
----------------------------------------
 
 --===================================================================================
 --regresa el nombre del hotel con el id
- select  dbo.FN_RegresaHotelName(A.ID_Hotel) [Nombre del Hotel], SUM(C.Costo_Total) [Ingresos de hospedaje] --@ingresos + C.Costo_Total  --, dbo.fn_ingresototal3(@mes) [Ingresos de servicios], A.Nombre [Nombre del Hotel],
-    from Hotel A
-	full join Habitacion B
-	on A.ID_Hotel = B.ID_Hotel
-	full outer join Reservacion C
-	on C.ID_Habitacion = B.ID_Habitacion
-    where dbo.fn_buscaciudad('EEUU') = A.id_ciudad and month(C.Fecha_Salida) = 6
-	group by A.ID_Hotel
-
-	select [Id del Hotel],[Nombre del Hotel] from vw_reporteventas
+-- select  dbo.FN_RegresaHotelName(A.ID_Hotel) [Nombre del Hotel], SUM(C.Costo_Total) [Ingresos de hospedaje] --@ingresos + C.Costo_Total  --, dbo.fn_ingresototal3(@mes) [Ingresos de servicios], A.Nombre [Nombre del Hotel],
+--    from Hotel A
+--	full join Habitacion B
+--	on A.ID_Hotel = B.ID_Hotel
+--	full outer join Reservacion C
+--	on C.ID_Habitacion = B.ID_Habitacion
+--    where dbo.fn_buscaciudad('EEUU') = A.id_ciudad and month(C.Fecha_Salida) = 6
+--	group by A.ID_Hotel
+--
+--	select [Id del Hotel],[Nombre del Hotel] from vw_reporteventas
 --===================================================================================
 
 
-alter procedure sp_ReporteOcupaciones @pais varchar (50),@fecha date
+create procedure sp_ReporteOcupaciones @pais varchar (50),@fecha date
 as
 begin 
 select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],round(SUM(dbo.fn_cantidadHabOcupadas(A.Cve_Reservacion) * 100/dbo.fn_cantidadHab(B.ID_Hotel)),2)[porcentaje de ocupacion total]
@@ -784,31 +714,9 @@ where @fecha between A.Fecha_Entrada and A.Fecha_Salida and dbo.fn_traeidciudadp
 group by B.ID_Hotel
 
  end
- exec sp_ReporteOcupaciones 'EEUU', '20200608'
--- alter procedure sp_ReporteOcupaciones @pais varchar (50),@fecha date
---as
---begin
---
--- 
---
-----drop table #tabla2
---select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],    dbo.fn_porcentajeH(B.ID_Hotel)  [Ocupacion total]              --SUM(Costo_Total) [ingresos de hospedaje] ,sum( E.Precio) [ingresos de servicios]
-----into #tabla2
---from Reservacion A
---inner join Habitacion B
---on B.ID_Habitacion=A.ID_Habitacion
---FULL OUTER JOIN Hotel C
---on C.ID_Hotel = B.ID_Hotel
---Full outer join Tipo_Habitacion D
---on D.id_tipoHab = B.id_tipoHab
---where @fecha between A.Fecha_Entrada and A.Fecha_Salida and dbo.fn_traeidciudadpais(B.ID_Hotel) = dbo.fn_idPais(@pais)
---group by B.ID_Hotel
-----select * from #tabla2
---
--- end
---
--- 
---  
+ go
+ --exec sp_ReporteOcupaciones 'EEUU', '20200608'
+
 
 create procedure RepreOcupacionesTipo 
 @id_hotel	int,
@@ -825,8 +733,8 @@ begin
     group by B.id_tipoHab
 
 end
-
-alter procedure ps_RepreOcupacionesTipo 
+go
+create procedure ps_RepreOcupacionesTipo 
 @id_hotel	int,
 @fecha	date
 as
@@ -844,64 +752,10 @@ begin
 	
 
 end
-
-
-exec dbo.ps_RepreOcupacionesTipo 260, '20200608'
-
---===============================================================================
---===============================================================================
---===============================================================================
---===============================================================================
-
-select dbo.fn_traeidciudadName(B.ID_Hotel) [ciudad],dbo.FN_RegresaHotelName(B.ID_Hotel) [Nombre del hotel],round(SUM(dbo.fn_cantidadHabOcupadas(A.Cve_Reservacion) * 100/dbo.fn_cantidadHab(B.ID_Hotel)),2)[porcentaje de ocupacion total]
-from Reservacion A
-inner join Habitacion B
-on B.ID_Habitacion=A.ID_Habitacion
-FULL OUTER JOIN Hotel C
-on C.ID_Hotel =B.ID_Hotel
-Full outer join Tipo_Habitacion D
-on D.id_tipoHab = B.id_tipoHab
-where '20200608' between A.Fecha_Entrada and A.Fecha_Salida and dbo.fn_traeidciudadpais(B.ID_Hotel) = dbo.fn_idPais('EEUU')
-group by B.ID_Hotel
-
---===============================================================================
---===============================================================================
---===============================================================================
---===============================================================================
-declare @id_hotel int
-set @id_hotel=260
-declare @fecha date
-set @fecha='20200608'
-
-select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion], 
-round( dbo.fn_RepreOcupacionesTipo(@id_hotel, @fecha)* 100/dbo.fn_RepreOcupacionesTipo2(@id_hotel),2) [ocupacion por tipo hab]
-from Habitacion A
-left join Tipo_Habitacion B
-on A.id_tipoHab = B.id_tipoHab
-full outer join Reservacion C
-on C.ID_Habitacion = A.ID_Habitacion
-where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
-group by B.id_tipoHab
-
-
-----=====================================
-declare @id_hotel int
-set @id_hotel=260
-declare @fecha date
-set @fecha='20200608'
-
-select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion], 
-round( dbo.fn_RepreOcupacionesTipo(A.ID_Hotel, @fecha, B.id_tipoHab)* 100/dbo.fn_RepreOcupacionesTipo2(@id_hotel, B.id_tipoHab),2) [ocupacion por tipo hab]
-from Habitacion A
-inner join Tipo_Habitacion B
-on A.id_tipoHab = B.id_tipoHab
-full outer join Reservacion C
-on C.ID_Habitacion = A.ID_Habitacion
-where A.ID_Hotel = @id_hotel and @fecha between C.Fecha_Entrada and C.Fecha_Salida
-group by B.id_tipoHab, A.ID_Hotel
+go
 
 --====================================================================
-alter procedure traeserviciosfactura
+create procedure traeserviciosfactura
 @cve	bigint
 as
 begin
@@ -911,4 +765,10 @@ begin
 	on A.id_servicio = B.id_servicio
 	where @cve = cve_reservacion
 end
-
+go
+create procedure sp_deleteReserv
+@clave    bigint
+as
+begin
+    delete from Reservacion where Cve_Reservacion = @clave
+end

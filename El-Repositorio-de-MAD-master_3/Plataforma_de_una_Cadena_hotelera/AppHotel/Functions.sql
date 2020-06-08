@@ -1,6 +1,6 @@
-USE GD_HOTELS3
+USE GD_HOTEL_MAX5
 --------------------------------------------------------FUNCTIONS-----------------------------------------------------
-
+go
 create function fn_checa_idCiudad(@nombreC	varchar(80), @nombreUsu	int)
 returns int
 as
@@ -13,7 +13,7 @@ begin
 
 return @ID
 end;
-
+go
 create function fn_checa_idHotel(@nombreH	varchar(80))--fn_checa_idHotel
 returns int
 as
@@ -26,8 +26,8 @@ begin
 
 return @IDH
 end;
-
-alter function fn_checa_idTipoHab3(@tipo_hab	varchar(50))--fn_checa_idHotel
+go
+create function fn_checa_idTipoHab3(@tipo_hab	varchar(50))--fn_checa_idHotel
 returns int
 as
 begin
@@ -40,7 +40,7 @@ begin
 
 return @IDH
 end;
-
+go
 
 create function fn_checa_idTipoHab4(@tipo_hab	varchar(50))--fn_checa_idHotel
 returns money
@@ -56,7 +56,7 @@ begin
 return @IDH
 end;
 
-
+go
 
 create function fn_checa_idTipoHab(@numHab	int)
 returns int
@@ -70,7 +70,7 @@ begin
 
 return @ID
 end--
-
+go
 create function fn_checa_idHab(@idHab	bigint)
 returns int
 as
@@ -83,9 +83,9 @@ begin
 
 return @ID
 end--
-
+go
 --===================
-alter function fn_NombreHotel(@id_hab    bigint)
+create function fn_NombreHotel(@id_hab    bigint)
 returns int
 as
 begin
@@ -98,7 +98,7 @@ begin
 return @IDHotel
 end
 
-
+go
 create trigger tg_check_out
 on Reservacion
 instead of delete
@@ -118,14 +118,9 @@ begin
     where Cve_Reservacion = @cve
 end
 
-create procedure sp_deleteReserv
-@clave    bigint
-as
-begin
-    delete from Reservacion where Cve_Reservacion = @clave
-end
+go
 --===========================
-alter function fn_idPais(@nombrep    varchar(50))
+create function fn_idPais(@nombrep    varchar(50))
 returns int
 as
 begin
@@ -138,7 +133,7 @@ end
 
  go
 
-alter function fn_buscaciudad(@nombrep    varchar(50))
+create function fn_buscaciudad(@nombrep    varchar(50))
 returns int
 as
 begin
@@ -150,9 +145,9 @@ begin
 return @idc
 end
 
- 
+ go
 
-alter function fn_ingresototal(@mes    int)
+create function fn_ingresototal(@mes    int)
 returns varchar (50)
 as
 begin
@@ -180,41 +175,41 @@ begin
 end
 
 
+go
 
+--create function fn_ingresototal2(@mes    int)
+--returns varchar (50)
+--as
+--begin
+--    declare @ingreso    money
+--    declare @cont    int
+--    select @cont = count(0)
+--    from Reservacion
+--
+-- 
+--
+--    set @ingreso =0
+--
+-- 
+--        if month(getdate()) = @mes
+--        begin
+--            select @ingreso = @ingreso + Costo_Total
+--            from Reservacion A
+--			full join Hotel B
+--			on month(Fecha_Salida) = @mes
+--            where month(Fecha_Salida) = @mes and B.ID_Hotel= dbo.fn_NombreHotel(A.ID_Habitacion)-- and year(Fecha_Salida) = year(getdate())
+--        end
+--
+-- 
+-- 
+--
+--    return convert(varchar, @ingreso) 
+--end
+--
 
-alter function fn_ingresototal2(@mes    int)
-returns varchar (50)
-as
-begin
-    declare @ingreso    money
-    declare @cont    int
-    select @cont = count(0)
-    from Reservacion
-
- 
-
-    set @ingreso =0
-
- 
-        if month(getdate()) = @mes
-        begin
-            select @ingreso = @ingreso + Costo_Total
-            from Reservacion A
-			full join Hotel B
-			on month(Fecha_Salida) = @mes
-            where month(Fecha_Salida) = @mes and B.ID_Hotel= dbo.fn_NombreHotel(A.ID_Habitacion)-- and year(Fecha_Salida) = year(getdate())
-        end
-
- 
- 
-
-    return convert(varchar, @ingreso) 
-end
-
-select dbo.fn_ingresototal2(6)
 
 --=================
-alter function fn_historialservicios(@idr    bigint)
+create function fn_historialservicios(@idr    bigint)
 returns varchar(300)
 as
 begin
@@ -227,6 +222,7 @@ begin
     where B.Cve_Reservacion = @idr
 	return @servicios
 end
+go
 --===================
 create function fn_ingresototal3(@mes    int)
 returns varchar (50)
@@ -253,8 +249,9 @@ begin
 
     return convert(varchar, @ingreso) 
 end
+go
 --==================================
-alter function fn_ingresototal2_1(@mes    int, @ID_H    int, @pais	varchar(50), @ingreso money)
+create function fn_ingresototal2_1(@mes    int, @ID_H    int, @pais	varchar(50), @ingreso money)
 returns varchar (50)
 as
 begin
@@ -283,9 +280,9 @@ begin
     return convert(varchar, @ingreso) 
 end
 
+go
 
-
-alter function fn_ingresototal2(@mes    int, @idh	int)
+create function fn_ingresototal2(@mes    int, @idh	int)
 returns varchar (50)
 as
 begin
@@ -308,6 +305,7 @@ begin
 
     return convert(varchar, @ingreso) 
 end
+go
 --===================================================================================
 create function FN_RegresaHotelName(@Id_H int)
 returns varchar (50)
@@ -321,6 +319,7 @@ where ID_Hotel=@Id_H
 
 return @HotelName
  end
+ go
  --===================================================================================
  create function fn_traeidciudadName(@idh    int)
 returns varchar (50)
@@ -334,6 +333,7 @@ declare @nombre    varchar(50)
     where ID_Hotel = @idh
     return @nombre
 end
+go
  --===================================================================================
 
  create function fn_traeidciudadpais(@idh    int)
@@ -349,13 +349,14 @@ declare @idp    int
 
     return @idp
 end
+go
 
 
  --===================================================================================
   --============================================4 funciones================================
    --===================================================================================
 
--- alter function fn_porcentajeH(@idh    int)
+-- create function fn_porcentajeH(@idh    int)
 --returns float
 --as
 --begin
@@ -378,9 +379,9 @@ end
 --    return @porcentaje
 --end
 
- select dbo.fn_cantidadHabOcupadas(1150)
+ 
 
-alter function fn_cantidadHab(@idh    int)
+create function fn_cantidadHab(@idh    int)
 returns float
 as
 begin
@@ -392,9 +393,9 @@ begin
     return @cant
 end
 
- 
+ go
 
-alter function fn_cantidadHabOcupadas(@idr    bigint)
+create function fn_cantidadHabOcupadas(@idr    bigint)
 returns float
 as
 begin
@@ -408,9 +409,9 @@ begin
     return @cant
 end
 
- 
+ go
 
-alter function fn_calcula_porcentaje(@cant    float, @cant2    float)
+create function fn_calcula_porcentaje(@cant    float, @cant2    float)
 returns float
 as
 begin
@@ -421,27 +422,11 @@ begin
 
     return round(@porcentaje,2)
 end
+go
 
-select dbo.fn_calcula_porcentaje(42,1)
-
-
-
---alter function fn_calcula_porcentaje2(@cant    float, @cant2    float, @porcentaje	float)
---returns float
---as
---begin
---   
---	
---    set @porcentaje = @porcentaje + @cant2 * 100/@cant
---	--select @porcentaje
---
---    return round(@porcentaje,2)
---end
---
---select dbo.fn_calcula_porcentaje2(42,3,0)
 
 --======================================================================================================
-alter function fn_cantidadHab2(@idh    int)
+create function fn_cantidadHab2(@idh    int)
 returns float
 as
 begin
@@ -457,20 +442,10 @@ begin
 
     return @cant
 end
-select dbo.fn_cantidadHab2(10)
-
- 
-    select dbo.fn_traeidTipoHabName(B.id_tipoHab) [Tipo de habitacion],count(A.id_tipoHab) --dbo.fn_calcula_porcentaje2(count(A.id_tipoHab))--, dbo.fn_buscacanttipo(@fecha))
-    from Habitacion A
-    left join Tipo_Habitacion B
-    on A.id_tipoHab = B.id_tipoHab
-	full outer join Reservacion C
-	on C.ID_Habitacion = A.ID_Habitacion
-    where A.ID_Hotel = 10 and '20200604' between C.Fecha_Entrada and C.Fecha_Salida
-    group by B.id_tipoHab
+go
 
 
-alter function fn_buscacanttipo(@fecha	date)
+create function fn_buscacanttipo(@fecha	date)
 returns float
 as
 begin
@@ -485,11 +460,11 @@ begin
 
 	return @cant
 end
+go
 
-select dbo.fn_buscacanttipo('20200604')
 
 
-	alter function fn_calcula_porcentaje2(@cant    float, @cant2    float)
+	create function fn_calcula_porcentaje2(@cant    float, @cant2    float)
 returns float
 as
 begin
@@ -500,11 +475,11 @@ begin
 
     return round(@porcentaje,2)
 end
+go
 
-select dbo.fn_calcula_porcentaje2(15,1)
 
 
-alter function fn_RepreOcupacionesTipo (@id_hotel	int,@fecha	date,@id_tipo	int)
+create function fn_RepreOcupacionesTipo (@id_hotel	int,@fecha	date,@id_tipo	int)
 returns float
 as
 begin
@@ -520,10 +495,10 @@ declare	@cant	float
 
 	return @cant
 end
+go
 
-select dbo.fn_RepreOcupacionesTipo(260,'20200608', 1)
 
-alter function fn_RepreOcupacionesTipo2 (@id_hotel	int, @id_tipo	int)
+create function fn_RepreOcupacionesTipo2 (@id_hotel	int, @id_tipo	int)
 returns float
 as
 begin
@@ -539,8 +514,8 @@ declare	@cant	float
 
 	return @cant
 end
+go
 
-select dbo.fn_RepreOcupacionesTipo2(260, 4)
 
  --===================================================================================
  create function fn_traeidTipoHabName(@idhab    int)
@@ -555,6 +530,7 @@ declare @nombre    varchar(50)
 
     return @nombre
 end
+go
  --===================================================================================
 
  create function fn_repreOcupacionesPersonas (@id_hotel	int, @id_tipo	int, @cve_reserv	bigint)
@@ -573,5 +549,3 @@ declare	@cant	float
 
 	return @cant
 end
-
-select dbo.fn_repreOcupacionesPersonas(260,1,1750)

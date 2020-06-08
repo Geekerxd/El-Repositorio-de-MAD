@@ -1,4 +1,5 @@
---USE GD_HOTELS3
+USE GD_HOTEL_MAX5
+go
 CREATE view vw_BuscaPais
 as
     select P_Nombre Nombre
@@ -38,10 +39,10 @@ as
 --	from Hotels
 --	where C_Nombre = @nom_ciudad
 
-create view vw_Busca_Cliente
-as
-
-select Nombre,Paterno,Materno, RFC 
-
-from Cliente 
-where @nombreCliente=Nombre
+--create view vw_Busca_Cliente
+--as
+--
+--	select Nombre,Paterno,Materno, RFC 
+--	
+--	from Cliente 
+--	where @nombreCliente=Nombre

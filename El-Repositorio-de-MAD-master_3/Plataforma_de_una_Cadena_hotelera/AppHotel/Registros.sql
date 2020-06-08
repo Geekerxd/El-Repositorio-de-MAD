@@ -1,6 +1,6 @@
-USE GD_HOTELS3
+USE GD_HOTEL_MAX5
 ------------------------------REGISTRO USUARIO-------------------------------
-
+go
 CREATE PROCEDURE sp_Insert_User
 @Contrasena	       char(8),
 @nombreC			  varchar(80),
@@ -20,9 +20,8 @@ BEGIN
     values (@Contrasena, @nombreC, @paterno, @materno, @No_nomina, @Fecha_nacimiento, @Domicilio, @Telefono,null);
 
 END
+go
 
-drop procedure sp_Insert_User
-select * from Usuario
 
 -------------------------REGISTRO PAIS---------------------------------------
 
@@ -35,8 +34,8 @@ BEGIN
     values (@nombre, @descrip);
 
 END
+go
 
-select * from Pais
 
 
 -----------------------REGISTRO CIUDAD------------------------------------------
@@ -52,10 +51,7 @@ BEGIN
     values (@nombre, @descrip, @cve_usu, @id_pais);
 
 END
-
-select * from Ciudad
-
-
+go
 --------------------------REGISTRO TIPO HABITACION----------------------------------
 
 create PROCEDURE sp_Insertar_Tipo_Hab
@@ -71,10 +67,7 @@ BEGIN
     values (@nombre, @descrip, @no_camas, @tipo_cama, @cant_pers, @precio);
 
 END
-
-select * from Tipo_Habitacion
-
-
+go
 --------------------------REGISTRO SERVICIOS----------------------------------
 
 create PROCEDURE sp_Insert_Service
@@ -87,10 +80,7 @@ BEGIN
     values (@nombre, @precio, @caract);
 
 END
-
-select * from Servicio
-
-
+go
 --------------------------REGISTRO CLIENTES----------------------------------
 --checar .-.
 create PROCEDURE sp_Insert_Client
@@ -115,9 +105,7 @@ BEGIN
 
 END
 
-select * from Cliente
-
-
+go
 --------------------------REGISTRO HOTEL----------------------------------
 
 create PROCEDURE sp_Insert_Hotel
@@ -138,8 +126,7 @@ BEGIN
 
 END
 
-select * from Hotel
-
+go
 --------------------------REGISTRO HABITACION----------------------------------
 
 create PROCEDURE sp_Insert_Habitacion
@@ -154,11 +141,7 @@ BEGIN
     values (@no_hab, @id_hotel, @tipo);
 
 END
-
-select * from Habitacion
-select * from Hotel
-
-
+go
 --------------------------REGISTRO SERVICIOS EN HOTEL----------------------------------
 
 create PROCEDURE sp_Insert_Servicios_en_Hotel
@@ -173,12 +156,10 @@ BEGIN
 
 END
 
-select * from Servicios_en_Hotel
-
-
+go
 --------------------------REGISTRO RESERVACIONES----------------------------------
 -- le quite lo de insertar RFC
-alter PROCEDURE sp_Insert_Resevation
+create PROCEDURE sp_Insert_Resevation
 
 	@anticipo		money,			--
 	@medio_pago_res	 varchar(50),	--
@@ -198,7 +179,7 @@ BEGIN
 
 END
 
-
+go
 create PROCEDURE sp_Insert_Serv_in_Reserv
     @cve_reserv        bigint,
     @id_serv     int
@@ -208,6 +189,7 @@ BEGIN
     insert into Servicios_en_Reservacion
     values (@cve_reserv, @id_serv);
 END
+go
 ----------------------=============================
 create PROCEDURE sp_Nuevafactura
     @cve_reserv        bigint
@@ -220,27 +202,27 @@ END
 
 --==========================================================
 
-select * from Usuario
-select * from Cliente
-select * from hotel
-select * from habitacion
-select * from Servicios_en_Hotel
-select * from Servicio
-
-select * from Reservacion
-
-select * from Servicios_en_Reservacion
-
-select * from hotel
-select * from ciudad
-select * from pais
-
-select * from tipo_habitacion
-select * from factura
-
-
-select * from hotel
-select * from habitacion
+--select * from Usuario
+--select * from Cliente
+--select * from hotel
+--select * from habitacion
+--select * from Servicios_en_Hotel
+--select * from Servicio
+--
+--select * from Reservacion
+--
+--select * from Servicios_en_Reservacion
+--
+--select * from hotel
+--select * from ciudad
+--select * from pais
+--
+--select * from tipo_habitacion
+--select * from factura
+--
+--
+--select * from hotel
+--select * from habitacion
 
 
 -- set S_Nombre='Srv Cuarto' 
