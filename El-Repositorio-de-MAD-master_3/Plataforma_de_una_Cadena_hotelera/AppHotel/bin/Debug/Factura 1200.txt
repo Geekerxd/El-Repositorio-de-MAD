@@ -1,0 +1,10 @@
+Número de factura: 	1200
+RFC del cliente: 		861313
+Id de la habitacion: 	110
+Numero de personas: 	3
+Anticipo: 			10000.0000
+Metodo de pago: 		Transferencia bancaria
+Fecha de entrada: 	01/06/2020 12:00:00 a. m.
+Fecha de salida: 		15/06/2020 12:00:00 a. m.
+Nombre del cliente:	Jose Raya Garcia
+Tipo de habitacion:	Suite

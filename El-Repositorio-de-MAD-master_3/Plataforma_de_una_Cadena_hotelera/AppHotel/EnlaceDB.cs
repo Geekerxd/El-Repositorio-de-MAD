@@ -1250,7 +1250,7 @@ namespace AppHotel
 
                 if (dr.Read())
                 {
-                    sw.WriteLine("Id del cliente: \t\t" + dr["idc"].ToString());
+                    sw.WriteLine("RFC del cliente: \t\t" + dr["idc"].ToString());
                     sw.WriteLine("Id de la habitacion: \t" + dr["idh"].ToString());
                     sw.WriteLine("Numero de personas: \t" + dr["personas"].ToString());
                     sw.WriteLine("Anticipo: \t\t\t" + dr["anticipo"].ToString());
@@ -1825,7 +1825,7 @@ namespace AppHotel
                 conectar();
 
                 // dr = null;
-                string qry = "sp_deleteReserv";
+                string qry = "sp_updateReserv";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _conexion.Open();
                 _comandosql.CommandType = CommandType.StoredProcedure;

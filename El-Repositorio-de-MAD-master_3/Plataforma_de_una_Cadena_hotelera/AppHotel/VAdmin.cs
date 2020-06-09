@@ -18,7 +18,7 @@ namespace AppHotel
         public VAdmin(string NombreAdmin)
         {
             InitializeComponent();
-            B_Modi.Enabled = false;
+            //B_Modi.Enabled = false;
             B_AgNuevHote.Enabled = false;
             checar = false;
 
@@ -43,7 +43,7 @@ namespace AppHotel
         private void B_Hote_Click(object sender, EventArgs e)
         {
             checar = !checar;
-            B_Modi.Enabled= checar;
+           // B_Modi.Enabled= checar;
             B_AgNuevHote.Enabled = checar;
             
         }
@@ -53,12 +53,6 @@ namespace AppHotel
             Form nuevform = new AgregarHotel(AdminNmae);
             nuevform.ShowDialog();
 
-        }
-
-        private void B_Modi_Click(object sender, EventArgs e)
-        {
-            Form nuevform = new ConfiHote();
-            nuevform.ShowDialog();
         }
 
         private void B_regTipoHab_Click(object sender, EventArgs e)

@@ -1,0 +1,11 @@
+Número de factura: 	1600
+RFC del cliente: 		164123
+Id de la habitacion: 	216
+Numero de personas: 	1
+Anticipo: 			150.0000
+Metodo de pago: 		Transferencia bancaria
+Fecha de entrada: 	01/06/2020 12:00:00 a. m.
+Fecha de salida: 		04/06/2020 12:00:00 a. m.
+Nombre del cliente:	Luis Felipe Rodrigez Hernandez
+Tipo de habitacion:	Sencilla
+Costo Total:		2372.5

@@ -48,6 +48,11 @@ namespace AppHotel
           
 
             MessageBox.Show("Se guardó servicio: " + Nombre + ".");
+
+
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
             }
             catch
             {

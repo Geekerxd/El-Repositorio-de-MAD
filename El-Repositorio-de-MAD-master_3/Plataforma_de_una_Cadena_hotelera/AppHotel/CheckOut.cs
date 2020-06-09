@@ -55,6 +55,9 @@ namespace AppHotel
             //   CHECK OUT — CREAR FACTURA         //
             /////////////////////////////////////////
             ///
+           
+       
+
             EnlaceDB conexion2 = new EnlaceDB();
 
 
@@ -62,18 +65,18 @@ namespace AppHotel
             int NuFactura = conexion2.show_id_MAXFACTURA();
 
             string extencion = "Factura " + NuFactura.ToString() ;
-            string fileName = @"C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\Facturas\"+ extencion+ ".txt";
-            
+            //string fileName = @"C:\Users\Dell 66895\Desktop\Repositorio_MAD\El-Repositorio-de-MAD-master_3\Plataforma_de_una_Cadena_hotelera\AppHotel\Facturas\"+ extencion+ ".txt";
+            string fileName6 = Environment.CurrentDirectory +"\\"+ extencion + ".txt";
             try
             {
                 // Check if file already exists. If yes, delete it.     
-                if (File.Exists(fileName))
+                if (File.Exists(fileName6))
                 {
-                    File.Delete(fileName);
+                    File.Delete(fileName6);
                 }
 
                 // Create a new file     
-                using (StreamWriter sw = File.CreateText(fileName))
+                using (StreamWriter sw = File.CreateText(fileName6))
                 {
 
                     sw.WriteLine("Número de factura: \t{0}", NuFactura);
@@ -112,7 +115,7 @@ namespace AppHotel
 
                 #region leer_txt
                 // Write file contents on console.    
-                /* using (StreamReader sr = File.OpenText(fileName))
+                /* using (StreamReader sr = File.OpenText(fileName6))
                  {
                      string s = "";
                      while ((s = sr.ReadLine()) != null)

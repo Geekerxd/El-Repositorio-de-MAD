@@ -33,20 +33,19 @@
             this.B_CancReserv = new System.Windows.Forms.Button();
             this.B_Hote = new System.Windows.Forms.Button();
             this.B_AgNuevHote = new System.Windows.Forms.Button();
-            this.B_Modi = new System.Windows.Forms.Button();
             this.B_regTipoHab = new System.Windows.Forms.Button();
             this.B_RepVent = new System.Windows.Forms.Button();
             this.B_CreaUsuEmp = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.VerStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.historialDelClienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.B_RepSistema = new System.Windows.Forms.Button();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.paisToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ciudadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.servicioAdicionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.B_RepSistema = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +74,7 @@
             // 
             this.B_Hote.Location = new System.Drawing.Point(167, 182);
             this.B_Hote.Name = "B_Hote";
-            this.B_Hote.Size = new System.Drawing.Size(177, 43);
+            this.B_Hote.Size = new System.Drawing.Size(208, 43);
             this.B_Hote.TabIndex = 2;
             this.B_Hote.Text = "Hoteles";
             this.B_Hote.UseVisualStyleBackColor = true;
@@ -83,23 +82,13 @@
             // 
             // B_AgNuevHote
             // 
-            this.B_AgNuevHote.Location = new System.Drawing.Point(350, 182);
+            this.B_AgNuevHote.Location = new System.Drawing.Point(381, 182);
             this.B_AgNuevHote.Name = "B_AgNuevHote";
-            this.B_AgNuevHote.Size = new System.Drawing.Size(140, 43);
+            this.B_AgNuevHote.Size = new System.Drawing.Size(196, 43);
             this.B_AgNuevHote.TabIndex = 3;
             this.B_AgNuevHote.Text = "Agregar Nuevo Hotel";
             this.B_AgNuevHote.UseVisualStyleBackColor = true;
             this.B_AgNuevHote.Click += new System.EventHandler(this.B_AgNuevHote_Click);
-            // 
-            // B_Modi
-            // 
-            this.B_Modi.Location = new System.Drawing.Point(496, 182);
-            this.B_Modi.Name = "B_Modi";
-            this.B_Modi.Size = new System.Drawing.Size(81, 43);
-            this.B_Modi.TabIndex = 4;
-            this.B_Modi.Text = "Modificar";
-            this.B_Modi.UseVisualStyleBackColor = true;
-            this.B_Modi.Click += new System.EventHandler(this.B_Modi_Click);
             // 
             // B_regTipoHab
             // 
@@ -154,6 +143,12 @@
             this.VerStripDropDownButton1.Size = new System.Drawing.Size(103, 22);
             this.VerStripDropDownButton1.Text = "Ver opciones";
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(83, 22);
+            this.toolStripMenuItem2.Text = "...";
+            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -168,19 +163,9 @@
             // historialDelClienteToolStripMenuItem1
             // 
             this.historialDelClienteToolStripMenuItem1.Name = "historialDelClienteToolStripMenuItem1";
-            this.historialDelClienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.historialDelClienteToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.historialDelClienteToolStripMenuItem1.Text = "Historial del Cliente";
             this.historialDelClienteToolStripMenuItem1.Click += new System.EventHandler(this.historialDelClienteToolStripMenuItem1_Click);
-            // 
-            // B_RepSistema
-            // 
-            this.B_RepSistema.Location = new System.Drawing.Point(167, 84);
-            this.B_RepSistema.Name = "B_RepSistema";
-            this.B_RepSistema.Size = new System.Drawing.Size(410, 43);
-            this.B_RepSistema.TabIndex = 0;
-            this.B_RepSistema.Text = "Reporte de ocupación por Hotel";
-            this.B_RepSistema.UseVisualStyleBackColor = true;
-            this.B_RepSistema.Click += new System.EventHandler(this.B_RepSistema_Click);
             // 
             // toolStripDropDownButton2
             // 
@@ -198,29 +183,33 @@
             // paisToolStripMenuItem1
             // 
             this.paisToolStripMenuItem1.Name = "paisToolStripMenuItem1";
-            this.paisToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.paisToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.paisToolStripMenuItem1.Text = "Pais";
             this.paisToolStripMenuItem1.Click += new System.EventHandler(this.paisToolStripMenuItem1_Click);
             // 
             // ciudadToolStripMenuItem1
             // 
             this.ciudadToolStripMenuItem1.Name = "ciudadToolStripMenuItem1";
-            this.ciudadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ciudadToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.ciudadToolStripMenuItem1.Text = "Ciudad";
             this.ciudadToolStripMenuItem1.Click += new System.EventHandler(this.ciudadToolStripMenuItem1_Click);
             // 
             // servicioAdicionalToolStripMenuItem
             // 
             this.servicioAdicionalToolStripMenuItem.Name = "servicioAdicionalToolStripMenuItem";
-            this.servicioAdicionalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.servicioAdicionalToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.servicioAdicionalToolStripMenuItem.Text = "Servicio Adicional";
             this.servicioAdicionalToolStripMenuItem.Click += new System.EventHandler(this.servicioAdicionalToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem2
+            // B_RepSistema
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "...";
+            this.B_RepSistema.Location = new System.Drawing.Point(167, 84);
+            this.B_RepSistema.Name = "B_RepSistema";
+            this.B_RepSistema.Size = new System.Drawing.Size(410, 43);
+            this.B_RepSistema.TabIndex = 0;
+            this.B_RepSistema.Text = "Reporte de ocupación por Hotel";
+            this.B_RepSistema.UseVisualStyleBackColor = true;
+            this.B_RepSistema.Click += new System.EventHandler(this.B_RepSistema_Click);
             // 
             // VAdmin
             // 
@@ -231,7 +220,6 @@
             this.Controls.Add(this.B_CreaUsuEmp);
             this.Controls.Add(this.B_RepVent);
             this.Controls.Add(this.B_regTipoHab);
-            this.Controls.Add(this.B_Modi);
             this.Controls.Add(this.B_AgNuevHote);
             this.Controls.Add(this.B_Hote);
             this.Controls.Add(this.B_CancReserv);
@@ -255,7 +243,6 @@
         private System.Windows.Forms.Button B_CancReserv;
         private System.Windows.Forms.Button B_Hote;
         private System.Windows.Forms.Button B_AgNuevHote;
-        private System.Windows.Forms.Button B_Modi;
         private System.Windows.Forms.Button B_regTipoHab;
         private System.Windows.Forms.Button B_RepVent;
         private System.Windows.Forms.Button B_CreaUsuEmp;

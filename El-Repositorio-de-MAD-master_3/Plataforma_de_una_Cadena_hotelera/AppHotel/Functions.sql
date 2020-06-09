@@ -114,9 +114,15 @@ begin
  
 
     update Reservacion
-    set check_out = 1
+    set check_out = 0,check_in = 0
     where Cve_Reservacion = @cve
+
+
+
+
+
 end
+
 
 go
 --===========================

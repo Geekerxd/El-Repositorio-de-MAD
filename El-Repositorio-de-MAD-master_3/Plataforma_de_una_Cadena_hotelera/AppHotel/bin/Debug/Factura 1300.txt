@@ -1,0 +1,11 @@
+Número de factura: 	1300
+RFC del cliente: 		164123
+Id de la habitacion: 	31
+Numero de personas: 	2
+Anticipo: 			30000.0000
+Metodo de pago: 		PayPal
+Fecha de entrada: 	22/07/2020 12:00:00 a. m.
+Fecha de salida: 		30/07/2020 12:00:00 a. m.
+Nombre del cliente:	Luis Felipe Rodrigez Hernandez
+Tipo de habitacion:	Suite
+Costo Total:		95920

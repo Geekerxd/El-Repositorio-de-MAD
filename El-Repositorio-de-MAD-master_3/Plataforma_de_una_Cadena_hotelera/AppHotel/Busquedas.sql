@@ -771,4 +771,17 @@ create procedure sp_deleteReserv
 as
 begin
     delete from Reservacion where Cve_Reservacion = @clave
+
+
+
+end
+go
+create procedure sp_updateReserv
+@clave    bigint
+as
+begin
+   update Reservacion set check_out = 1 where Cve_Reservacion = @clave
+
+
+
 end
